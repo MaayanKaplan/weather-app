@@ -1,3 +1,11 @@
+export interface Theme {
+  black: string;
+  white: string;
+  primary: string;
+  secondary: string;
+  buttonDefaultSize: string;
+}
+
 const lightModeTheme = {
   black: "#222",
   white: "#fff",
