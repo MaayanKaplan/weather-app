@@ -22,7 +22,7 @@ const Button = styled.button<Props>`
   /* padding: 16px 54px; */
 
   &:disabled {
-    color-opacity: 0.4;
+    opacity: 0.4;
   }
 
   ${(props: Props) => {
