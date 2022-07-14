@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./Common/Button";
-import WarningBox from "./Common/WarningBox";
+import Switch from "./Common/Switch";
 
 const App: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <Button variant="primary" disabled>
         Log in
       </Button>
-      {/* <WarningBox /> */}
+      <Switch />
     </>
   );
 };

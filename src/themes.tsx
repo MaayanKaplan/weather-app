@@ -3,7 +3,11 @@ export interface Theme {
   white: string;
   primary: string;
   secondary: string;
-  buttonDefaultSize: string;
+  fadeText: string;
+  gray: string;
+  grayBg: string;
+  errorRed: string;
+  yellow: string;
 }
 
 const lightModeTheme = {
