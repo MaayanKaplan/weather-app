@@ -60,6 +60,9 @@ const Button = styled.button<Props>`
           background-image: linear-gradient(to left, #47bfdf, #4a91ff);
           color: #fff;
           font-weight: bold;
+          display: flex;
+          margin: 0 auto;
+          width: 354px;
         `;
     }
   }}

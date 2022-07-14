@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Common/Button";
 import Switch from "./Common/Switch";
+import LoginBox from "./Components/LoginBox";
 
 const App: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const App: React.FC = () => {
         Log in
       </Button>
       <Switch />
+      <LoginBox />
     </>
   );
 };
