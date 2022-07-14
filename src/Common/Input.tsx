@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Button from "../Common/Button";
 
 type Inputs = {
   email: string;
@@ -34,6 +35,7 @@ const Input = () => {
           placeholder="6 characters and digit numbers..."
         />
       </InputWrapper>
+      <LoginButton variant="primary">Log in</LoginButton>
     </FormWrapper>
   );
 };
@@ -75,6 +77,10 @@ const StyledInput = styled.input`
   &::placeholder {
     color: #bebebe;
   }
+`;
+
+const LoginButton = styled(Button)`
+  margin-top: 8px;
 `;
 
 export default Input;
