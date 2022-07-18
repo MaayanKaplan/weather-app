@@ -1,5 +1,8 @@
 import styled from "styled-components/macro";
-import Button from "../Button/Button";
+
+interface Props {
+  error?: string;
+}
 
 export const FormWrapper = styled.form`
   display: flex;
@@ -8,7 +11,7 @@ export const FormWrapper = styled.form`
   margin-bottom: 32px;
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,10 +21,20 @@ export const InputWrapper = styled.div`
   width: 354px;
   margin: 0 auto;
   gap: 4px;
+  border: solid 1px transparent;
 
-  /* &:last-child {
-    margin-bottom: 8px;
-  } */
+  ${(props) =>
+    props.error
+      ? `
+    border: solid 1px #f0274b;
+    ${StyledLabel} {
+      color: #f0274b;
+     } `
+      : `
+    :focus-within {
+      border: solid 1px #222;
+    }
+  `}
 `;
 
 export const StyledLabel = styled.label`
@@ -40,4 +53,12 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: #bebebe;
   }
+`;
+
+export const Error = styled.p`
+  font-family: inherit;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  color: #f0274b;
+  padding-top: 4px;
 `;

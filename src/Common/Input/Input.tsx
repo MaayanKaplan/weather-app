@@ -32,6 +32,7 @@ const Input: React.FC<InputProps> = ({
           onChange={onChange}
         />
       </S.InputWrapper>
+      {error && <S.Error>{error}</S.Error>}
     </S.FormWrapper>
   );
 };
