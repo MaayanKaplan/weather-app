@@ -1,25 +1,33 @@
-import styled from "styled-components";
-import { IconDarkSun, IconDarkMoon } from "./Icon";
+import styled from "styled-components/macro";
 
-type Props = {
-  // isActive?: boolean;
-  // src?: string | undefined;
-  // leftIcon: string;
-  // rightIcon: {};
+type SwitchProps = {
+  id: string;
+  left?: React.ReactNode | string;
+  right?: React.ReactNode | string;
+  value: boolean;
+  onChange: () => void;
 };
 
-const Switch: React.FC<Props> = () => {
+const Switch: React.FC<SwitchProps> = ({
+  id,
+  value,
+  onChange,
+  left,
+  right,
+}) => {
   return (
     <SwitchWrapper>
+      <SwitchCheckbox
+        id={id}
+        type="checkbox"
+        checked={value}
+        onChange={() => onChange()}
+      />
       <IconsWrapper>
-        <div>
-          <IconDarkSun />
-        </div>
-        <div>
-          <IconDarkMoon />
-        </div>
+        <SwitchLeftThumbWrapper>{left}</SwitchLeftThumbWrapper>
+        <SwitchRightThumbWrapper>{right}</SwitchRightThumbWrapper>
       </IconsWrapper>
-      <Notch />
+      <Notch checked={value} htmlFor={id}></Notch>
     </SwitchWrapper>
   );
 };
@@ -34,31 +42,47 @@ const SwitchWrapper = styled.div`
   position: relative;
 `;
 
-const IconsWrapper = styled.div`
-  display: flex;
-  padding: 3px;
-
-  div {
-    height: 26px;
-    width: 26px;
-    margin: 0 6px 2px 2px;
-  }
-`;
-
-const Notch = styled.div`
+interface Props {
+  checked: boolean;
+}
+const Notch = styled.label<Props>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  /* flex-grow: 0; */
   background-color: #838baa;
 
-  transition: transform 0.1s linear;
   cursor: pointer;
   position: absolute;
+  ${(props) =>
+    props.checked
+      ? `
+    top: 3px;
+    left: 4px;
+  `
+      : `
   top: 3px;
-  left: 3px;
+  right:4px;`}
+`;
+
+const SwitchCheckbox = styled.input`
+  opacity: 0;
+  height: 0;
+  width: 0;
+`;
+
+const IconsWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+  margin: 6px 0 5px 8px;
+`;
+const SwitchLeftThumbWrapper = styled.div`
+  height: 24px;
+  width: 24px;
+`;
+
+const SwitchRightThumbWrapper = styled.div`
+  height: 24px;
+  width: 24px;
 `;
 
 export default Switch;
-
-// transform: translate(${p => p.isActive ? '26px' : '1px'});

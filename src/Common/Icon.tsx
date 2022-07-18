@@ -20,7 +20,7 @@ import { ReactComponent as IconWhiteMoon } from "../Icons/moon-white.svg";
 import { ReactComponent as IconSearchDark } from "../Icons/search-dark.svg";
 import { ReactComponent as IconSearchWhite } from "../Icons/search-white.svg";
 import { ReactComponent as IconSearch } from "../Icons/search.svg";
-import { ReactComponent as IconWarning } from "../Icons/warning-icon.svg";
+import { ReactComponent as IconWarning } from "../Icons/info-circle.svg";
 
 export {
   IconFacebookLogo,
