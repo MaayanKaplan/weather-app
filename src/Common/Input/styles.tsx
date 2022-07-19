@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { deviceSize } from "../../Utils/constants";
 
 interface Props {
   error?: string;

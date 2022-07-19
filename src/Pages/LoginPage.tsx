@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LoginBox from "../Components/LoginBox/LoginBox";
-import LogoImage from "../Images/group-33626.svg";
+import LogoImage from "../Images/logo.svg";
 import { deviceSize } from "../Utils/constants";
 
 type PageProps = {
@@ -63,10 +63,10 @@ const StyledImage = styled.img`
   display: inline-block;
 
   @media (max-width: ${deviceSize.mobile}) {
-    margin: 56px 122px 31px 144px;
+    margin: 0 122px 31px 144px;
 
-    width: 148px;
-    height: 97px;
+    /* width: 148px;
+    height: 97px; */
   } ;
 `;
 

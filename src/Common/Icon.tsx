@@ -21,6 +21,8 @@ import { ReactComponent as IconSearchDark } from "../Icons/search-dark.svg";
 import { ReactComponent as IconSearchWhite } from "../Icons/search-white.svg";
 import { ReactComponent as IconSearch } from "../Icons/search.svg";
 import { ReactComponent as IconWarning } from "../Icons/info-circle.svg";
+import { ReactComponent as IconC } from "../Icons/c.svg";
+import { ReactComponent as IconF } from "../Icons/f.svg";
 
 export {
   IconFacebookLogo,
@@ -46,4 +48,6 @@ export {
   IconDarkSun,
   IconSearch,
   IconWarning,
+  IconC,
+  IconF,
 };
