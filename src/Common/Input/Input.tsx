@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <S.FormWrapper onSubmit={handleSubmit(onSubmit)}>
-      <S.InputWrapper>
+      <S.InputWrapper error={error}>
         <S.StyledLabel>{title}</S.StyledLabel>
         <S.StyledInput
           {...register("email", { required: true })}

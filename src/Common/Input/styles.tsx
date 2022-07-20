@@ -50,6 +50,9 @@ export const StyledInput = styled.input`
   font-size: 1.8rem;
   line-height: 1.5;
   width: 100%;
+  :focus {
+    outline: none;
+  }
 
   &::placeholder {
     color: #bebebe;
