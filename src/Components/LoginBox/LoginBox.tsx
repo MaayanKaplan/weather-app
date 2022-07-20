@@ -22,6 +22,7 @@ const LoginBox: React.FC<InputProps> = ({
     <S.Container>
       <S.StyledTitle>Log in</S.StyledTitle>
       <Input
+        type={"email"}
         value={text}
         onChange={(e) => {
           setText(e.target.value);
@@ -32,6 +33,7 @@ const LoginBox: React.FC<InputProps> = ({
         password={text}
       ></Input>
       <Input
+        type={"password"}
         value={text}
         onChange={(e) => {
           setText(e.target.value);
