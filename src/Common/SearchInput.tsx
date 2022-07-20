@@ -17,11 +17,11 @@ const SearchInput: React.FC<SearchProps> = ({ placeholder }) => {
 
 const InputWrapper = styled.div`
   width: 372px;
-  /* height: 54px; */
+  height: 54px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 124px 20px 0;
+  margin: 20px 0;
   padding: 12px 24px;
   border-radius: 15px;
   box-shadow: inset -6px 4px 4px 0 rgba(255, 255, 255, 0.1),
@@ -41,6 +41,11 @@ const StyledInput = styled.input`
     text-align: left;
     color: #bebebe;
     width: 100%;
+  }
+
+  /* CHANGE IT FOR ACTIVE STATE */
+  :focus {
+    border: none;
   }
 `;
 

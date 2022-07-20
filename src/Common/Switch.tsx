@@ -16,13 +16,8 @@ const Switch: React.FC<SwitchProps> = ({
   right,
 }) => {
   return (
-    <SwitchWrapper>
-      <SwitchCheckbox
-        id={id}
-        type="checkbox"
-        checked={value}
-        onChange={() => onChange()}
-      />
+    <SwitchWrapper onChange={() => onChange()}>
+      <SwitchCheckbox id={id} type="checkbox" checked={value} />
       <IconsWrapper>
         <SwitchLeftThumbWrapper>{left}</SwitchLeftThumbWrapper>
         <SwitchRightThumbWrapper>{right}</SwitchRightThumbWrapper>

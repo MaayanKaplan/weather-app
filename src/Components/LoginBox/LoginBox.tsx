@@ -42,7 +42,11 @@ const LoginBox: React.FC<InputProps> = ({
         password={text}
       ></Input>
 
-      <S.LoginButton onClick={() => console.log("test")} variant="primary">
+      <S.LoginButton
+        onClick={() => console.log("test")}
+        variant="primary"
+        disabled
+      >
         Log in
       </S.LoginButton>
       <S.DividerWrapper>
