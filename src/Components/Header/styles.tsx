@@ -1,10 +1,9 @@
 import styled from "styled-components/macro";
+import Logo from "../../Common/Logo";
 import { deviceSize } from "../../Utils/constants";
 
 export const HeaderWrapper = styled.header`
-  /* width: 1920px; */
   height: 94px;
-  /* margin: 121px 0 200px; */
   padding: 0 70px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   background-color: #48bae4;
@@ -15,39 +14,6 @@ export const HeaderWrapper = styled.header`
   }
 `;
 
-export const LogoWrapper = styled.div`
-  /* width: 110px; */
-  height: 71.8px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin: 11px 190px 11px 0;
-
-  @media (max-width: ${deviceSize.tablet}) {
-    margin: 19px 18px 19px 0;
-  }
-`;
-
-export const Logo = styled.img`
-  width: 48px;
-  height: 51px;
-  display: flex;
-  margin: 0 31px;
-
-  @media (max-width: ${deviceSize.tablet}) {
-    width: 36px;
-    height: 36px;
-  }
-`;
-
-export const LogoText = styled.h1`
-  color: #fff;
-
-  @media (max-width: ${deviceSize.tablet}) {
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-`;
 export const NavWrapper = styled.nav`
   display: flex;
   gap: 63px;
@@ -81,4 +47,9 @@ export const SwitchesWrapper = styled.div`
     order: -1;
     margin: 27px 96px 27px 0;
   }
+`;
+
+export const HeaderLogo = styled(Logo)`
+  margin: 100px;
+  padding: 100px;
 `;

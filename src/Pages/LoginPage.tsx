@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LoginBox from "../Components/LoginBox/LoginBox";
-import LogoImage from "../Images/logo.svg";
 import { deviceSize } from "../Utils/constants";
+import Logo from "../Common/Logo";
 
 type PageProps = {
   value: string;
@@ -28,14 +28,14 @@ const LoginPage: React.FC<PageProps> = ({
   const [text, setText] = useState<string>("");
   return (
     <Container>
-      <StyledImage src={LogoImage} alt="App's logo" />
+      <LoginLogo margin={"50px"} />
       <LoginBox
         value={text}
         onChange={(e) => {
           setText(e.target.value);
         }}
         title={"Email account"}
-        placeholder="6 charaters and digit numbers blabla"
+        placeholder="6 characters and digit numbers"
         email={text}
         password={text}
       ></LoginBox>
@@ -44,30 +44,20 @@ const LoginPage: React.FC<PageProps> = ({
 };
 
 const Container = styled.div`
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(241deg, #47bfdf, #4a91ff),
     linear-gradient(to bottom, #fff, #fff);
+  position: relative;
 
   @media (max-width: ${deviceSize.mobile}) {
-    width: 414px;
-    height: 712px;
     display: flex;
     flex-direction: column;
   }
 `;
 
-const StyledImage = styled.img`
-  margin-left: 74px;
-  margin-bottom: 116px;
-  display: inline-block;
-
-  @media (max-width: ${deviceSize.mobile}) {
-    margin: 0 122px 31px 144px;
-
-    /* width: 148px;
-    height: 97px; */
-  } ;
+const LoginLogo = styled(Logo)`
+  margin: 100px;
 `;
 
 export default LoginPage;

@@ -25,6 +25,10 @@ export const Container = styled.div`
     height: 712px;
     padding: 54px 30px 85px;
   }
+
+  /* Button {
+    margin-top: 8px;
+  } */
 `;
 
 export const StyledTitle = styled.h1`

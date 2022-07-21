@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import LogoImage from "../../Images/moonlogo.svg";
+import Logo from "../../Common/Logo";
 import {
   IconHomeFull,
   IconFavoritesOutline,
@@ -20,10 +20,7 @@ const Header = () => {
   const [toggle2, setToggle2] = useState<boolean>(false);
   return (
     <S.HeaderWrapper>
-      <S.LogoWrapper>
-        <S.Logo src={LogoImage} alt="App's logo" />
-        <S.LogoText>WeatherApp</S.LogoText>
-      </S.LogoWrapper>
+      <Logo />
       <S.NavWrapper>
         <HeaderLink to={"/"} icon={<IconHomeFull />}>
           Home

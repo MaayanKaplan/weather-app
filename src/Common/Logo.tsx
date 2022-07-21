@@ -3,7 +3,11 @@ import styled from "styled-components/macro";
 import MoonImage from "../Images/moonlogo.svg";
 import { deviceSize } from "../Utils/constants";
 
-const Logo = () => {
+type Props = {
+  margin?: string;
+};
+
+const Logo: React.FC<Props> = ({ margin }) => {
   return (
     <LogoWrapper>
       <LogoImage src={MoonImage} alt="Moon Image" />
@@ -12,11 +16,13 @@ const Logo = () => {
   );
 };
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled.div<Props>`
   height: 71.8px;
   display: flex;
   flex-direction: column;
   gap: 3px;
+
+  margin: ${(props) => props.margin};
 `;
 
 const LogoImage = styled.img`
