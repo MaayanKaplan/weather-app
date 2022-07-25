@@ -33,6 +33,8 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   border: none;
   width: 100%;
+  outline: none;
+  font-weight: bold;
 
   ::placeholder {
     font-size: 1.8rem;

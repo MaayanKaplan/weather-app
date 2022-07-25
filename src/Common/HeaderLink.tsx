@@ -8,12 +8,19 @@ type LinkProps = {
   variant?: string | undefined;
   children?: React.ReactNode;
   to: string;
+  margin?: boolean;
 };
 
-const HeaderLink: React.FC<LinkProps> = ({ icon, variant, children, to }) => {
+const HeaderLink: React.FC<LinkProps> = ({
+  icon,
+  variant,
+  children,
+  to,
+  margin,
+}) => {
   return (
-    <LinkWrapper variant={variant}>
-      {icon}
+    <LinkWrapper to={to} margin variant={variant}>
+      <IconWrapper to={to}>{icon}</IconWrapper>
       <StyledText to={to} variant={variant}>
         {children}
       </StyledText>
@@ -21,7 +28,11 @@ const HeaderLink: React.FC<LinkProps> = ({ icon, variant, children, to }) => {
   );
 };
 
-const LinkWrapper = styled.div<{ variant: string | undefined }>`
+const LinkWrapper = styled.div<{
+  variant: string | undefined;
+  margin: boolean;
+  to: string;
+}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,9 +44,7 @@ const LinkWrapper = styled.div<{ variant: string | undefined }>`
     props.variant === "underline" ? "normal" : "bold"};
 
   @media (max-width: ${deviceSize.tablet}) {
-    :first-child {
-      margin-left: 32px;
-    }
+    /* margin-left: ${(props) => (props.margin ? "32px" : "0")}; */
   }
 `;
 
@@ -54,5 +63,7 @@ const StyledText = styled(NavLink)<{ variant: string | undefined }>`
     display: ${(props) => (props.variant === "underline" ? "none" : "block")};
   }
 `;
+
+const IconWrapper = styled.div<{ to: string }>``;
 
 export default HeaderLink;

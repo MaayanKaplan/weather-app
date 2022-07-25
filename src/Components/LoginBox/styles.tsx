@@ -12,7 +12,7 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 
   @media (max-width: ${deviceSize.tablet}) {
     width: 508px;
@@ -24,11 +24,12 @@ export const Container = styled.div`
     width: 414px;
     height: 712px;
     padding: 54px 30px 85px;
+    margin-top: 184px;
   }
 
-  /* Button {
+  Button {
     margin-top: 8px;
-  } */
+  }
 `;
 
 export const StyledTitle = styled.h1`
@@ -97,6 +98,5 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const LoginButton = styled(Button)`
-  margin-top: 8px;
-  margin-bottom: 48px;
+  margin-top: 8px !important;
 `;

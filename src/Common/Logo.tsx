@@ -3,43 +3,39 @@ import styled from "styled-components/macro";
 import MoonImage from "../Images/moonlogo.svg";
 import { deviceSize } from "../Utils/constants";
 
-type Props = {
-  margin?: string;
-};
-
-const Logo: React.FC<Props> = ({ margin }) => {
+const Logo = () => {
   return (
-    <LogoWrapper>
-      <LogoImage src={MoonImage} alt="Moon Image" />
+    <LogoWrapper className="logo">
+      <LogoImage className="logoImage" src={MoonImage} alt="Moon Image" />
       <LogoText>WeatherApp</LogoText>
     </LogoWrapper>
   );
 };
 
-const LogoWrapper = styled.div<Props>`
+const LogoWrapper = styled.div`
   height: 71.8px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-
-  margin: ${(props) => props.margin};
+  gap: 6px;
 `;
 
 const LogoImage = styled.img`
-  width: 48px;
-  height: 51px;
+  width: 42px;
+  height: 42px;
   justify-content: center;
   align-items: center;
-  margin: 0 31px;
+  margin: 0 auto;
 
   @media (max-width: ${deviceSize.tablet}) {
-    width: 36px;
-    height: 36px;
+    width: 31px;
+    height: 31px;
   }
 `;
 
 const LogoText = styled.h1`
   color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
 
   @media (max-width: ${deviceSize.tablet}) {
     font-size: 1.4rem;

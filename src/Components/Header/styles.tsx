@@ -4,13 +4,22 @@ import { deviceSize } from "../../Utils/constants";
 
 export const HeaderWrapper = styled.header`
   height: 94px;
-  padding: 0 70px;
+  /* padding: 0 70px; */
+  padding-left: 70px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   background-color: #48bae4;
   display: flex;
 
   @media (max-width: ${deviceSize.tablet}) {
     padding: 0 50px;
+  }
+
+  .logo {
+    padding: 11px 190px 11px 0;
+
+    @media (max-width: ${deviceSize.tablet}) {
+      padding: 19px 28px 19px 0;
+    }
   }
 `;
 
@@ -32,9 +41,9 @@ export const RightWrapper = styled.div`
   @media (max-width: ${deviceSize.tablet}) {
     margin-left: 40px;
 
-    :last-child {
+    /* :last-child {
       margin-left: 32px;
-    }
+    } */
   }
 `;
 

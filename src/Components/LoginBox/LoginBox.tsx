@@ -16,41 +16,38 @@ const LoginBox: React.FC<InputProps> = ({
   email,
   password,
 }) => {
-  const [text, setText] = useState<string>("");
+  const [emailInput, setEmailInput] = useState<string>("");
+  const [passwordInput, setPasswordInput] = useState<string>("");
 
   return (
     <S.Container>
       <S.StyledTitle>Log in</S.StyledTitle>
       <Input
         type={"email"}
-        value={text}
+        value={emailInput}
         onChange={(e) => {
-          setText(e.target.value);
+          setEmailInput(e.target.value);
         }}
         title={"Email account"}
         placeholder="example@example.com"
-        email={text}
-        password={text}
+        email={emailInput}
+        password={passwordInput}
       ></Input>
       <Input
         type={"password"}
-        value={text}
+        value={passwordInput}
         onChange={(e) => {
-          setText(e.target.value);
+          setPasswordInput(e.target.value);
         }}
         title={"Password"}
         placeholder="6 characters and digit numbers"
-        email={text}
-        password={text}
+        email={emailInput}
+        password={passwordInput}
       ></Input>
 
-      <S.LoginButton
-        onClick={() => console.log("test")}
-        variant="primary"
-        disabled
-      >
+      <Button onClick={() => console.log("test")} variant="primary" disabled>
         Log in
-      </S.LoginButton>
+      </Button>
       <S.DividerWrapper>
         <S.Divider />
         <S.StyledDescription>Or log in with</S.StyledDescription>

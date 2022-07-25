@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
-import Header from "./Components/Header/Header";
+import Layout from "./Components/Layout";
+import Home from "./Pages/Home";
 
 const App: React.FC = () => {
   const [text, setText] = useState<string>("");
@@ -9,7 +10,10 @@ const App: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path="*" element={<Header />} />
+        <Route element={<Layout />}>
+          <Route path="*" element={<Home />} />
+          <Route path="/" element={<Home />} />
+        </Route>
         <Route
           path="/login"
           element={

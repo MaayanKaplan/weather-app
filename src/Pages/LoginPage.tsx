@@ -28,7 +28,7 @@ const LoginPage: React.FC<PageProps> = ({
   const [text, setText] = useState<string>("");
   return (
     <Container>
-      <LoginLogo margin={"50px"} />
+      <Logo />
       <LoginBox
         value={text}
         onChange={(e) => {
@@ -46,13 +46,58 @@ const LoginPage: React.FC<PageProps> = ({
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(241deg, #47bfdf, #4a91ff),
+  background-image: linear-gradient(
+      241deg,
+      ${(props) => props.theme.primary},
+      #4a91ff
+    ),
     linear-gradient(to bottom, #fff, #fff);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 74px;
+
+    @media (max-width: ${deviceSize.tablet}) {
+      img {
+        height: 57px;
+        width: 57px;
+      }
+
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
+    @media (max-width: ${deviceSize.mobile}) {
+      display: flex;
+      flex-direction: column;
+      top: 56px;
+      left: 122px;
+      right: 144px;
+
+      img {
+        height: 57px;
+        width: 57px;
+      }
+
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
 
   @media (max-width: ${deviceSize.mobile}) {
     display: flex;
     flex-direction: column;
+    padding-top: 184px;
   }
 `;
 
