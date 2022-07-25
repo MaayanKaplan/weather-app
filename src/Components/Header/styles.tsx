@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import Logo from "../../Common/Logo";
 import { deviceSize } from "../../Utils/constants";
 
 export const HeaderWrapper = styled.header`
@@ -12,14 +11,6 @@ export const HeaderWrapper = styled.header`
 
   @media (max-width: ${deviceSize.tablet}) {
     padding: 0 50px;
-  }
-
-  .logo {
-    padding: 11px 190px 11px 0;
-
-    @media (max-width: ${deviceSize.tablet}) {
-      padding: 19px 28px 19px 0;
-    }
   }
 `;
 
@@ -58,7 +49,15 @@ export const SwitchesWrapper = styled.div`
   }
 `;
 
-export const HeaderLogo = styled(Logo)`
-  margin: 100px;
-  padding: 100px;
+// export const HeaderLogo = styled(Logo)`
+//   margin: 100px;
+//   padding: 100px;
+// `;
+
+export const Logo = styled.img`
+  padding: 11px 190px 11px 0;
+
+  @media (max-width: ${deviceSize.tablet}) {
+    padding: 19px 28px 19px 0;
+  }
 `;

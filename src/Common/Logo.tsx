@@ -6,7 +6,7 @@ import { deviceSize } from "../Utils/constants";
 const Logo = () => {
   return (
     <LogoWrapper className="logo">
-      <LogoImage className="logoImage" src={MoonImage} alt="Moon Image" />
+      <LogoImage src={MoonImage} alt="Moon Image" />
       <LogoText>WeatherApp</LogoText>
     </LogoWrapper>
   );

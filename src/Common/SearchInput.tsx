@@ -44,11 +44,6 @@ const StyledInput = styled.input`
     color: #bebebe;
     width: 100%;
   }
-
-  /* CHANGE IT FOR ACTIVE STATE */
-  :focus {
-    border: none;
-  }
 `;
 
 export default SearchInput;

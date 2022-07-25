@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import Logo from "../../Common/Logo";
+// import Logo from "../../Common/Logo";
 import {
   IconHomeFull,
   IconFavoritesOutline,
@@ -14,13 +14,15 @@ import {
 import Switch from "../../Common/Switch";
 import HeaderLink from "../../Common/HeaderLink";
 import SearchInput from "../../Common/SearchInput";
+import LogoImg from "../../Images/logo.png";
 
 const Header = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
   return (
     <S.HeaderWrapper>
-      <Logo />
+      {/* <Logo /> */}
+      <S.Logo src={LogoImg} alt="logo" />
       <S.NavWrapper>
         <HeaderLink to={"/"} icon={<IconHomeFull />}>
           Home
