@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import Button from "../../Common/Button/Button";
-import { deviceSize } from "../../Utils/constants";
+import deviceSize from "../../Utils/deviceSize";
 
 export const Container = styled.div`
   width: 732px;
@@ -14,13 +14,13 @@ export const Container = styled.div`
   flex-direction: column;
   /* margin: 0 auto; */
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     width: 508px;
     height: 559px;
     padding: 40px 46px;
   }
 
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.mobile} {
     width: 414px;
     height: 712px;
     padding: 54px 30px 85px;
@@ -39,10 +39,10 @@ export const StyledTitle = styled.h1`
   text-align: center;
   margin-bottom: 54px;
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     margin-bottom: 24px;
   }
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.mobile} {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 40px;
@@ -55,10 +55,10 @@ export const DividerWrapper = styled.div`
   gap: 16px;
   align-items: center;
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     margin-top: 32px;
   }
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.mobile} {
     margin-top: 48px;
   } ;
 `;
@@ -82,7 +82,7 @@ export const ButtonsWrapper = styled.div`
   padding-bottom: 58px;
   cursor: pointer;
 
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.mobile} {
     flex-direction: column;
     gap: 47px;
   } ;
@@ -93,10 +93,6 @@ export const ButtonWrapper = styled.div`
   margin: 0;
   gap: 8px;
 
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.mobile} {
   } ;
-`;
-
-export const LoginButton = styled(Button)`
-  margin-top: 8px !important;
 `;

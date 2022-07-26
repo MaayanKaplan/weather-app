@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LoginBox from "../Components/LoginBox/LoginBox";
-import { deviceSize } from "../Utils/constants";
+import deviceSize from "../Utils/deviceSize";
 import LogoImg from "../Images/logo.png";
 
 type PageProps = {
@@ -45,8 +45,8 @@ const LoginPage: React.FC<PageProps> = ({
 };
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-image: linear-gradient(
       241deg,
       ${(props) => props.theme.primary},
@@ -59,10 +59,10 @@ const Container = styled.div`
   align-items: center;
   position: relative;
 
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.mobile} {
     display: flex;
     flex-direction: column;
-    padding-top: 184px;
+    /* padding-top: 184px; */
   }
 `;
 
@@ -73,7 +73,11 @@ const Logo = styled.img`
   top: 20px;
   left: 74px;
 
-  @media (max-width: ${deviceSize.mobile}) {
+  @media ${deviceSize.tablet} {
+    left: 50px;
+  }
+
+  @media ${deviceSize.mobile} {
     top: 56px;
     left: 122px;
     width: 148px;

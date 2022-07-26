@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
-import { deviceSize } from "../../Utils/constants";
+import deviceSize from "../../Utils/deviceSize";
+import customMedia from "../../Utils/mediaQuery";
 
 export const HeaderWrapper = styled.header`
   height: 94px;
@@ -19,7 +20,7 @@ export const NavWrapper = styled.nav`
   gap: 63px;
   margin-right: 139px;
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     margin-right: 56px;
     gap: 32px;
   }
@@ -29,7 +30,7 @@ export const RightWrapper = styled.div`
   display: flex;
   margin-left: 124px;
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     margin-left: 40px;
 
     /* :last-child {
@@ -43,7 +44,7 @@ export const SwitchesWrapper = styled.div`
   gap: 30px;
   margin: 27px 68px 27px 81px;
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     order: -1;
     margin: 27px 96px 27px 0;
   }
@@ -57,7 +58,7 @@ export const SwitchesWrapper = styled.div`
 export const Logo = styled.img`
   padding: 11px 190px 11px 0;
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     padding: 19px 28px 19px 0;
   }
 `;

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
-import { deviceSize } from "../Utils/constants";
+import deviceSize from "../Utils/deviceSize";
+import customMedia from "../Utils/mediaQuery";
 
 type LinkProps = {
   icon: React.ReactNode;
@@ -43,9 +44,8 @@ const LinkWrapper = styled.div<{
   font-weight: ${(props) =>
     props.variant === "underline" ? "normal" : "bold"};
 
-  @media (max-width: ${deviceSize.tablet}) {
-    /* margin-left: ${(props) => (props.margin ? "32px" : "0")}; */
-  }
+  ${customMedia.between("tablet", "desktop")`  
+  `}
 `;
 
 const StyledText = styled(NavLink)<{ variant: string | undefined }>`
@@ -59,9 +59,13 @@ const StyledText = styled(NavLink)<{ variant: string | undefined }>`
   border-bottom: ${(props) =>
     props.variant === "underline" ? "1px solid #fff" : "none"};
 
-  @media (max-width: ${deviceSize.tablet}) {
+  @media ${deviceSize.tablet} {
     display: ${(props) => (props.variant === "underline" ? "none" : "block")};
   }
+
+  ${customMedia.between("tablet", "desktop")`  
+
+  `}
 `;
 
 const IconWrapper = styled.div<{ to: string }>``;
