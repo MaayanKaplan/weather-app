@@ -45,8 +45,8 @@ const LoginPage: React.FC<PageProps> = ({
 };
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(
       241deg,
       ${(props) => props.theme.primary},
@@ -78,7 +78,7 @@ const Logo = styled.img`
   }
 
   @media ${deviceSize.mobile} {
-    top: 56px;
+    top: 7px;
     left: 122px;
     width: 148px;
     height: 97px;

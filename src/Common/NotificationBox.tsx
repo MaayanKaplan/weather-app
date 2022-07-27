@@ -3,24 +3,22 @@ import styled from "styled-components/macro";
 import { IconWarning } from "./Icon";
 
 type NotificationProps = {
-  description: string;
+  errorDescription: string;
   children?: React.ReactNode;
-  icon: React.ReactNode;
-};
-
-const warningNotification = () => {
-  return ``;
+  // icon: React.ReactNode;
 };
 
 const NotificationBox: React.FC<NotificationProps> = ({
-  description,
-  icon,
+  errorDescription,
+  // icon,
   children,
 }) => {
   return (
     <StyledWarningBox>
-      <IconWrapper>{icon}</IconWrapper>
-      <StyledDescription>{description}</StyledDescription>
+      <IconWrapper>
+        <IconWarning />
+      </IconWrapper>
+      <StyledDescription>{errorDescription}</StyledDescription>
     </StyledWarningBox>
   );
 };

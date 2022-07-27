@@ -4,13 +4,6 @@ interface Props {
   error?: string;
 }
 
-export const FormWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  /* gap: 32px; */
-  margin-bottom: 32px;
-`;
-
 export const InputWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
@@ -22,6 +15,7 @@ export const InputWrapper = styled.div<Props>`
   margin: 0 auto;
   gap: 4px;
   border: solid 1px transparent;
+  /* margin-bottom: 32px; */
 
   ${(props) =>
     props.error
@@ -56,6 +50,12 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: #bebebe;
   }
+`;
+
+export const ErrorWrapper = styled.div`
+  min-height: 32px;
+  width: 354px;
+  margin: 0 auto;
 `;
 
 export const Error = styled.p`

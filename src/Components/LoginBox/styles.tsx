@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import Button from "../../Common/Button/Button";
 import deviceSize from "../../Utils/deviceSize";
 
-export const Container = styled.div`
+export const FormContainer = styled.form`
   width: 732px;
   height: 649px;
   padding: 54px;
@@ -24,7 +24,7 @@ export const Container = styled.div`
     width: 414px;
     height: 712px;
     padding: 54px 30px 85px;
-    margin-top: 184px;
+    margin-top: 135px;
   }
 
   Button {
