@@ -57,7 +57,6 @@ export const ButtonWrapper = styled.button<ButtonProps>`
   border-radius: 10px;
   font-size: 1.8rem;
   line-height: 1.2;
-  /* padding: 16px 54px; */
 
   ${(props) => {
     switch (props.variant) {
