@@ -45,13 +45,6 @@ const LoginPage: React.FC<PageProps> = ({
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(
-      241deg,
-      ${(props) => props.theme.primary},
-      #4a91ff
-    ),
-    linear-gradient(to bottom, #fff, #fff);
 
   display: flex;
   justify-content: center;

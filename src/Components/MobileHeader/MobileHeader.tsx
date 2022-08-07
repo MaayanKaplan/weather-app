@@ -2,23 +2,31 @@ import React from "react";
 import { HeaderProps } from "./types";
 import * as S from "./styles";
 import Button from "../../Common/Button/Button";
-import { NavLink } from "react-router-dom";
+import HeaderLink from "../../Common/HeaderLink";
+import {
+  IconFavoritesOutline,
+  IconHomeOutline,
+  IconSearchWhite,
+} from "../../Common/Icon";
 
-const MobileHeader: React.FC<HeaderProps> = ({ children }) => {
+const MobileHeader = () => {
   return (
     <S.HeaderWrapper>
       <S.NavBar>
-        {/* <NavLink to="/favorites">
-          <Button variant="ghost" onClick={() => onClick()}>
+        <Button variant="ghost">
+          <HeaderLink to={"/favorites"} icon={<IconFavoritesOutline />}>
             Favorites
-          </Button>
-        </NavLink>
-        <Button variant="ghost" onClick={() => onClick()}>
-          Favorites
+          </HeaderLink>
         </Button>
-        <Button variant="ghost" onClick={() => onClick()}>
-          Favorites
-        </Button> */}
+        <Button variant="ghost">
+          <IconSearchWhite />
+          Search
+        </Button>
+        <Button variant="ghost">
+          <HeaderLink to={"/"} icon={<IconHomeOutline />}>
+            Home
+          </HeaderLink>
+        </Button>
       </S.NavBar>
     </S.HeaderWrapper>
   );

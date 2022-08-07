@@ -69,7 +69,7 @@ const LoginBox: React.FC<InputProps> = ({ title, onChange, placeholder }) => {
         }}
       />
 
-      <Button type="submit" variant="primary" disabled={!isValid}>
+      <Button type="submit" variant="primary">
         Log in
       </Button>
       <S.DividerWrapper>

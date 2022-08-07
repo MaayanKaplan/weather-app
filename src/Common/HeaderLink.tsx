@@ -68,6 +68,6 @@ const StyledText = styled(NavLink)<{ variant: string | undefined }>`
   `}
 `;
 
-const IconWrapper = styled.div<{ to: string }>``;
+const IconWrapper = styled(NavLink)<{ to: string }>``;
 
 export default HeaderLink;

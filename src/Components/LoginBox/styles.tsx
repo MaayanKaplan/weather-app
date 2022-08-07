@@ -9,6 +9,7 @@ export const FormContainer = styled.form`
   border-radius: 30px;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
+  margin-top: 215px;
 
   display: flex;
   flex-direction: column;
@@ -19,6 +20,7 @@ export const FormContainer = styled.form`
     width: 508px;
     height: 559px;
     padding: 40px 46px;
+    margin-top: 120px;
   }
 
   @media ${deviceSize.mobile} {

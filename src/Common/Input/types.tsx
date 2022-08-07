@@ -10,9 +10,6 @@ export interface InputProps {
   data?: string;
   register: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-
-  // email: string;
-  // password: string;
 }
 
 export interface FormInputs {
