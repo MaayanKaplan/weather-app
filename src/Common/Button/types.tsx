@@ -4,5 +4,6 @@ export interface ButtonProps {
   variant?: ButtonVariants;
   children?: React.ReactNode;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: string;
 }

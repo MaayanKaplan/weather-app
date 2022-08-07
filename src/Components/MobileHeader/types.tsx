@@ -1,3 +1,3 @@
-type Props = {
+export type HeaderProps = {
   children: React.ReactNode;
 };

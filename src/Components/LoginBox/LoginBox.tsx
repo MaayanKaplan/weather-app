@@ -2,73 +2,80 @@ import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
 import { IconFacebookLogo } from "../../Common/Icon";
 import { IconGoogleLogo } from "../../Common/Icon";
-import { useState } from "react";
-import { InputProps } from "./types";
+import { InputProps, FormInputs } from "./types";
 import * as S from "./styles";
 
 import { useForm, SubmitHandler } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const validationSchema = yup.object().shape({
+  password: yup.string().required("Invalid password. Please try again.").min(8),
+  email: yup
+    .string()
+    .email()
+    .required("Invalid email address. Please try again."),
+});
 
 const LoginBox: React.FC<InputProps> = ({
   title,
   type = "text",
-  value,
   onChange,
   placeholder,
-  // error,
-  // email,
-  // password,
 }) => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<InputProps>({ mode: "onChange" });
+    setValue,
+    formState: { errors, touchedFields, isDirty, isValid },
+  } = useForm<FormInputs>({
+    mode: "onChange",
+    resolver: yupResolver(validationSchema),
+  });
 
-  const onSubmit: SubmitHandler<InputProps> = (data) => console.log(data);
+  console.log(touchedFields);
 
-  // const [emailInput, setEmailInput] = useState<string>("");
-  // const [passwordInput, setPasswordInput] = useState<string>("");
+  const onSubmit = (data: FormInputs) => console.log(data);
 
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.StyledTitle>Log in</S.StyledTitle>
       <Input
-        {...register("email", { required: true })}
-        type={"email"}
-        // value={emailInput}
-        // onChange={(e) => {
-        //   setEmailInput(e.target.value);
-        // }}
+        register={{ ...register("email", { required: true }) }}
+        // type={"email"}
+        name="email"
         title={"Email account"}
         placeholder="example@example.com"
-        // email={emailInput}
-        // password={passwordInput}
-        error={errors.email?.message}
+        error={
+          touchedFields.email && errors.email?.message
+            ? errors.email.message
+            : undefined
+        }
         // error={"Invalid email address."}
-      ></Input>
+      />
       <Input
-        {...register("password", {
-          required: true,
-          minLength: {
-            value: 8,
-            message: "Invalid password. Please try again.",
-          },
-        })}
+        register={{
+          ...register("password", {
+            required: true,
+            minLength: {
+              value: 8,
+              message: "Invalid password. Please try again.",
+            },
+          }),
+        }}
         type={"password"}
-        // value={passwordInput}
-        // onChange={(e) => {
-        //   setPasswordInput(e.target.value);
-        // }}
+        name="password"
         title={"Password"}
         placeholder="6 characters and digit numbers"
-        // email={emailInput}
-        // password={passwordInput}
-        error={errors.password?.message}
+        error={
+          touchedFields.password && errors.password?.message
+            ? errors.password.message
+            : undefined
+        }
         // error={"Invalid email address."}
-      ></Input>
+      />
 
-      <Button onClick={() => console.log("test")} variant="primary" disabled>
+      <Button type="submit" variant="primary" disabled={!isValid}>
         Log in
       </Button>
       <S.DividerWrapper>
@@ -93,5 +100,31 @@ const LoginBox: React.FC<InputProps> = ({
     </S.FormContainer>
   );
 };
+
+//   return (
+//     <form onSubmit={handleSubmit(onSubmit)}>
+//       <div>
+//         <label htmlFor="email">First Name</label>
+//         <input placeholder="email" {...register("email", { required: true })} />
+//         {errors.email?.message && touchedFields.email && (
+//           <p>{errors.email.message}</p>
+//         )}
+//       </div>
+
+//       <div>
+//         <label htmlFor="password">Last Name</label>
+//         <input
+//           placeholder="luo"
+//           {...register("password", { required: true })}
+//         />
+//         {errors.password?.message && touchedFields.password && (
+//           <p>{errors.password.message}</p>
+//         )}
+//       </div>
+
+//       <input disabled={!isValid} type="submit" />
+//     </form>
+//   );
+// };
 
 export default LoginBox;

@@ -8,16 +8,24 @@ const Input: React.FC<InputProps> = ({
   // onChange,
   placeholder,
   error,
+  name,
+  register,
+  ...rest
 }) => {
+  console.log(register);
+
   return (
     <>
       <S.InputWrapper error={error}>
-        <S.StyledLabel>{title}</S.StyledLabel>
+        <S.StyledLabel htmlFor={title}>{title}</S.StyledLabel>
         <S.StyledInput
           type={type}
+          name={name}
           placeholder={placeholder}
+          ref={register}
           // value={value}
           // onChange={onChange}
+          {...rest}
         />
       </S.InputWrapper>
       <S.ErrorWrapper>{error && <S.Error>{error}</S.Error>}</S.ErrorWrapper>
