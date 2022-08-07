@@ -12,7 +12,8 @@ export const FormContainer = styled.form`
 
   display: flex;
   flex-direction: column;
-  /* margin: 0 auto; */
+
+  position: relative;
 
   @media ${deviceSize.tablet} {
     width: 508px;
@@ -22,9 +23,10 @@ export const FormContainer = styled.form`
 
   @media ${deviceSize.mobile} {
     width: 414px;
-    height: 712px;
+    min-height: calc(100vh - 135px);
     padding: 54px 30px 85px;
     margin-top: 135px;
+    border-radius: 30px 30px 0 0;
   }
 
   Button {
@@ -32,7 +34,7 @@ export const FormContainer = styled.form`
   }
 `;
 
-export const StyledTitle = styled.h1`
+export const Title = styled.h1`
   font-size: 5rem;
   font-weight: 900;
   color: #444e72;

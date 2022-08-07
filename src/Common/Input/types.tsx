@@ -9,7 +9,7 @@ export interface InputProps {
   name?: string;
   data?: string;
   register: any;
-  // onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
   // email: string;
   // password: string;

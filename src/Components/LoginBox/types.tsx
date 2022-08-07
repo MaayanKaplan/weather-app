@@ -1,7 +1,7 @@
 import { ErrorMessage } from "@hookform/error-message";
 
 export interface InputProps {
-  value: string;
+  value?: string;
   placeholder?: string;
   title?: string;
   error?: typeof ErrorMessage;
@@ -12,7 +12,7 @@ export interface InputProps {
   password: string;
 }
 
-export interface FormInputs {
+export interface FormData {
   email: string;
   password: string;
 }

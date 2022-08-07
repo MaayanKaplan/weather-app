@@ -6,7 +6,7 @@ import { ReactComponent as IconYellowSun } from "../Icons/sun-flat.svg";
 import { ReactComponent as IconWhiteSun } from "../Icons/sun-white.svg";
 import { ReactComponent as IconDarkSun } from "../Icons/sun-dark.svg";
 import { ReactComponent as IconArrow } from "../Icons/arrow.svg";
-import { ReactComponent as IconCheckV } from "../Icons/check-v.svg";
+// import { ReactComponent as IconCheckV } from "../Icons/check-v.svg";
 import { ReactComponent as IconFavoritesFull } from "../Icons/fav-full.svg";
 import { ReactComponent as IconFavoritesOutline } from "../Icons/fav-outline.svg";
 import { ReactComponent as IconHomeFull } from "../Icons/home-full.svg";
@@ -20,7 +20,7 @@ import { ReactComponent as IconWhiteMoon } from "../Icons/moon-white.svg";
 import { ReactComponent as IconSearchDark } from "../Icons/search-dark.svg";
 import { ReactComponent as IconSearchWhite } from "../Icons/search-white.svg";
 import { ReactComponent as IconSearch } from "../Icons/search.svg";
-import { ReactComponent as IconWarning } from "../Icons/info-circle.svg";
+// import { ReactComponent as IconWarning } from "../Icons/info-circle.svg";
 import { ReactComponent as IconC } from "../Icons/c.svg";
 import { ReactComponent as IconF } from "../Icons/f.svg";
 
@@ -32,7 +32,7 @@ export {
   IconYellowMoon,
   IconWhiteSun,
   IconArrow,
-  IconCheckV,
+  // IconCheckV,
   IconFavoritesFull,
   IconFavoritesOutline,
   IconHomeFull,
@@ -47,7 +47,7 @@ export {
   IconSearchWhite,
   IconDarkSun,
   IconSearch,
-  IconWarning,
+  // IconWarning,
   IconC,
   IconF,
 };

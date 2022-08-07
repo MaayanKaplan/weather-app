@@ -31,7 +31,6 @@ const LoginPage: React.FC<PageProps> = ({
     <Container>
       <Logo src={LogoImg} alt="logo" />
       <LoginBox
-        value={text}
         onChange={(e) => {
           setText(e.target.value);
         }}
@@ -79,7 +78,8 @@ const Logo = styled.img`
 
   @media ${deviceSize.mobile} {
     top: 7px;
-    left: 122px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 148px;
     height: 97px;
   }

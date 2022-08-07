@@ -5,7 +5,7 @@ const Input: React.FC<InputProps> = ({
   title,
   type = "text",
   // value,
-  // onChange,
+  onChange,
   placeholder,
   error,
   name,
@@ -24,7 +24,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           ref={register}
           // value={value}
-          // onChange={onChange}
+          onChange={onChange}
           {...rest}
         />
       </S.InputWrapper>
