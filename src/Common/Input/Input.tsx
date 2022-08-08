@@ -17,8 +17,8 @@ const Input: React.FC<InputProps> = ({
   return (
     <>
       <S.InputWrapper error={error}>
-        <S.StyledLabel htmlFor={title}>{title}</S.StyledLabel>
-        <S.StyledInput
+        <S.Label htmlFor={title}>{title}</S.Label>
+        <S.Input
           type={type}
           name={name}
           placeholder={placeholder}

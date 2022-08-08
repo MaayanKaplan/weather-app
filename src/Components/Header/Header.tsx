@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-// import Logo from "../../Common/Logo";
 import {
   IconHomeFull,
   IconFavoritesOutline,
   IconMap,
   IconLogout,
-  IconC,
-  IconF,
   IconDarkSun,
   IconDarkMoon,
 } from "../../Common/Icon";
@@ -21,7 +18,6 @@ const Header = () => {
   const [toggle2, setToggle2] = useState<boolean>(false);
   return (
     <S.HeaderWrapper>
-      {/* <Logo /> */}
       <S.Logo src={LogoImg} alt="logo" />
       <S.NavWrapper>
         <HeaderLink to={"/"} icon={<IconHomeFull />}>
@@ -40,8 +36,8 @@ const Header = () => {
           <Switch
             id={"degree-id"}
             value={toggle}
-            left={"F"}
-            right={"C"}
+            left={"F°"}
+            right={"C°"}
             onChange={() => {
               setToggle(!toggle);
             }}
@@ -58,12 +54,7 @@ const Header = () => {
           />
         </S.SwitchesWrapper>
 
-        <HeaderLink
-          to={"/login"}
-          icon={<IconLogout />}
-          variant={"underline"}
-          margin
-        >
+        <HeaderLink to={"/login"} icon={<IconLogout />} variant={"underline"}>
           Log out
         </HeaderLink>
       </S.RightWrapper>

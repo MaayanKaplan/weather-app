@@ -1,7 +1,7 @@
 import React from "react";
 import { HeaderProps } from "./types";
 import * as S from "./styles";
-import Button from "../../Common/Button/Button";
+
 import HeaderLink from "../../Common/HeaderLink";
 import {
   IconFavoritesOutline,
@@ -13,20 +13,28 @@ const MobileHeader = () => {
   return (
     <S.HeaderWrapper>
       <S.NavBar>
-        <Button variant="ghost">
-          <HeaderLink to={"/favorites"} icon={<IconFavoritesOutline />}>
+        <S.NavButton>
+          <S.IconWrapper>
+            <IconFavoritesOutline />
+          </S.IconWrapper>
+          <HeaderLink mobile={true} to={"/favorites"}>
             Favorites
           </HeaderLink>
-        </Button>
-        <Button variant="ghost">
-          <IconSearchWhite />
+        </S.NavButton>
+        <S.Separator />
+        <S.NavButton>
+          <S.IconWrapper>
+            <IconSearchWhite />
+          </S.IconWrapper>
           Search
-        </Button>
-        <Button variant="ghost">
-          <HeaderLink to={"/"} icon={<IconHomeOutline />}>
-            Home
-          </HeaderLink>
-        </Button>
+        </S.NavButton>
+        <S.Separator />
+        <S.NavButton>
+          <S.IconWrapper>
+            <IconHomeOutline />
+          </S.IconWrapper>
+          <HeaderLink to={"/"}>Home</HeaderLink>
+        </S.NavButton>
       </S.NavBar>
     </S.HeaderWrapper>
   );

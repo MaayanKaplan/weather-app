@@ -35,6 +35,9 @@ const SwitchWrapper = styled.div`
   background-color: #fff;
   display: flex;
   position: relative;
+
+  font-size: 2.2rem;
+  color: #444e72;
 `;
 
 interface Props {

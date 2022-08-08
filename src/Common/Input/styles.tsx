@@ -21,34 +21,40 @@ export const InputWrapper = styled.div<Props>`
     props.error
       ? `
     border: solid 1px #f0274b;
-    ${StyledLabel} {
+    background-color: #fff;
+    ${Label} {
       color: #f0274b;
+      background-color: #fff;
      } `
       : `
     :focus-within {
       border: solid 1px #222;
+      background-color: #fff;
     }
   `}
 `;
 
-export const StyledLabel = styled.label`
+export const Label = styled.label`
   font-size: 1.4rem;
   line-height: 1.25;
   color: #838baa;
 `;
 
-export const StyledInput = styled.input`
+export const Input = styled.input<Props>`
   border: none;
   background-color: #f2f2f2;
   font-size: 1.8rem;
   line-height: 1.5;
   width: 100%;
+
   :focus {
     outline: none;
+    background-color: #fff;
   }
 
   &::placeholder {
     color: #bebebe;
+    background-color: ${(props) => (props.error ? "#fff" : "transparent")};
   }
 `;
 

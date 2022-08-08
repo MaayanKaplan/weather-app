@@ -17,16 +17,22 @@ const Layout = () => {
   //   { min: 0, max: 414, name: "mobile" },
   //   { min: 415, max: 10000, name: "desktop" },
   // ];
+
+  // if (deviceSize.mobile) {
+  //   return (
+  //     <>
+  //       <MobileHeader />
+  //       <Outlet />
+  //     </>
+  //   );
+  // } else {
   return (
     <>
-      {/* {deviceSize.desktop && <Header />} */}
-      {deviceSize.mobile && <MobileHeader /> && <Header />}
-      {/* {breakPoints.name === "desktop" && <Header />}
-      {breakPoints.name === "mobile" && <MobileHeader />} */}
-      {/* <Header /> */}
+      <Header />
       <Outlet />
     </>
   );
 };
+// };
 
 export default Layout;

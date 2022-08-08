@@ -5,11 +5,11 @@ import deviceSize from "../Utils/deviceSize";
 import customMedia from "../Utils/mediaQuery";
 
 type LinkProps = {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   variant?: string | undefined;
   children?: React.ReactNode;
   to: string;
-  margin?: boolean;
+  mobile?: boolean;
 };
 
 const HeaderLink: React.FC<LinkProps> = ({
@@ -17,10 +17,10 @@ const HeaderLink: React.FC<LinkProps> = ({
   variant,
   children,
   to,
-  margin,
+  mobile,
 }) => {
   return (
-    <LinkWrapper to={to} margin variant={variant}>
+    <LinkWrapper to={to} variant={variant}>
       <IconWrapper to={to}>{icon}</IconWrapper>
       <StyledText to={to} variant={variant}>
         {children}
@@ -31,7 +31,6 @@ const HeaderLink: React.FC<LinkProps> = ({
 
 const LinkWrapper = styled.div<{
   variant: string | undefined;
-  margin: boolean;
   to: string;
 }>`
   display: flex;
@@ -48,8 +47,9 @@ const LinkWrapper = styled.div<{
   `}
 `;
 
-const StyledText = styled(NavLink)<{ variant: string | undefined }>`
-  font-size: 1.8rem;
+const StyledText = styled(NavLink)<LinkProps>`
+  /* font-size: 1.8rem; */
+  font-size: ${(props) => (props.mobile === true ? "1.4rem" : "1.8rem")};
   line-height: 1.2;
   color: #fff;
   align-self: center;
