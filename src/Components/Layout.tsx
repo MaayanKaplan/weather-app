@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header/Header";
 import MobileHeader from "./MobileHeader/MobileHeader";
@@ -13,26 +13,23 @@ import deviceSize from "../Utils/deviceSize";
 //   }[];
 // }
 const Layout = () => {
-  // const breakPoints = [
-  //   { min: 0, max: 414, name: "mobile" },
-  //   { min: 415, max: 10000, name: "desktop" },
-  // ];
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
-  // if (deviceSize.mobile) {
-  //   return (
-  //     <>
-  //       <MobileHeader />
-  //       <Outlet />
-  //     </>
-  //   );
-  // } else {
+  const updateMedia = () => {
+    setIsMobile(window.innerWidth < 128);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
   return (
     <>
-      <Header />
+      {isMobile ? <MobileHeader /> : <Header />}
+
       <Outlet />
     </>
   );
 };
-// };
 
 export default Layout;

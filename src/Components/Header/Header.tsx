@@ -53,10 +53,16 @@ const Header = () => {
             }}
           />
         </S.SwitchesWrapper>
-
-        <HeaderLink to={"/login"} icon={<IconLogout />} variant={"underline"}>
-          Log out
-        </HeaderLink>
+        <S.LastLinkWrapper>
+          <HeaderLink
+            className="hhhh"
+            to={"/login"}
+            icon={<IconLogout />}
+            variant={"underline"}
+          >
+            Log out
+          </HeaderLink>
+        </S.LastLinkWrapper>
       </S.RightWrapper>
     </S.HeaderWrapper>
   );

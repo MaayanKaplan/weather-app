@@ -24,8 +24,12 @@ export const InputWrapper = styled.div<Props>`
     background-color: #fff;
     ${Label} {
       color: #f0274b;
-      background-color: #fff;
-     } `
+     }
+     ${Input} {
+      background-color: #fff
+     }
+     
+     `
       : `
     :focus-within {
       border: solid 1px #222;
@@ -54,7 +58,9 @@ export const Input = styled.input<Props>`
 
   &::placeholder {
     color: #bebebe;
-    background-color: ${(props) => (props.error ? "#fff" : "transparent")};
+    /* background-color: ${(props) =>
+      props.error ? "#fff" : "transparent"}; */
+    background-color: transparent;
   }
 `;
 

@@ -23,9 +23,7 @@ const Input: React.FC<InputProps> = ({
           name={name}
           placeholder={placeholder}
           ref={register}
-          // value={value}
           onChange={onChange}
-          {...rest}
         />
       </S.InputWrapper>
       <S.ErrorWrapper>{error && <S.Error>{error}</S.Error>}</S.ErrorWrapper>

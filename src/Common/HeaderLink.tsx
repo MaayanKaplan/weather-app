@@ -10,6 +10,7 @@ type LinkProps = {
   children?: React.ReactNode;
   to: string;
   mobile?: boolean;
+  className?: string;
 };
 
 const HeaderLink: React.FC<LinkProps> = ({
@@ -43,8 +44,11 @@ const LinkWrapper = styled.div<{
   font-weight: ${(props) =>
     props.variant === "underline" ? "normal" : "bold"};
 
-  ${customMedia.between("tablet", "desktop")`  
-  `}
+  @media ${deviceSize.tablet} {
+    .hhhh {
+      background-color: red;
+    }
+  }
 `;
 
 const StyledText = styled(NavLink)<LinkProps>`
@@ -62,10 +66,6 @@ const StyledText = styled(NavLink)<LinkProps>`
   @media ${deviceSize.tablet} {
     display: ${(props) => (props.variant === "underline" ? "none" : "block")};
   }
-
-  ${customMedia.between("tablet", "desktop")`  
-
-  `}
 `;
 
 const IconWrapper = styled(NavLink)<{ to: string }>``;
