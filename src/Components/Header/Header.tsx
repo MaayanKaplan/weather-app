@@ -10,8 +10,9 @@ import {
 } from "../../Common/Icon";
 import Switch from "../../Common/Switch";
 import HeaderLink from "../../Common/HeaderLink";
-import SearchInput from "../../Common/SearchInput";
+import SearchInput from "../../Common/SearchInput/SearchInput";
 import LogoImg from "../../Images/logo.png";
+import { IconSearchDark, IconSearchWhite } from "../../Common/Icon";
 
 const Header = () => {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -27,7 +28,11 @@ const Header = () => {
           Favorites
         </HeaderLink>
       </S.NavWrapper>
-      <SearchInput placeholder={"Try “Tel Aviv - Jaffa”..."} />
+      <SearchInput
+        variant={"full"}
+        placeholder={"Try “Tel Aviv - Jaffa”..."}
+        icon={<IconSearchDark />}
+      />
       <S.RightWrapper>
         <HeaderLink to={"/map"} icon={<IconMap />} variant={"underline"}>
           Switch to map
@@ -55,7 +60,7 @@ const Header = () => {
         </S.SwitchesWrapper>
         <S.LastLinkWrapper>
           <HeaderLink
-            className="hhhh"
+            mobile
             to={"/login"}
             icon={<IconLogout />}
             variant={"underline"}

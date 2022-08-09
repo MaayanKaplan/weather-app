@@ -38,11 +38,6 @@ export const RightWrapper = styled.div`
 
   @media ${deviceSize.tablet} {
     margin-left: 40px;
-
-    /* &:last-child {
-      margin-left: 32px;
-      background-color: red;
-    } */
   }
 `;
 
@@ -58,9 +53,8 @@ export const SwitchesWrapper = styled.div`
 `;
 
 export const LastLinkWrapper = styled.div`
+  display: flex;
   @media ${deviceSize.tablet} {
     margin-left: 32px;
-    /* background-color: red; */
-    display: flex;
   }
 `;

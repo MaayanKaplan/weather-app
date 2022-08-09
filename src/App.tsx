@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
+import Favorites from "./Pages/Favorites";
 
 const BackgroundStyle = styled.div`
   background-image: linear-gradient(241deg, #47bfdf, #4a91ff),
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route element={<Layout />}>
             <Route path="*" element={<Home />} />
             <Route path="/" element={<Home />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Route>
           <Route
             path="/login"

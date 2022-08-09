@@ -17,9 +17,7 @@ const MobileHeader = () => {
           <S.IconWrapper>
             <IconFavoritesOutline />
           </S.IconWrapper>
-          <HeaderLink mobile={true} to={"/favorites"}>
-            Favorites
-          </HeaderLink>
+          <HeaderLink to={"/favorites"}>Favorites</HeaderLink>
         </S.NavButton>
         <S.Separator />
         <S.NavButton>

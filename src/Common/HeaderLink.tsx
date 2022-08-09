@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
 import deviceSize from "../Utils/deviceSize";
-import customMedia from "../Utils/mediaQuery";
 
 type LinkProps = {
   icon?: React.ReactNode;
@@ -10,7 +9,6 @@ type LinkProps = {
   children?: React.ReactNode;
   to: string;
   mobile?: boolean;
-  className?: string;
 };
 
 const HeaderLink: React.FC<LinkProps> = ({
@@ -44,16 +42,19 @@ const LinkWrapper = styled.div<{
   font-weight: ${(props) =>
     props.variant === "underline" ? "normal" : "bold"};
 
-  @media ${deviceSize.tablet} {
-    .hhhh {
-      background-color: red;
-    }
+  @media ${deviceSize.mobile} {
+    font-size: 1.4rem;
+    font-weight: normal;
+    /* margin-top: 4px; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 const StyledText = styled(NavLink)<LinkProps>`
   /* font-size: 1.8rem; */
-  font-size: ${(props) => (props.mobile === true ? "1.4rem" : "1.8rem")};
+  font-size: ${(props) => (props.mobile ? "1.4rem" : "1.8rem")};
   line-height: 1.2;
   color: #fff;
   align-self: center;
@@ -65,6 +66,13 @@ const StyledText = styled(NavLink)<LinkProps>`
 
   @media ${deviceSize.tablet} {
     display: ${(props) => (props.variant === "underline" ? "none" : "block")};
+  }
+
+  @media ${deviceSize.mobile} {
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-top: 4px;
+    text-align: center;
   }
 `;
 
