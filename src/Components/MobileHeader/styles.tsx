@@ -6,6 +6,8 @@ export const HeaderWrapper = styled.div`
   backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 30px 30px 0 0;
+  position: absolute;
+  bottom: 0;
 `;
 
 export const NavBar = styled.nav`
@@ -24,10 +26,6 @@ export const NavButton = styled.button`
   gap: 4px;
   font-size: 1.4rem;
   color: #fff;
-
-  .header {
-    font-size: 1.4rem;
-  }
 `;
 
 export const IconWrapper = styled.div`

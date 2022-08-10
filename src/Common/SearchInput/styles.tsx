@@ -15,9 +15,14 @@ const getTransparentStyle = () => {
   return `
   background-color: rgba(255, 255, 255, 0.3);
   margin: 24px 0 0 370px;
+  color: #fff;
 
   @media ${deviceSize.tablet} {
     margin: 24px 0 0 50px;
+  }
+
+  @media ${deviceSize.mobile} {
+    margin: 36px 0 0 28px;
   }
   
   `;
@@ -32,6 +37,13 @@ export const InputWrapper = styled.div<{ variant: string }>`
   padding: 12px 24px;
   border-radius: 15px;
   font-size: 1.8rem;
+
+  :focus-within {
+    border: ${(props) =>
+      props.variant === "full" ? "none" : "solid 1px #fff"};
+    background-color: ${(props) =>
+      props.variant === "full" ? "#fff" : "transparent"};
+  }
 
   ${(props) => {
     if (props.variant === "full") {
@@ -48,6 +60,7 @@ export const Input = styled.input<{ variant: string }>`
   outline: none;
   font-weight: bold;
   background-color: transparent;
+  color: ${(props) => (props.variant === "full" ? "#222" : "#fff")};
 
   ::placeholder {
     font-size: 1.8rem;
@@ -55,7 +68,6 @@ export const Input = styled.input<{ variant: string }>`
     line-height: 1.2;
     text-align: left;
     width: 100%;
-    /* color: #bebebe; */
     color: ${(props) => (props.variant === "full" ? "#bebebe" : "#fff")};
   }
 `;

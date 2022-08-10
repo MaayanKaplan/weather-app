@@ -31,6 +31,12 @@ const StyledTitle = styled.h1`
   @media ${deviceSize.tablet} {
     margin: 64px 0 0 50px;
   }
+
+  @media ${deviceSize.mobile} {
+    margin: 0 0 0 30px;
+    padding-top: 6px;
+    font-size: 3.2rem;
+  }
 `;
 
 export default Favorites;
