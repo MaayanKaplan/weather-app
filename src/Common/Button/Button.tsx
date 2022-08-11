@@ -4,14 +4,14 @@ import * as S from "./styles";
 const Button: React.FC<ButtonProps> = ({
   variant,
   children,
-  disabled = false,
+  disabled,
   onClick,
 }) => {
   return (
     <S.ButtonWrapper
       variant={variant}
       disabled={disabled}
-      // onClick={() => onClick()}
+      onClick={() => onClick()}
     >
       <S.TextContainer>{children}</S.TextContainer>
     </S.ButtonWrapper>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import SearchInput from "../Common/SearchInput/SearchInput";
-import { IconSearchWhite } from "../Common/Icon";
+import { IconSearchWhite } from "../Common/Icon/Icon";
 import deviceSize from "../Utils/deviceSize";
 
 const Favorites = () => {

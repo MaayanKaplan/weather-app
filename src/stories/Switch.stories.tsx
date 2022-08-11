@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Switch from "../Common/Switch";
-import { IconDarkMoon, IconDarkSun } from "../Common/Icon";
+import { IconDarkMoon, IconDarkSun } from "../Common/Icon/Icon";
 
 export default {
   title: "Common/Switch",

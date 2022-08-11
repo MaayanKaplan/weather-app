@@ -15,7 +15,7 @@ const PopUp: React.FC<PopUpProps> = ({
       <S.Title>{title}</S.Title>
       <S.Description>{description}</S.Description>
       <S.Icon src={CloseIcon}></S.Icon>
-      <Button>{btnText}</Button>
+      <Button onClick={() => {}}>{btnText}</Button>
       <S.Link>{linkText}</S.Link>
     </S.Container>
   );

@@ -1,7 +1,7 @@
 import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
 import NotificationBox from "../../Common/NotificationBox/NotificationBox";
-import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon";
+import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon/Icon";
 import { InputProps, FormData } from "./types";
 import * as S from "./styles";
 
@@ -79,7 +79,12 @@ const LoginBox = () => {
         )}
       />
 
-      <Button type="submit" variant="primary" disabled={!isValid}>
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={!isValid}
+        onClick={() => {}}
+      >
         Log in
       </Button>
       <S.DividerWrapper>

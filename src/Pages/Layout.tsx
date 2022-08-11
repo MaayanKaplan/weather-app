@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header/Header";
-import MobileHeader from "./MobileHeader/MobileHeader";
+import Header from "../Components/Header/Header";
+import MobileHeader from "../Components/MobileHeader/MobileHeader";
 
 const Layout = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);

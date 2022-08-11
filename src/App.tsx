@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components/macro";
 import LoginPage from "./Pages/LoginPage";
-import Layout from "./Components/Layout";
+import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
 

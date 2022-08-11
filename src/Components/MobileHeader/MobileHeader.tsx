@@ -7,7 +7,7 @@ import {
   IconFavoritesOutline,
   IconHomeOutline,
   IconSearchWhite,
-} from "../../Common/Icon";
+} from "../../Common/Icon/Icon";
 
 const MobileHeader = () => {
   return (

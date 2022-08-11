@@ -7,12 +7,12 @@ import {
   IconLogout,
   IconDarkSun,
   IconDarkMoon,
-} from "../../Common/Icon";
+} from "../../Common/Icon/Icon";
 import Switch from "../../Common/Switch";
 import HeaderLink from "../../Common/HeaderLink";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import LogoImg from "../../Images/logo.png";
-import { IconSearchDark, IconSearchWhite } from "../../Common/Icon";
+import { IconSearchDark, IconSearchWhite } from "../../Common/Icon/Icon";
 
 const Header = () => {
   const [toggle, setToggle] = useState<boolean>(false);
