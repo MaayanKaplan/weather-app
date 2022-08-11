@@ -36,8 +36,8 @@ const LinkWrapper = styled.div<{
   justify-content: center;
   align-items: center;
   gap: 8px;
-  /* text-decoration: ${(props) =>
-    props.variant === "underline" ? "underline" : "none"}; */
+  text-decoration: ${(props) =>
+    props.variant === "underline" ? "underline" : "none"};
 
   font-weight: ${(props) =>
     props.variant === "underline" ? "normal" : "bold"};
@@ -60,9 +60,6 @@ const StyledText = styled(NavLink)<LinkProps>`
   align-self: center;
   justify-self: center;
   text-decoration: none;
-
-  border-bottom: ${(props) =>
-    props.variant === "underline" ? "1px solid #fff" : "none"};
 
   @media ${deviceSize.tablet} {
     display: ${(props) => (props.variant === "underline" ? "none" : "block")};

@@ -23,6 +23,8 @@ export const Logo = styled.img`
 
 export const NavWrapper = styled.nav`
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 63px;
   margin-right: 139px;
 

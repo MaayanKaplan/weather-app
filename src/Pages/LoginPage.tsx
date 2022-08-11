@@ -30,15 +30,7 @@ const LoginPage: React.FC<PageProps> = ({
   return (
     <Container>
       <Logo src={LogoImg} alt="logo" />
-      <LoginBox
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
-        title={"Email account"}
-        placeholder="6 characters and digit numbers"
-        email={text}
-        password={text}
-      ></LoginBox>
+      <LoginBox />
     </Container>
   );
 };

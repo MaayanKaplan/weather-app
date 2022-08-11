@@ -8,7 +8,8 @@ export const FormContainer = styled.form`
   border-radius: 30px;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
-  margin-top: 215px;
+  margin-top: 168px;
+  margin-bottom: 169px;
 
   display: flex;
   flex-direction: column;
@@ -40,7 +41,7 @@ export const Title = styled.h1`
   font-weight: 900;
   color: #444e72;
   text-align: center;
-  margin-bottom: 54px;
+  margin-bottom: 32px;
 
   @media ${deviceSize.tablet} {
     margin-bottom: 24px;
@@ -82,7 +83,7 @@ export const ButtonsWrapper = styled.div`
   gap: 16px;
   margin: 0 auto;
   margin-top: 52px;
-  padding-bottom: 58px;
+  /* padding-bottom: 58px; */
   cursor: pointer;
 
   @media ${deviceSize.mobile} {

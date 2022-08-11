@@ -5,7 +5,7 @@ import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon";
 import { InputProps, FormData } from "./types";
 import * as S from "./styles";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -22,15 +22,14 @@ const validationSchema = yup
   })
   .required();
 
-const LoginBox: React.FC<InputProps> = () => {
+const LoginBox = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     control,
     formState: { errors, touchedFields, isValid },
   } = useForm<FormData>({
-    // mode: "onTouched",
+    mode: "onTouched",
     resolver: yupResolver(validationSchema),
   });
 
@@ -38,7 +37,7 @@ const LoginBox: React.FC<InputProps> = () => {
 
   const onSubmit = (data: FormData) => console.log(data);
 
-  const { onChange, onBlur, ref } = register("email");
+  // const { onChange, onBlur, ref } = register("email");
 
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -48,37 +47,39 @@ const LoginBox: React.FC<InputProps> = () => {
         Connection is lost. Please check your connection device and try again.
       </NotificationBox>
 
-      <Input
-        register={{ ...register("email") }}
+      <Controller
+        control={control}
         name="email"
-        title={"Email account"}
-        placeholder="example@example.com"
-        onChange={(e) => {
-          setValue("email", e.target.value);
-        }}
-        error={errors?.email?.message}
-      />
-      <Input
-        register={{
-          ...register("password", {
-            required: true,
-            minLength: {
-              value: 8,
-              message: "Invalid password. Please try again.",
-            },
-          }),
-        }}
-        type={"password"}
-        name="password"
-        title={"Password"}
-        placeholder="6 characters and digit numbers"
-        error={errors?.password?.message}
-        onChange={(e) => {
-          setValue("password", e.target.value);
-        }}
+        render={({ field: { onChange, onBlur, value, ref } }) => (
+          <Input
+            onChange={onChange}
+            onBlur={onBlur}
+            value={value}
+            type="email"
+            placeholder="example@example.com"
+            title="Email Account"
+            error={errors?.email?.message}
+          />
+        )}
       />
 
-      <Button type="submit" variant="primary">
+      <Controller
+        control={control}
+        name="password"
+        render={({ field: { onChange, onBlur, value, ref } }) => (
+          <Input
+            onChange={onChange}
+            onBlur={onBlur}
+            value={value}
+            placeholder="6 characters and digit numbers"
+            title="Password"
+            type="password"
+            error={errors?.password?.message}
+          />
+        )}
+      />
+
+      <Button type="submit" variant="primary" disabled={!isValid}>
         Log in
       </Button>
       <S.DividerWrapper>

@@ -8,8 +8,8 @@ export interface InputProps {
   type?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
-  email: string;
-  password: string;
+  // email: string;
+  // password: string;
 }
 
 export interface FormData {

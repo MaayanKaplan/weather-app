@@ -10,6 +10,7 @@ const BackgroundStyle = styled.div`
   background-image: linear-gradient(241deg, #47bfdf, #4a91ff),
     linear-gradient(to bottom, #fff, #fff);
   height: 100vh;
+  height: 100%;
 `;
 
 const App: React.FC = () => {

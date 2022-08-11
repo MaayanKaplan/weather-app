@@ -3,11 +3,13 @@ import { InputProps } from "./types";
 
 const Input: React.FC<InputProps> = ({
   title,
-  type = "text",
+  type,
+  value,
   onChange,
+  onBlur,
   placeholder,
   error,
-  name,
+  ...props
 }) => {
   return (
     <>
@@ -15,9 +17,9 @@ const Input: React.FC<InputProps> = ({
         <S.Label>{title}</S.Label>
         <S.Input
           type={type}
-          name={name}
           placeholder={placeholder}
           onChange={onChange}
+          onBlur={onBlur}
         />
       </S.InputWrapper>
       <S.ErrorWrapper>{error && <S.Error>{error}</S.Error>}</S.ErrorWrapper>

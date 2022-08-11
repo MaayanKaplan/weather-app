@@ -1,15 +1,13 @@
 import React from "react";
 
 export interface InputProps {
-  // value: string;
+  value?: string;
   placeholder?: string;
   title?: string;
   error?: string;
   type?: string;
-  name?: string;
-  data?: string;
-  register: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface FormInputs {

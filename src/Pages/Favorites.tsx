@@ -6,16 +6,20 @@ import deviceSize from "../Utils/deviceSize";
 
 const Favorites = () => {
   return (
-    <>
+    <Container>
       <StyledTitle>Favorites</StyledTitle>
       <SearchInput
         variant="transparent"
         placeholder="Search from favorite..."
         icon={<IconSearchWhite />}
       />
-    </>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  height: 100vh;
+`;
 
 const StyledTitle = styled.h1`
   margin: 80px 0 0 370px;

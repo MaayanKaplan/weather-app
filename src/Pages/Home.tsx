@@ -7,6 +7,7 @@ const Home = () => {
 
 const Container = styled.div`
   padding: 0 0 399px;
+  height: 100vh;
 `;
 
 export default Home;
