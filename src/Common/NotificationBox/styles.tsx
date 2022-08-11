@@ -17,6 +17,7 @@ const errorStyle = () => {
 };
 
 export const NotificationBoxWrapper = styled.div<NotificationProps>`
+  width: 354px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +26,7 @@ export const NotificationBoxWrapper = styled.div<NotificationProps>`
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
+  margin-bottom: 32px;
 
   ${(props) => {
     if (props.security === "success") {
@@ -35,9 +37,9 @@ export const NotificationBoxWrapper = styled.div<NotificationProps>`
   }}
 `;
 
-export const IconWrapper = styled.div`
-  height: 28px;
-  width: 28px;
+export const Icon = styled.img`
+  /* height: 28px;
+  width: 28px; */
 `;
 
 export const StyledDescription = styled.p`

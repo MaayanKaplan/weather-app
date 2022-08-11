@@ -3,7 +3,7 @@ import deviceSize from "../../Utils/deviceSize";
 
 export const FormContainer = styled.form`
   width: 732px;
-  height: 649px;
+  /* height: 649px; */
   padding: 54px;
   border-radius: 30px;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.16);
@@ -17,7 +17,7 @@ export const FormContainer = styled.form`
 
   @media ${deviceSize.tablet} {
     width: 508px;
-    height: 559px;
+    min-height: 559px;
     padding: 40px 46px;
     margin-top: 120px;
   }

@@ -8,3 +8,10 @@ export const Container = styled.div`
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
 `;
+
+export const emptyDescription = styled.p`
+  font-size: 1.8rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #444e72;
+`;

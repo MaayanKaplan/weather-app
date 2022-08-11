@@ -1,5 +1,6 @@
 import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
+import NotificationBox from "../../Common/NotificationBox/NotificationBox";
 import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon";
 import { InputProps, FormData } from "./types";
 import * as S from "./styles";
@@ -21,24 +22,32 @@ const validationSchema = yup
   })
   .required();
 
-const LoginBox: React.FC<InputProps> = ({ title, onChange, placeholder }) => {
+const LoginBox: React.FC<InputProps> = () => {
   const {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors, touchedFields, isValid },
   } = useForm<FormData>({
-    mode: "onTouched",
+    // mode: "onTouched",
     resolver: yupResolver(validationSchema),
   });
 
-  console.log(touchedFields);
+  // console.log(touchedFields);
 
   const onSubmit = (data: FormData) => console.log(data);
+
+  const { onChange, onBlur, ref } = register("email");
 
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.Title>Log in</S.Title>
+
+      <NotificationBox severity={"error"}>
+        Connection is lost. Please check your connection device and try again.
+      </NotificationBox>
+
       <Input
         register={{ ...register("email") }}
         name="email"
