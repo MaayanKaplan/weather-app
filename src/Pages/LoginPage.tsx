@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import styled from "styled-components";
 import LoginBox from "../Components/LoginBox/LoginBox";
 import deviceSize from "../Utils/deviceSize";
@@ -26,7 +26,7 @@ const LoginPage: React.FC<PageProps> = ({
   email,
   password,
 }) => {
-  const [text, setText] = useState<string>("");
+  // const [text, setText] = useState<string>("");
   return (
     <Container>
       <Logo src={LogoImg} alt="logo" />
