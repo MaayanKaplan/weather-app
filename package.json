@@ -1,6 +1,7 @@
 {
   "name": "weather-app",
   "version": "0.1.0",
+  "homepage": "https://MaayanKaplan.github.io/weather-app",
   "private": true,
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
@@ -29,6 +30,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -78,6 +81,7 @@
     "@types/styled-components": "^5.1.25",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "gh-pages": "^4.0.0",
     "prop-types": "^15.8.1",
     "webpack": "^5.73.0"
   }
