@@ -1,10 +1,20 @@
 export type NavBarItem = {
   id: string;
   text: string;
-  icon?: JSX.Element;
+  active?: JSX.Element;
   inactive?: JSX.Element;
+  path: string;
 };
 
 export type NavBarProps = {
   items: NavBarItem[];
+  selectedItem: string;
+  onClick: (id: string) => void;
+  className?: string;
+};
+
+export type StyleProps = {
+  underline?: boolean;
+  mobile?: boolean;
+  children: React.ReactNode;
 };

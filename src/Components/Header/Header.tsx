@@ -2,38 +2,68 @@ import React, { useState } from "react";
 import * as S from "./styles";
 import {
   IconHomeFull,
+  IconHomeOutline,
   IconFavoritesOutline,
+  IconFavoritesFull,
   IconMap,
   IconLogout,
   IconDarkSun,
   IconDarkMoon,
+  IconSearchDark,
+  IconSearchWhite,
 } from "../../Common/Icon/Icon";
 import Switch from "../../Common/Switch";
 import HeaderLink from "../../Common/HeaderLink";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import LogoImg from "../../Images/logo.png";
-import { IconSearchDark, IconSearchWhite } from "../../Common/Icon/Icon";
+import { NavBarItem } from "../../Common/NavBar/types";
+import NavBar from "../../Common/NavBar/NavBar";
 
 const Header = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
+
+  const navBarItems: NavBarItem[] = [
+    {
+      id: "Home",
+      active: <IconHomeFull />,
+      inactive: <IconHomeOutline />,
+      text: "Home",
+      path: "/",
+    },
+    {
+      id: "Favorites",
+      active: <IconFavoritesFull />,
+      inactive: <IconFavoritesOutline />,
+      text: "Favorites",
+      path: "/favorites",
+    },
+  ];
+
+  const [currentSelectedItem, setCurrentSelectedItem] = useState<string>(
+    navBarItems[0].id
+  );
   return (
     <S.HeaderWrapper>
-      <S.Logo src={LogoImg} alt="logo" />
-      <S.NavWrapper>
-        <HeaderLink to={"/"} icon={<IconHomeFull />}>
-          Home
-        </HeaderLink>
-        <HeaderLink to={"/favorites"} icon={<IconFavoritesOutline />}>
-          Favorites
-        </HeaderLink>
-      </S.NavWrapper>
-      <SearchInput
-        variant={"full"}
-        placeholder={"Try “Tel Aviv - Jaffa”..."}
-        icon={<IconSearchDark />}
-      />
-      <S.RightWrapper>
+      <S.LeftSideContainer>
+        <S.LogoWrapper>
+          <S.Logo src={LogoImg} alt="logo" />
+        </S.LogoWrapper>
+        <S.StyledNavBar
+          items={navBarItems}
+          onClick={(id) => setCurrentSelectedItem(id)}
+          selectedItem={currentSelectedItem}
+        />
+      </S.LeftSideContainer>
+
+      <S.SearchInputContainer>
+        <S.StyledSearchInput
+          variant={"full"}
+          placeholder={"Try “Tel Aviv - Jaffa”..."}
+          icon={<IconSearchDark />}
+        />
+      </S.SearchInputContainer>
+      <S.RightSideContainer>
         <HeaderLink to={"/map"} icon={<IconMap />} variant={"underline"}>
           Switch to map
         </HeaderLink>
@@ -68,7 +98,7 @@ const Header = () => {
             Log out
           </HeaderLink>
         </S.LastLinkWrapper>
-      </S.RightWrapper>
+      </S.RightSideContainer>
     </S.HeaderWrapper>
   );
 };

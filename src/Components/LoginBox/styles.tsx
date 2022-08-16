@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
+import Button from "../../Common/Button/Button";
 
 export const FormContainer = styled.form`
   width: 732px;
@@ -29,10 +30,6 @@ export const FormContainer = styled.form`
     padding: 54px 30px 85px;
     margin-top: 135px;
     border-radius: 30px 30px 0 0;
-  }
-
-  Button {
-    margin-top: 8px;
   }
 `;
 
@@ -99,4 +96,8 @@ export const ButtonWrapper = styled.div`
 
   @media ${deviceSize.mobile} {
   } ;
+`;
+
+export const LoginButton = styled(Button)`
+  margin-top: 8px;
 `;
