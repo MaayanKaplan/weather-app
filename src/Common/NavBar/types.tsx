@@ -12,9 +12,3 @@ export type NavBarProps = {
   onClick: (id: string) => void;
   className?: string;
 };
-
-export type StyleProps = {
-  underline?: boolean;
-  mobile?: boolean;
-  children: React.ReactNode;
-};

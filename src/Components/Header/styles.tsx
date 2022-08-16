@@ -2,16 +2,23 @@ import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
 import NavBar from "../../Common/NavBar/NavBar";
 import SearchInput from "../../Common/SearchInput/SearchInput";
+import Button from "../../Common/Button/Button";
+import { NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.header`
   height: 94px;
   width: 100%;
-  /* padding-left: 70px; */
+
   padding: 0px 70px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   background-color: #48bae4;
   display: flex;
   align-items: center;
+  /* 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center; */
 
   gap: 10px;
 
@@ -33,11 +40,8 @@ export const LogoWrapper = styled.div``;
 export const Logo = styled.img`
   width: 110px;
   height: 72px;
-  /* padding: 11px 190px 11px 0; */
 
   @media ${deviceSize.tablet} {
-    /* padding: 19px 28px 19px 0; */
-
     width: 86px;
     height: 56px;
   }
@@ -56,13 +60,35 @@ export const StyledSearchInput = styled(SearchInput)`
 `;
 
 export const RightSideContainer = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr); */
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   width: 35%;
 
   @media ${deviceSize.tablet} {
     margin-left: 40px;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  padding: 0;
+  border: none;
+`;
+export const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const IconWrapper = styled(NavLink)``;
+
+export const Text = styled(NavLink)`
+  font-weight: normal;
+  color: #fff;
+
+  @media ${deviceSize.tablet} {
+    display: none;
   }
 `;
 
@@ -77,9 +103,10 @@ export const SwitchesWrapper = styled.div`
   }
 `;
 
-export const LastLinkWrapper = styled.div`
-  display: flex;
-  @media ${deviceSize.tablet} {
-    margin-left: 32px;
-  }
-`;
+// export const LastLinkWrapper = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   @media ${deviceSize.tablet} {
+//     margin-left: 32px;
+//   }
+// `;

@@ -1,7 +1,6 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
 import { NavLink } from "react-router-dom";
-import { StyleProps } from "../NavBar/types";
 import Button from "../Button/Button";
 
 export const NavBarWrapper = styled.nav`
@@ -10,13 +9,12 @@ export const NavBarWrapper = styled.nav`
   justify-content: center;
 
   gap: 15px;
+  gap: 63px;
 `;
 
-export const NavBarItemWrapper = styled.div<StyleProps>`
+export const NavBarItemWrapper = styled.div`
   display: flex;
   gap: 8px;
-  text-decoration: ${(props) => (props.underline ? "underline" : "none")};
-  font-weight: ${(props) => (props.underline ? "normal" : "bold")};
 
   position: relative;
 `;
@@ -26,7 +24,7 @@ export const NavBarButton = styled(Button)`
   border: none;
 `;
 
-export const Text = styled(NavLink)<StyleProps>`
+export const Text = styled(NavLink)`
   line-height: 1.2;
   color: #fff;
   text-decoration: none;
@@ -34,10 +32,6 @@ export const Text = styled(NavLink)<StyleProps>`
   display: flex;
   align-items: center;
   gap: 8px;
-
-  @media ${deviceSize.tablet} {
-    display: ${(props) => (props.underline ? "none" : "block")};
-  }
 
   @media ${deviceSize.mobile} {
     font-size: 1.4rem;

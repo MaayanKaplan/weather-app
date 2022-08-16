@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
-import HeaderLink from "../../Common/HeaderLink";
+import Button from "../../Common/Button/Button";
+import { NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.div`
   height: 80px;
@@ -11,30 +12,43 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const NavBar = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 50px 16px 41px;
+  /* display: flex; */
+  /* justify-content: space-around; */
+  /* padding: 12px 50px 16px 41px; */
+  padding: 0 50px 0 41px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* justify-content: center; */
+  align-items: center;
 `;
 
-export const NavButton = styled.button`
+export const NavButton = styled(Button)`
   border: none;
   background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
   font-size: 1.4rem;
+  font-weight: normal;
   color: #fff;
 `;
 
-export const IconWrapper = styled.div`
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const IconWrapper = styled(NavLink)`
   width: 30px;
   height: 30px;
 `;
-
-export const StyledHeaderLink = styled(HeaderLink)`
-  font-size: 1.4rem;
+export const Text = styled(NavLink)`
+  text-decoration: none;
+  color: inherit;
 `;
 
 export const Separator = styled.div`

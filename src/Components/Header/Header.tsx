@@ -14,10 +14,8 @@ import {
 } from "../../Common/Icon/Icon";
 import Switch from "../../Common/Switch";
 import HeaderLink from "../../Common/HeaderLink";
-import SearchInput from "../../Common/SearchInput/SearchInput";
 import LogoImg from "../../Images/logo.png";
 import { NavBarItem } from "../../Common/NavBar/types";
-import NavBar from "../../Common/NavBar/NavBar";
 
 const Header = () => {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -64,9 +62,17 @@ const Header = () => {
         />
       </S.SearchInputContainer>
       <S.RightSideContainer>
-        <HeaderLink to={"/map"} icon={<IconMap />} variant={"underline"}>
-          Switch to map
-        </HeaderLink>
+        <S.StyledButton variant="ghost" onClick={() => console.log("click")}>
+          <S.ContentWrapper>
+            <S.IconWrapper to={"/map"}>
+              <IconMap />
+            </S.IconWrapper>
+            <S.Text to={"/map"}>Switch to map</S.Text>
+          </S.ContentWrapper>
+          {/* <HeaderLink to={"/map"} icon={<IconMap />} variant={"underline"}>
+            Switch to map
+          </HeaderLink> */}
+        </S.StyledButton>
         <S.SwitchesWrapper>
           <Switch
             id={"degree-id"}
@@ -88,16 +94,16 @@ const Header = () => {
             }}
           />
         </S.SwitchesWrapper>
-        <S.LastLinkWrapper>
-          <HeaderLink
-            mobile
-            to={"/login"}
-            icon={<IconLogout />}
-            variant={"underline"}
-          >
-            Log out
-          </HeaderLink>
-        </S.LastLinkWrapper>
+        {/* <S.LastLinkWrapper> */}
+        <S.StyledButton variant="ghost" onClick={() => console.log("click")}>
+          <S.ContentWrapper>
+            <S.IconWrapper to={"/login"}>
+              <IconLogout />
+            </S.IconWrapper>
+            <S.Text to={"/login"}>Log out</S.Text>
+          </S.ContentWrapper>
+        </S.StyledButton>
+        {/* </S.LastLinkWrapper> */}
       </S.RightSideContainer>
     </S.HeaderWrapper>
   );
