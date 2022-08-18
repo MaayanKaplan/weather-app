@@ -1,3 +1,3 @@
-import axios from "axios";
+export const ACUUWEATHER_BASE_URL = "http://dataservice.accuweather.com/";
 
-export const BASE_URL = "http://dataservice.accuweather.com";
+export const ABRA_SERVER_URL = "http://weather-abra.herokuapp.com/";

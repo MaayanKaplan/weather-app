@@ -1,13 +1,15 @@
+import { useState } from "react";
 import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
 import NotificationBox from "../../Common/NotificationBox/NotificationBox";
 import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon/Icon";
-import { InputProps, FormData } from "./types";
+import { FormData } from "./types";
 import * as S from "./styles";
 
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { login } from "../../api/AbraAPI";
 
 const validationSchema = yup
   .object({
@@ -24,41 +26,59 @@ const validationSchema = yup
 
 const LoginBox = () => {
   const {
-    register,
     handleSubmit,
+    register,
+
     control,
-    formState: { errors, touchedFields, isValid },
+    formState: { errors, isValid, touchedFields },
   } = useForm<FormData>({
-    mode: "onTouched",
+    mode: "all",
     resolver: yupResolver(validationSchema),
   });
 
-  // console.log(touchedFields);
+  const [error, setError] = useState<string | undefined>(undefined);
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = async (data: FormData) => {
+    let response;
+    try {
+      setError(undefined);
+      response = await login(data.email, data.password);
+    } catch (err: any) {
+      let errorMessage: string = "";
+      const errorResponse = err.response.data;
 
-  // const { onChange, onBlur, ref } = register("email");
+      for (let item in errorResponse) {
+        errorMessage += errorResponse[item] + " ";
+      }
+      setError(errorMessage);
+    }
+    console.log(response);
+  };
 
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.Title>Log in</S.Title>
 
-      <NotificationBox severity={"error"}>
-        Connection is lost. Please check your connection device and try again.
-      </NotificationBox>
+      {error && <NotificationBox severity="error">{error}</NotificationBox>}
 
       <Controller
         control={control}
         name="email"
-        render={({ field: { onChange, onBlur, value, ref } }) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
+            {...register("email", { required: true })}
             onChange={onChange}
             onBlur={onBlur}
             value={value}
             type="email"
             placeholder="example@example.com"
             title="Email Account"
-            error={errors?.email?.message}
+            // error={errors?.email?.message}
+            error={
+              errors.email?.message &&
+              touchedFields.email &&
+              errors.email.message
+            }
           />
         )}
       />
@@ -66,15 +86,21 @@ const LoginBox = () => {
       <Controller
         control={control}
         name="password"
-        render={({ field: { onChange, onBlur, value, ref } }) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
+            {...register("password", { required: true })}
             onChange={onChange}
             onBlur={onBlur}
             value={value}
             placeholder="6 characters and digit numbers"
             title="Password"
             type="password"
-            error={errors?.password?.message}
+            // error={errors?.password?.message}
+            error={
+              errors.password?.message &&
+              touchedFields.password &&
+              errors.password.message
+            }
           />
         )}
       />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 import { SearchProps } from "./types";
-import { getAutoComplete } from "../../api/axios";
+import { getAutoComplete } from "../../api/AccuweatherAPI";
 import { useQuery } from "@tanstack/react-query";
 
 const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
