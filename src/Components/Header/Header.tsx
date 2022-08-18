@@ -61,21 +61,22 @@ const Header = () => {
           icon={<IconSearchDark />}
         />
       </S.SearchInputContainer>
+
       <S.RightSideContainer>
-        <S.StyledButton variant="ghost" onClick={() => console.log("click")}>
+        <S.SwitchToMapButton
+          variant="link"
+          onClick={() => console.log("click")}
+        >
           <S.ContentWrapper>
             <S.IconWrapper to={"/map"}>
               <IconMap />
             </S.IconWrapper>
             <S.Text to={"/map"}>Switch to map</S.Text>
           </S.ContentWrapper>
-          {/* <HeaderLink to={"/map"} icon={<IconMap />} variant={"underline"}>
-            Switch to map
-          </HeaderLink> */}
-        </S.StyledButton>
+        </S.SwitchToMapButton>
         <S.SwitchesWrapper>
           <Switch
-            id={"degree-id"}
+            id={"temperature-id"}
             value={toggle}
             left={"F°"}
             right={"C°"}
@@ -85,7 +86,7 @@ const Header = () => {
           />
 
           <Switch
-            id={"theme-id"}
+            id={"darkmode-id"}
             value={toggle2}
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
@@ -94,16 +95,15 @@ const Header = () => {
             }}
           />
         </S.SwitchesWrapper>
-        {/* <S.LastLinkWrapper> */}
-        <S.StyledButton variant="ghost" onClick={() => console.log("click")}>
+
+        <S.LogoutButton variant="link" onClick={() => console.log("click")}>
           <S.ContentWrapper>
             <S.IconWrapper to={"/login"}>
               <IconLogout />
             </S.IconWrapper>
             <S.Text to={"/login"}>Log out</S.Text>
           </S.ContentWrapper>
-        </S.StyledButton>
-        {/* </S.LastLinkWrapper> */}
+        </S.LogoutButton>
       </S.RightSideContainer>
     </S.HeaderWrapper>
   );

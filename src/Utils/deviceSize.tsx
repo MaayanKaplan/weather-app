@@ -5,9 +5,9 @@ type BreakPoints = {
 };
 
 const deviceSize: BreakPoints = {
-  desktop: `(min-width:1920px)`,
-  tablet: `(min-width:1280px) and (max-width:1919px)`,
-  mobile: `(max-width:1279px)`,
+  desktop: `(min-width:1526px)`,
+  tablet: `(min-width:900px) and (max-width:1525px)`,
+  mobile: `(max-width:899px)`,
 };
 
 export default deviceSize;

@@ -8,8 +8,11 @@ export const NavBarWrapper = styled.nav`
   display: flex;
   justify-content: center;
 
-  gap: 15px;
   gap: 63px;
+
+  @media ${deviceSize.tablet} {
+    gap: 32px;
+  }
 `;
 
 export const NavBarItemWrapper = styled.div`
@@ -51,6 +54,7 @@ export const ContentWrapper = styled.div`
 export const ActiveItem = styled.div`
   height: 5px;
   width: 125%;
+  border-radius: 2px;
   background-color: #fff;
   position: absolute;
   bottom: 0;

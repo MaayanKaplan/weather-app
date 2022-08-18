@@ -4,10 +4,10 @@ import Header from "../Components/Header/Header";
 import MobileHeader from "../Components/MobileHeader/MobileHeader";
 
 const Layout = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
   const updateMedia = () => {
-    setIsMobile(window.innerWidth < 1280);
+    setIsMobile(window.innerWidth < 900);
   };
   useEffect(() => {
     window.addEventListener("resize", updateMedia);

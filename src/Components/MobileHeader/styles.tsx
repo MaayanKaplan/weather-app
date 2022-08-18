@@ -9,6 +9,7 @@ export const HeaderWrapper = styled.div`
   border-radius: 30px 30px 0 0;
   position: absolute;
   bottom: 0;
+  width: 100%;
 `;
 
 export const NavBar = styled.nav`

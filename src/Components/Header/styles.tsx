@@ -14,11 +14,6 @@ export const HeaderWrapper = styled.header`
   background-color: #48bae4;
   display: flex;
   align-items: center;
-  /* 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  align-items: center; */
 
   gap: 10px;
 
@@ -35,7 +30,9 @@ export const LeftSideContainer = styled.div`
   align-items: center;
 `;
 
-export const LogoWrapper = styled.div``;
+export const LogoWrapper = styled.div`
+  width: 50%;
+`;
 
 export const Logo = styled.img`
   width: 110px;
@@ -53,6 +50,8 @@ export const StyledNavBar = styled(NavBar)`
 
 export const SearchInputContainer = styled.div`
   width: 30%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const StyledSearchInput = styled(SearchInput)`
@@ -60,20 +59,29 @@ export const StyledSearchInput = styled(SearchInput)`
 `;
 
 export const RightSideContainer = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
+  justify-content: right;
+  align-items: right center; */
+  display: flex;
+  justify-content: space-between;
   width: 35%;
 
   @media ${deviceSize.tablet} {
-    margin-left: 40px;
+    width: 25%;
   }
 `;
 
-export const StyledButton = styled(Button)`
-  padding: 0;
-  border: none;
+export const SwitchToMapButton = styled(Button)`
+  display: flex;
+  justify-content: center;
 `;
+
+export const LogoutButton = styled(Button)`
+  display: flex;
+  justify-content: end;
+`;
+
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -95,18 +103,9 @@ export const Text = styled(NavLink)`
 export const SwitchesWrapper = styled.div`
   display: flex;
   gap: 30px;
-  /* margin: 27px 68px 27px 81px; */
+  justify-content: right;
 
   @media ${deviceSize.tablet} {
     order: -1;
-    margin: 27px 96px 27px 0;
   }
 `;
-
-// export const LastLinkWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   @media ${deviceSize.tablet} {
-//     margin-left: 32px;
-//   }
-// `;
