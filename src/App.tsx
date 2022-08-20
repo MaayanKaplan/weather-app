@@ -5,6 +5,7 @@ import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
+import { AuthenticationProvider } from "./api/Authentication";
 
 const BackgroundStyle = styled.div`
   background-image: linear-gradient(241deg, #47bfdf, #4a91ff),
@@ -14,33 +15,19 @@ const BackgroundStyle = styled.div`
 `;
 
 const App: React.FC = () => {
-  const [text, setText] = useState<string>("");
-
   return (
     <>
       <BackgroundStyle>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="*" element={<Home />} />
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/favorites" element={<Favorites />} />
-          </Route>
-          <Route
-            path="/login"
-            element={
-              <LoginPage
-                value={text}
-                onChange={(e) => {
-                  setText(e.target.value);
-                }}
-                title={"Email account"}
-                placeholder="6 characters and digit numbers"
-                email={text}
-                password={text}
-              />
-            }
-          />
-        </Routes>
+        <AuthenticationProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="*" element={<Home />} />
+              {/* <Route path="/" element={<Home />} /> */}
+              <Route path="/favorites" element={<Favorites />} />
+            </Route>
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </AuthenticationProvider>
       </BackgroundStyle>
     </>
   );

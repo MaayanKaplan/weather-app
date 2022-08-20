@@ -4,29 +4,7 @@ import LoginBox from "../Components/LoginBox/LoginBox";
 import deviceSize from "../Utils/deviceSize";
 import LogoImg from "../Images/logo.png";
 
-type PageProps = {
-  value: string;
-  placeholder?: string;
-  title?: string;
-  error?: string;
-  type?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-
-  email: string;
-  password: string;
-};
-
-const LoginPage: React.FC<PageProps> = ({
-  title,
-  type = "text",
-  value,
-  onChange,
-  placeholder,
-  error,
-  email,
-  password,
-}) => {
-  // const [text, setText] = useState<string>("");
+const LoginPage = () => {
   return (
     <Container>
       <Logo src={LogoImg} alt="logo" />

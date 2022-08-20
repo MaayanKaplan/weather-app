@@ -10,7 +10,7 @@ const abraInstance = axios.create({
   baseURL: ABRA_SERVER_URL,
 });
 
-export const login = async (email: string, password: string) => {
+export const abraLogin = async (email: string, password: string) => {
   const credentials: Credentials = { email, password };
   const response = await abraInstance.post("/api/auth/login/", credentials);
 

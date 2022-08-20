@@ -5,11 +5,10 @@ export interface InputProps {
   placeholder?: string;
   title?: string;
   error?: typeof ErrorMessage;
+  // autenticationError?: typeof ErrorMessage;
   type?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-
-  // email: string;
-  // password: string;
+  autenticationError: any;
 }
 
 export interface FormData {

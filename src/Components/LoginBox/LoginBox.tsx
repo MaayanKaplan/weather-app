@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
 import NotificationBox from "../../Common/NotificationBox/NotificationBox";
@@ -9,7 +9,9 @@ import * as S from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { login } from "../../api/AbraAPI";
+import { useAuthentication } from "../../api/Authentication";
+
+// import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup
   .object({
@@ -36,30 +38,19 @@ const LoginBox = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const [error, setError] = useState<string | undefined>(undefined);
+  const [login, autenticationError] = useAuthentication();
 
-  const onSubmit = async (data: FormData) => {
-    let response;
-    try {
-      setError(undefined);
-      response = await login(data.email, data.password);
-    } catch (err: any) {
-      let errorMessage: string = "";
-      const errorResponse = err.response.data;
-
-      for (let item in errorResponse) {
-        errorMessage += errorResponse[item] + " ";
-      }
-      setError(errorMessage);
-    }
-    console.log(response);
+  const onSubmit = async (data: any) => {
+    login(data.email, data.password);
   };
 
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.Title>Log in</S.Title>
 
-      {error && <NotificationBox severity="error">{error}</NotificationBox>}
+      {autenticationError && (
+        <NotificationBox severity="error">{autenticationError}</NotificationBox>
+      )}
 
       <Controller
         control={control}
