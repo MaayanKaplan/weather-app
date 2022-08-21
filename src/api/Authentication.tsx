@@ -25,7 +25,7 @@ export const AuthenticationProvider: React.FC<{ children: ReactElement }> = ({
     "token",
     undefined
   );
-  console.log("token = ", userToken);
+  // console.log("token = ", userToken);
   const [lastLocation, setLastLocation] =
     useState<string | undefined>(undefined);
 

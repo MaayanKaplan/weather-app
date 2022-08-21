@@ -7,7 +7,7 @@ export interface Credentials {
   password: string;
 }
 
-const abraInstance = axios.create({
+export const abraInstance = axios.create({
   baseURL: ABRA_SERVER_URL,
 });
 

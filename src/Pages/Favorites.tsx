@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import SearchInput from "../Common/SearchInput/SearchInput";
 import { IconSearchWhite } from "../Common/Icon/Icon";
 import deviceSize from "../Utils/deviceSize";
+import useFavorites from "../hooks/useFavotites";
 
 const Favorites = () => {
   return (
@@ -13,6 +14,7 @@ const Favorites = () => {
         placeholder="Search from favorite..."
         icon={<IconSearchWhite />}
       />
+      <button onClick={useFavorites}>click</button>
     </Container>
   );
 };
