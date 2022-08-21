@@ -50,6 +50,12 @@ export const Title = styled.h1`
   } ;
 `;
 
+export const LoginButton = styled(Button)`
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+`;
+
 export const DividerWrapper = styled.div`
   display: flex;
   margin-top: 48px;
@@ -96,8 +102,4 @@ export const ButtonWrapper = styled.div`
 
   @media ${deviceSize.mobile} {
   } ;
-`;
-
-export const LoginButton = styled(Button)`
-  margin-top: 8px;
 `;

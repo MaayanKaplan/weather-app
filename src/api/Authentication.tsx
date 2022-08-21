@@ -1,4 +1,3 @@
-import { abraLogin } from "./AbraAPI";
 import {
   useState,
   useEffect,
@@ -6,20 +5,54 @@ import {
   createContext,
   ReactElement,
 } from "react";
-
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  createAbraInterceptor,
+  ejectAbraInterceptor,
+  abraLogin,
+  Credentials,
+} from "./AbraAPI";
+import { AxiosResponse } from "axios";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { useMutation } from "@tanstack/react-query";
 
 const AuthenticationContext = createContext<any>(undefined);
 
 export const AuthenticationProvider: React.FC<{ children: ReactElement }> = ({
   children,
 }) => {
-  const [userToken, setUserToken] = useState<string | undefined>(undefined);
-  const api = { userToken, setUserToken };
+  const [userToken, setUserToken] = useLocalStorage<string | undefined>(
+    "token",
+    undefined
+  );
+  console.log("token = ", userToken);
+  const [lastLocation, setLastLocation] =
+    useState<string | undefined>(undefined);
+
+  const api = { setUserToken, userToken, lastLocation };
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    console.log(userToken);
-  }, [userToken]);
+    const resultInterceptor = (response: AxiosResponse) => {
+      return response;
+    };
+
+    const errorInterceptor = (error: any) => {
+      if (error.response.status === 401) {
+        setLastLocation(location.pathname);
+        navigate("/login");
+      }
+      return Promise.reject(error);
+    };
+
+    const interceptorId = createAbraInterceptor(
+      resultInterceptor,
+      errorInterceptor
+    );
+
+    return () => ejectAbraInterceptor(interceptorId);
+  }, [location, lastLocation, navigate]);
 
   return (
     <AuthenticationContext.Provider value={api}>
@@ -28,12 +61,13 @@ export const AuthenticationProvider: React.FC<{ children: ReactElement }> = ({
   );
 };
 
-export const useAuthentication: any = () => {
-  const context = useContext(AuthenticationContext);
+export const useAuthentication: any = (
+  onLogin?: (lastLocation: string) => void,
+  onLogout?: () => void
+) => {
   const [authenticationError, setAuthenticationError] =
     useState<string | undefined>(undefined);
-
-  const navigate = useNavigate();
+  const context = useContext(AuthenticationContext);
 
   if (!context) {
     throw new Error(
@@ -41,25 +75,43 @@ export const useAuthentication: any = () => {
     );
   }
 
-  const login = async (email: string, password: string) => {
-    let response;
-    try {
+  const loginMutation = useMutation(
+    ({ email, password }: Credentials) => {
       setAuthenticationError(undefined);
-      response = await abraLogin(email, password);
+      return abraLogin(email, password);
+    },
+    {
+      onSuccess: (response) => {
+        context.setUserToken(response?.data.access_token);
+        if (onLogin) onLogin(context.lastLocation);
+      },
+      onError: (err: any) => {
+        let errorMessage: string = "";
+        const errorResponse = err.response.data;
 
-      if (response.status === 200) {
-        navigate("/");
-      }
-    } catch (err: any) {
-      let errorMessage: string = "";
-      const errorResponse = err.response.data;
+        for (let item in errorResponse) {
+          errorMessage += errorResponse[item] + " ";
+        }
 
-      for (let item in errorResponse) {
-        errorMessage += errorResponse[item] + " ";
-      }
-      setAuthenticationError(errorMessage);
+        setAuthenticationError(errorMessage);
+      },
     }
-    context.setUserToken(response?.data.access_token);
+  );
+
+  const login = async (email: string, password: string) => {
+    loginMutation.mutate({ email, password });
   };
-  return [login, authenticationError];
+
+  const logout = () => {
+    setAuthenticationError(undefined);
+    context.setUserToken(undefined);
+    if (onLogout) onLogout();
+  };
+
+  return {
+    login,
+    logout,
+    isLoginInProgress: loginMutation.isLoading,
+    authenticationError,
+  };
 };

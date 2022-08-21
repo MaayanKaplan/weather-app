@@ -8,7 +8,6 @@ export interface InputProps {
   // autenticationError?: typeof ErrorMessage;
   type?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  autenticationError: any;
 }
 
 export interface FormData {

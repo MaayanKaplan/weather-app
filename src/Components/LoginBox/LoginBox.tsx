@@ -1,17 +1,15 @@
-// import { useState } from "react";
 import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
 import NotificationBox from "../../Common/NotificationBox/NotificationBox";
 import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon/Icon";
 import { FormData } from "./types";
 import * as S from "./styles";
-
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuthentication } from "../../api/Authentication";
-
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 const validationSchema = yup
   .object({
@@ -30,7 +28,6 @@ const LoginBox = () => {
   const {
     handleSubmit,
     register,
-
     control,
     formState: { errors, isValid, touchedFields },
   } = useForm<FormData>({
@@ -38,7 +35,13 @@ const LoginBox = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const [login, autenticationError] = useAuthentication();
+  const navigate = useNavigate();
+
+  const { login, logout, loginInProgress, authenticationError } =
+    useAuthentication((lastLocation: string) => {
+      if (!lastLocation) navigate("/");
+      else navigate(lastLocation);
+    });
 
   const onSubmit = async (data: any) => {
     login(data.email, data.password);
@@ -48,8 +51,10 @@ const LoginBox = () => {
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.Title>Log in</S.Title>
 
-      {autenticationError && (
-        <NotificationBox severity="error">{autenticationError}</NotificationBox>
+      {authenticationError && (
+        <NotificationBox severity="error">
+          {authenticationError}
+        </NotificationBox>
       )}
 
       <Controller
@@ -64,7 +69,6 @@ const LoginBox = () => {
             type="email"
             placeholder="example@example.com"
             title="Email Account"
-            // error={errors?.email?.message}
             error={
               errors.email?.message &&
               touchedFields.email &&
@@ -86,7 +90,6 @@ const LoginBox = () => {
             placeholder="6 characters and digit numbers"
             title="Password"
             type="password"
-            // error={errors?.password?.message}
             error={
               errors.password?.message &&
               touchedFields.password &&
@@ -96,14 +99,18 @@ const LoginBox = () => {
         )}
       />
 
-      <Button
+      <S.LoginButton
         type="submit"
         variant="primary"
-        disabled={!isValid}
-        onClick={() => {}}
+        disabled={!isValid || loginInProgress}
+        onClick={handleSubmit(onSubmit)}
       >
-        Log in
-      </Button>
+        {loginInProgress ? (
+          <TailSpin width="22" height="22" color="fff"></TailSpin>
+        ) : (
+          "Log in"
+        )}
+      </S.LoginButton>
       <S.DividerWrapper>
         <S.Divider />
         <S.StyledDescription>Or log in with</S.StyledDescription>
