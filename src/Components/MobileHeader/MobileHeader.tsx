@@ -2,8 +2,6 @@ import React from "react";
 import { HeaderProps } from "./types";
 import * as S from "./styles";
 
-import HeaderLink from "../../Common/HeaderLink";
-
 import {
   IconFavoritesOutline,
   IconHomeOutline,

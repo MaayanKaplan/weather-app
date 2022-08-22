@@ -1,6 +1,5 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ABRA_SERVER_URL } from "../Utils/constants";
-import { AxiosResponse } from "axios";
 
 export interface Credentials {
   email: string;
@@ -31,22 +30,30 @@ export const abraLogin = async (email: string, password: string) => {
   return response;
 };
 
-const abraProtectedAPI = async (
+const abraProtectAPI = async (
+  method: string,
   token: string,
   url: string,
-  method: string,
   data?: any
 ) => {
   if (!token) {
-    throw new Error("Token is unavailable in request.");
+    throw new Error("Token is not available in request.");
   }
   const response = await abraInstance({
     method,
-    headers: { Authorization: `Bearer ${token}` },
+    url,
+    headers: {
+      Authorization: `Bearer ${JSON.parse(token as string)}`,
+    },
   });
+
   return response;
 };
 
 export const abraGetFavorite = async (token: string) => {
-  return abraProtectedAPI("get", token, "api/favorites/");
+  // return await abraProtectAPI("get", token, "api/favorites/");
+  const response = await abraProtectAPI("get", token, "api/favorites/");
+  // console.log(response.data);
+  return response.data.results;
+  // console.log(response.data.results);
 };

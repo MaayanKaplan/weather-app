@@ -13,7 +13,6 @@ import {
   IconSearchWhite,
 } from "../../Common/Icon/Icon";
 import Switch from "../../Common/Switch";
-import HeaderLink from "../../Common/HeaderLink";
 import LogoImg from "../../Images/logo.png";
 import { NavBarItem } from "../../Common/NavBar/types";
 

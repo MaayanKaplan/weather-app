@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuthentication } from "../../api/Authentication";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
+import { InputProps } from "./types";
 
 const validationSchema = yup
   .object({
@@ -60,12 +61,13 @@ const LoginBox = () => {
       <Controller
         control={control}
         name="email"
-        render={({ field: { onChange, onBlur, value } }) => (
+        render={({ field: { onChange, onBlur, value, ref } }) => (
           <Input
             {...register("email", { required: true })}
             onChange={onChange}
             onBlur={onBlur}
             value={value}
+            // ref={ref}
             type="email"
             placeholder="example@example.com"
             title="Email Account"
@@ -81,12 +83,13 @@ const LoginBox = () => {
       <Controller
         control={control}
         name="password"
-        render={({ field: { onChange, onBlur, value } }) => (
+        render={({ field: { onChange, onBlur, value, ref } }) => (
           <Input
             {...register("password", { required: true })}
             onChange={onChange}
             onBlur={onBlur}
             value={value}
+            // ref={ref}
             placeholder="6 characters and digit numbers"
             title="Password"
             type="password"

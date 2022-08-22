@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
-import Favorites from "./Pages/Favorites";
+import Favorites from "./Pages/Favorites/Favorites";
 import { AuthenticationProvider } from "./api/Authentication";
 
 const BackgroundStyle = styled.div`
