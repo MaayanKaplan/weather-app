@@ -104,3 +104,5 @@ export const Separator = styled.div`
 `;
 
 export const MenuPopUp = styled(PopUp)``;
+
+export const LogoutPopUp = styled(PopUp)``;

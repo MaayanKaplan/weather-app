@@ -15,17 +15,18 @@ const LoginPage = () => {
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 
+  @media ${deviceSize.tablet} {
+    height: 100vh;
+  }
   @media ${deviceSize.mobile} {
     display: flex;
     flex-direction: column;
-    /* padding-top: 184px; */
   }
 `;
 

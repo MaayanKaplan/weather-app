@@ -13,12 +13,13 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const NavBar = styled.nav`
-  /* display: flex; */
-  /* justify-content: space-around; */
+  display: flex;
+  justify-content: space-around;
   /* padding: 12px 50px 16px 41px; */
   padding: 0 50px 0 41px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr); */
   /* justify-content: center; */
   align-items: center;
 `;

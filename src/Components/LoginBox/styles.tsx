@@ -30,6 +30,8 @@ export const FormContainer = styled.form`
     padding: 54px 30px 85px;
     margin-top: 135px;
     border-radius: 30px 30px 0 0;
+    /* position: absolute;
+    bottom: 0; */
   }
 `;
 

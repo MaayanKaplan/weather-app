@@ -76,11 +76,13 @@ export const RightSideContainer = styled.div`
 export const SwitchToMapButton = styled(Button)`
   display: flex;
   justify-content: center;
+  color: #fff;
 `;
 
 export const LogoutButton = styled(Button)`
   display: flex;
   justify-content: end;
+  color: #fff;
 `;
 
 export const ContentWrapper = styled.div`

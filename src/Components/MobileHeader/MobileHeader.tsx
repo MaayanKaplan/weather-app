@@ -1,6 +1,7 @@
-import React from "react";
+import { useState } from "react";
 import { HeaderProps } from "./types";
 import * as S from "./styles";
+import PopUp from "../../Common/PopUp/PopUp";
 
 import {
   IconFavoritesOutline,
@@ -9,6 +10,8 @@ import {
 } from "../../Common/Icon/Icon";
 
 const MobileHeader = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
   return (
     <S.HeaderWrapper>
       <S.NavBar>
@@ -21,10 +24,11 @@ const MobileHeader = () => {
           </S.ContentWrapper>
         </S.NavButton>
         <S.Separator />
-        <S.NavButton variant="ghost" onClick={() => console.log("click")}>
-          {/* <S.IconWrapper> */}
+        <S.NavButton
+          variant="ghost"
+          onClick={() => setIsSearchOpen(!isSearchOpen)}
+        >
           <IconSearchWhite />
-          {/* </S.IconWrapper> */}
           Search
         </S.NavButton>
         <S.Separator />
