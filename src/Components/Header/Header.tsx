@@ -10,15 +10,18 @@ import {
   IconDarkSun,
   IconDarkMoon,
   IconSearchDark,
-  IconSearchWhite,
 } from "../../Common/Icon/Icon";
 import Switch from "../../Common/Switch";
 import LogoImg from "../../Images/logo.png";
 import { NavBarItem } from "../../Common/NavBar/types";
+// import PopUp from "../../Common/PopUp/PopUp";
+import { HeaderProps } from "./types";
 
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
+
+  const [isPopUpOpen, setIsPopUpOpen] = useState<boolean>(false);
 
   const navBarItems: NavBarItem[] = [
     {
@@ -67,10 +70,10 @@ const Header = () => {
           onClick={() => console.log("click")}
         >
           <S.ContentWrapper>
-            <S.IconWrapper to={"/map"}>
+            <S.IconWrapper>
               <IconMap />
             </S.IconWrapper>
-            <S.Text to={"/map"}>Switch to map</S.Text>
+            <S.Text>Switch to map</S.Text>
           </S.ContentWrapper>
         </S.SwitchToMapButton>
         <S.SwitchesWrapper>
@@ -96,14 +99,26 @@ const Header = () => {
         </S.SwitchesWrapper>
 
         <S.LogoutButton variant="link" onClick={() => console.log("click")}>
-          <S.ContentWrapper>
-            <S.IconWrapper to={"/login"}>
+          <S.ContentWrapper onClick={() => setIsPopUpOpen(true)}>
+            <S.IconWrapper>
               <IconLogout />
             </S.IconWrapper>
-            <S.Text to={"/login"}>Log out</S.Text>
+            <S.Text>Log out</S.Text>
           </S.ContentWrapper>
         </S.LogoutButton>
       </S.RightSideContainer>
+
+      {isPopUpOpen && (
+        <S.LogoutPopUp
+          regularPopUp
+          title="Log out"
+          description="You about to log out from WeatherApp.
+Are you sure you want to log out?"
+          linkText="I want to stay"
+          btnText="Yes, log out"
+          onClose={() => setIsPopUpOpen(false)}
+        />
+      )}
     </S.HeaderWrapper>
   );
 };

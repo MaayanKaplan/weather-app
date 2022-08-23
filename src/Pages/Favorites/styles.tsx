@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
+import PopUp from "../../Common/PopUp/PopUp";
 
 export const MainContainer = styled.div`
   height: 100vh;
@@ -101,3 +102,5 @@ export const Separator = styled.div`
     margin: 16px 0;
   }
 `;
+
+export const MenuPopUp = styled(PopUp)``;

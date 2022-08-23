@@ -2,21 +2,24 @@
 // import { abraGetFavorite } from "../api/AbraAPI";
 import { abraInstance } from "../api/AbraAPI";
 
-export const getFavorites = async () => {
+interface Results {
+  count: number;
+  next: number | null;
+  previous: number | null;
+  results: any[];
+}
+
+export const getFavorites = async (): Promise<Results> => {
   const token = localStorage.getItem("token");
   // console.log(token);
 
-  try {
-    const response = await abraInstance.get("api/favorites/", {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(token as string)}`,
-      },
-    });
-    // console.log(response.data);
-    return response.data;
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await abraInstance.get("api/favorites/", {
+    headers: {
+      Authorization: `Bearer ${JSON.parse(token as string)}`,
+    },
+  });
+  // console.log(response.data);
+  return response.data;
 };
 
 // export const getFavorites = () => {

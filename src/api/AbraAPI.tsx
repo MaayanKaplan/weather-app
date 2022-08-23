@@ -51,9 +51,5 @@ const abraProtectAPI = async (
 };
 
 export const abraGetFavorite = async (token: string) => {
-  // return await abraProtectAPI("get", token, "api/favorites/");
-  const response = await abraProtectAPI("get", token, "api/favorites/");
-  // console.log(response.data);
-  return response.data.results;
-  // console.log(response.data.results);
+  return await abraProtectAPI("get", token, "api/favorites/");
 };

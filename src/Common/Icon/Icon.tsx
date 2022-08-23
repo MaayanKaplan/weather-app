@@ -1,6 +1,7 @@
 import { ReactComponent as IconGoogleLogo } from "./Icons/logo-google.svg";
 import { ReactComponent as IconFacebookLogo } from "./Icons/logo-facebook.svg";
 import { ReactComponent as IconLogout } from "./Icons/log-out.svg";
+import { ReactComponent as IconLogoutDark } from "./Icons/log-out-dark.svg";
 import { ReactComponent as IconYellowMoon } from "./Icons/moon-flat.svg";
 import { ReactComponent as IconYellowSun } from "./Icons/sun-flat.svg";
 import { ReactComponent as IconWhiteSun } from "./Icons/sun-white.svg";
@@ -44,6 +45,7 @@ export {
   IconFacebookLogo,
   IconGoogleLogo,
   IconLogout,
+  IconLogoutDark,
   IconYellowSun,
   IconYellowMoon,
   IconWhiteSun,

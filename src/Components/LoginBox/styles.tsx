@@ -54,6 +54,7 @@ export const LoginButton = styled(Button)`
   margin-top: 8px;
   display: flex;
   justify-content: center;
+  padding: 16px 146px;
 `;
 
 export const DividerWrapper = styled.div`

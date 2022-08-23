@@ -3,7 +3,8 @@ import deviceSize from "../../Utils/deviceSize";
 import NavBar from "../../Common/NavBar/NavBar";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import Button from "../../Common/Button/Button";
-import { NavLink } from "react-router-dom";
+import PopUp from "../../Common/PopUp/PopUp";
+// import { NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.header`
   height: 94px;
@@ -89,9 +90,9 @@ export const ContentWrapper = styled.div`
   gap: 8px;
 `;
 
-export const IconWrapper = styled(NavLink)``;
+export const IconWrapper = styled.div``;
 
-export const Text = styled(NavLink)`
+export const Text = styled.span`
   font-weight: normal;
   color: #fff;
 
@@ -108,4 +109,14 @@ export const SwitchesWrapper = styled.div`
   @media ${deviceSize.tablet} {
     order: -1;
   }
+`;
+
+export const LogoutPopUp = styled(PopUp)`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 0 auto;
+  /* margin: 125px auto 0 auto; */
+  position: absolute;
+  top: 125px;
 `;
