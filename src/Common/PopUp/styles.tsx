@@ -1,16 +1,26 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
-import Button from "../Button/Button";
+
+export const BlurWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(5px);
+  background-color: rgba(140, 140, 140, 0.2);
+  position: absolute;
+  top: 0;
+`;
 
 export const Container = styled.div`
-  position: relative;
   width: 502px;
-  /* height: 308px; */
-
   padding: 32px 32px 48px 48px;
   border-radius: 30px;
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
+
+  margin: 265px auto 0 auto;
+
+  position: relative;
 
   @media ${deviceSize.mobile} {
     width: 100%;
@@ -32,15 +42,14 @@ export const Title = styled.h1`
   color: #444e72;
 
   @media ${deviceSize.mobile} {
-    /* margin: 40px 30px 36px; */
     margin: 0;
   }
 `;
 
 export const CloseIcon = styled.img`
-  position: absolute;
   height: 24px;
   width: 24px;
+  position: absolute;
   top: 32px;
   right: 32px;
   cursor: pointer;

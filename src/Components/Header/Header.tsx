@@ -14,14 +14,17 @@ import {
 import Switch from "../../Common/Switch";
 import LogoImg from "../../Images/logo.png";
 import { NavBarItem } from "../../Common/NavBar/types";
-// import PopUp from "../../Common/PopUp/PopUp";
+import PopUp from "../../Common/PopUp/PopUp";
 import { HeaderProps } from "./types";
+import { useNavigate } from "react-router-dom";
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
 
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const navBarItems: NavBarItem[] = [
     {
@@ -112,14 +115,16 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       </S.RightSideContainer>
 
       {isLogoutPopUpOpen && (
-        <S.LogoutPopUp
+        <PopUp
           questionPopUp
           title="Log out"
-          description="You about to log out from WeatherApp.
-Are you sure you want to log out?"
+          description="You about to log out from WeatherApp. Are you sure you want to log out?"
           linkText="I want to stay"
           btnText="Yes, log out"
           onClose={() => setIsLogoutPopUpOpen(false)}
+          yesClick={() => {
+            navigate("/login");
+          }}
         />
       )}
     </S.HeaderWrapper>

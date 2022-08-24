@@ -10,6 +10,7 @@ export const HeaderWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
+  min-width: 414px;
 `;
 
 export const NavBar = styled.nav`

@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import * as S from "./styles";
 import { FavoritesProps } from "./types";
 import SearchInput from "../../Common/SearchInput/SearchInput";
-import { IconSearchWhite } from "../../Common/Icon/Icon";
-import { getFavorites } from "../../hooks/getFavorites";
-import IconFavoritesFull from "../../Common/Icon/Icons/fav-full.svg";
-
-import EmptyStateImg from "../../Images/stars.svg";
-import EmptyStateContainer from "../../Common/EmptyStateContainer/EmptyStateContainer";
-import menuImg from "../../Images/menu.svg";
 import PopUp from "../../Common/PopUp/PopUp";
+import EmptyStateContainer from "../../Common/EmptyStateContainer/EmptyStateContainer";
+
+import { IconSearchWhite } from "../../Common/Icon/Icon";
+import IconFavoritesFull from "../../Common/Icon/Icons/fav-full.svg";
+import EmptyStateImg from "../../Images/stars.svg";
+import menuImg from "../../Images/menu.svg";
+
+import { getFavorites } from "../../api/getFavorites";
 
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 const favorites = [1];
 
@@ -27,11 +29,6 @@ const Favorites = () => {
     setIsMenuOpen(false);
   };
 
-  const openCloseRemoveFromFavorites = () => {
-    setIsRemoveFromFavoritesOpen(true);
-    setIsMenuOpen(false);
-  };
-
   const navigate = useNavigate();
 
   const { data, isLoading, isError, error } = useQuery(["favorites"], () =>
@@ -41,7 +38,7 @@ const Favorites = () => {
   console.log(data);
 
   if (isLoading) {
-    <span>Loading</span>;
+    <TailSpin width="70" height="70" color="fff"></TailSpin>;
   }
 
   // if (data?.results.length === 0)
@@ -102,7 +99,10 @@ const Favorites = () => {
           linkText="I want to stay"
           btnText="Yes, log out"
           onClose={() => setIsLogoutPopUpOpen(false)}
-          yesClick={() => navigate("/login")}
+          // yesClick={() => {
+          //   navigate("/login");
+          // }}
+          yesClick={() => {}}
         />
       )}
 

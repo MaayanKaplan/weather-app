@@ -20,22 +20,24 @@ const PopUp: React.FC<PopUpProps> = ({
   buttonAction,
 }) => {
   return (
-    <S.Container className={className}>
-      <S.Title>{title}</S.Title>
-      <S.CloseIcon onClick={onClose} src={CloseIcon}></S.CloseIcon>
+    <S.BlurWrapper onClick={onClose}>
+      <S.Container className={className}>
+        <S.Title>{title}</S.Title>
+        <S.CloseIcon onClick={onClose} src={CloseIcon}></S.CloseIcon>
 
-      {menuMobile && <MenuMobile buttonAction={buttonAction} />}
+        {menuMobile && <MenuMobile buttonAction={buttonAction} />}
 
-      {questionPopUp && (
-        <QuestionPopUp
-          description={description}
-          btnText={btnText}
-          linkText={linkText}
-          onClose={onClose}
-          yesClick={yesClick}
-        />
-      )}
-    </S.Container>
+        {questionPopUp && (
+          <QuestionPopUp
+            description={description}
+            btnText={btnText}
+            linkText={linkText}
+            onClose={onClose}
+            yesClick={yesClick}
+          />
+        )}
+      </S.Container>
+    </S.BlurWrapper>
   );
 };
 

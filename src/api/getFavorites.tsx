@@ -1,6 +1,6 @@
 // import axios from "axios";
 // import { abraGetFavorite } from "../api/AbraAPI";
-import { abraInstance } from "../api/AbraAPI";
+import { abraInstance } from "./AbraAPI";
 
 interface Results {
   count: number;

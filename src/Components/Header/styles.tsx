@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.header`
   height: 94px;
   width: 100%;
 
-  padding: 0px 70px;
+  /* padding: 0px 70px; */
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   background-color: #48bae4;
   display: flex;

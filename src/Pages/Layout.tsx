@@ -17,6 +17,7 @@ const Layout = () => {
   return (
     <>
       {isMobile ? <MobileHeader /> : <Header />}
+
       <Outlet />
     </>
   );
