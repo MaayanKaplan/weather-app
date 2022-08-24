@@ -1,10 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import styled from "styled-components/macro";
+import { useState, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import MobileHeader from "../Components/MobileHeader/MobileHeader";
+import PopUp from "../Common/PopUp/PopUp";
+import menuImg from "../Images/menu.svg";
 
 const Layout = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
+
+  const openCloseLogout = () => {
+    setIsLogoutPopUpOpen(true);
+    setIsMenuOpen(false);
+  };
+
+  const navigate = useNavigate();
 
   const updateMedia = () => {
     setIsMobile(window.innerWidth < 900);
@@ -17,6 +29,32 @@ const Layout = () => {
   return (
     <>
       {isMobile ? <MobileHeader /> : <Header />}
+      {isMobile && <Menu src={menuImg} onClick={() => setIsMenuOpen(true)} />}
+
+      {isMenuOpen && (
+        <PopUp
+          menuMobile
+          title="Menu"
+          buttonAction={() => openCloseLogout()}
+          onClose={() => setIsMenuOpen(false)}
+        ></PopUp>
+      )}
+
+      {isLogoutPopUpOpen && (
+        <PopUp
+          questionPopUp
+          title="Log out"
+          description="You about to log out from WeatherApp.
+          Are you sure you want to log out?"
+          linkText="I want to stay"
+          btnText="Yes, log out"
+          onClose={() => setIsLogoutPopUpOpen(false)}
+          // yesClick={() => {
+          //   navigate("/login");
+          // }}
+          yesClick={() => {}}
+        />
+      )}
 
       <Outlet />
     </>
@@ -24,3 +62,10 @@ const Layout = () => {
 };
 
 export default Layout;
+
+const Menu = styled.img`
+  position: absolute;
+  top: 11px;
+  right: 30px;
+  cursor: pointer;
+`;

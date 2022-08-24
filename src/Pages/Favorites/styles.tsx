@@ -12,14 +12,6 @@ export const TitleWrapper = styled.div`
   margin-right: 30px;
 `;
 
-export const Menu = styled.img`
-  display: none;
-
-  @media ${deviceSize.mobile} {
-    display: block;
-  }
-`;
-
 export const StyledTitle = styled.h1`
   margin: 80px 0 0 370px;
   text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1),
