@@ -10,18 +10,18 @@ export const HeaderWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-width: 414px;
+  /* min-width: 414px; */
 `;
 
 export const NavBar = styled.nav`
   display: flex;
-  justify-content: space-around;
-  /* padding: 12px 50px 16px 41px; */
+  justify-content: space-between;
+
   padding: 0 50px 0 41px;
 
   /* display: grid;
-  grid-template-columns: repeat(5, 1fr); */
-  /* justify-content: center; */
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center; */
   align-items: center;
 `;
 
@@ -57,6 +57,6 @@ export const Text = styled(NavLink)`
 export const Separator = styled.div`
   width: 1px;
   height: 46px;
-  margin: 3px 49.5px 3px 46.5px;
+  /* margin: 3px 49.5px 3px 46.5px; */
   background-color: #fff;
 `;

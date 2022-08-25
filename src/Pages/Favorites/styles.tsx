@@ -94,7 +94,3 @@ export const Separator = styled.div`
     margin: 16px 0;
   }
 `;
-
-export const MenuPopUp = styled(PopUp)``;
-
-export const LogoutPopUp = styled(PopUp)``;

@@ -1,10 +1,12 @@
 import styled from "styled-components/macro";
 import { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import MobileHeader from "../Components/MobileHeader/MobileHeader";
 import PopUp from "../Common/PopUp/PopUp";
 import menuImg from "../Images/menu.svg";
+import QuestionPopUp from "../Components/PopUpVariants/QuestionPopUp/QuestionPopUp";
+import MenuMobile from "../Components/PopUpVariants/MenuMobile/MenuMobile";
 
 const Layout = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -15,8 +17,6 @@ const Layout = () => {
     setIsLogoutPopUpOpen(true);
     setIsMenuOpen(false);
   };
-
-  const navigate = useNavigate();
 
   const updateMedia = () => {
     setIsMobile(window.innerWidth < 900);
@@ -32,28 +32,20 @@ const Layout = () => {
       {isMobile && <Menu src={menuImg} onClick={() => setIsMenuOpen(true)} />}
 
       {isMenuOpen && (
-        <PopUp
-          menuMobile
-          title="Menu"
-          buttonAction={() => openCloseLogout()}
-          onClose={() => setIsMenuOpen(false)}
-        ></PopUp>
+        <PopUp title="Menu" onClose={() => setIsMenuOpen(false)}>
+          <MenuMobile buttonAction={() => openCloseLogout()} />
+        </PopUp>
       )}
 
       {isLogoutPopUpOpen && (
-        <PopUp
-          questionPopUp
-          title="Log out"
-          description="You about to log out from WeatherApp.
-          Are you sure you want to log out?"
-          linkText="I want to stay"
-          btnText="Yes, log out"
-          onClose={() => setIsLogoutPopUpOpen(false)}
-          // yesClick={() => {
-          //   navigate("/login");
-          // }}
-          yesClick={() => {}}
-        />
+        <PopUp title="Log out" onClose={() => setIsLogoutPopUpOpen(false)}>
+          <QuestionPopUp
+            description="You about to log out from WeatherApp.
+                   Are you sure you want to log out?"
+            linkText="I want to stay"
+            btnText="Yes, log out"
+          />
+        </PopUp>
       )}
 
       <Outlet />

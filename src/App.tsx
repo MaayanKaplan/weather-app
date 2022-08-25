@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components/macro";
 import LoginPage from "./Pages/LoginPage";
@@ -14,6 +15,13 @@ const BackgroundStyle = styled.div`
 `;
 
 const App: React.FC = () => {
+  const [token, setToken] = useState<boolean>(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setToken(true);
+  }, []);
+
   return (
     <>
       <BackgroundStyle>

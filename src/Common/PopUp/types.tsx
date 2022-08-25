@@ -1,8 +1,8 @@
 export type PopUpProps = {
-  title: string;
-  children?: React.ReactNode;
-
   className?: string;
+  title?: string;
+  children?: React.ReactNode;
+  onClose?: () => void;
 
   menuMobile?: boolean;
   questionPopUp?: boolean;
@@ -11,7 +11,6 @@ export type PopUpProps = {
   btnText?: string;
   linkText?: string;
 
-  onClose?: () => void;
   yesClick?: () => void;
   buttonAction?: () => void;
 };

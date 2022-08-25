@@ -17,6 +17,7 @@ import { NavBarItem } from "../../Common/NavBar/types";
 import PopUp from "../../Common/PopUp/PopUp";
 import { HeaderProps } from "./types";
 import { useNavigate } from "react-router-dom";
+import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -116,16 +117,16 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
 
       {isLogoutPopUpOpen && (
         <PopUp
-          questionPopUp
           title="Log out"
-          description="You about to log out from WeatherApp. Are you sure you want to log out?"
-          linkText="I want to stay"
-          btnText="Yes, log out"
           onClose={() => setIsLogoutPopUpOpen(false)}
-          yesClick={() => {
-            navigate("/login");
-          }}
-        />
+          // yesClick={() => navigate("/login")}
+        >
+          <QuestionPopUp
+            description="You about to log out from WeatherApp. Are you sure you want to log out?"
+            linkText="I want to stay"
+            btnText="Yes, log out"
+          />
+        </PopUp>
       )}
     </S.HeaderWrapper>
   );

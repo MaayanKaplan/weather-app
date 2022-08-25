@@ -2,9 +2,7 @@ import styled from "styled-components/macro";
 
 export const MainEmptyContainer = styled.div`
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-top: 66px;
 `;
 
 export const EmptyStateContainer = styled.div`
@@ -25,6 +23,7 @@ export const EmptyStateTitle = styled.h2`
   font-weight: bold;
   line-height: 1.25;
   color: #fff;
+  margin-bottom: 16px; ;
 `;
 
 export const EmptyStateDescription = styled.p`

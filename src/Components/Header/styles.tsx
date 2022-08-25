@@ -9,18 +9,11 @@ import PopUp from "../../Common/PopUp/PopUp";
 export const HeaderWrapper = styled.header`
   height: 94px;
   width: 100%;
-
-  /* padding: 0px 70px; */
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   background-color: #48bae4;
   display: flex;
   align-items: center;
-
   gap: 10px;
-
-  @media (max-width: ${deviceSize.tablet}) {
-    padding: 0 50px;
-  }
 `;
 
 export const LeftSideContainer = styled.div`
@@ -29,6 +22,11 @@ export const LeftSideContainer = styled.div`
   width: 35%;
   height: 100%;
   align-items: center;
+  padding-left: 70px;
+
+  @media ${deviceSize.tablet} {
+    padding-left: 50px;
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -60,16 +58,18 @@ export const StyledSearchInput = styled(SearchInput)`
 `;
 
 export const RightSideContainer = styled.div`
-  /* display: grid;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: right;
-  align-items: right center; */
-  display: flex;
-  justify-content: space-between;
+  align-items: right center;
+  /* display: flex;
+  justify-content: space-between; */
   width: 35%;
+  padding-right: 70px;
 
   @media ${deviceSize.tablet} {
     width: 25%;
+    padding-right: 50px;
   }
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import deviceSize from "../../../Utils/deviceSize";
 import Button from "../../../Common/Button/Button";
 
 export const Description = styled.p`
@@ -24,7 +25,10 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 24px;
   justify-content: end;
-  margin: 0 30px 48px 0;
+
+  @media ${deviceSize.mobile} {
+    margin: 0 30px 48px 0;
+  }
 `;
 
 export const PopUpButton = styled(Button)`

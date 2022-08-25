@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { FavoritesProps } from "./types";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import PopUp from "../../Common/PopUp/PopUp";
+import QuestionPopUp from "../../Components/PopUpVariants/QuestionPopUp/QuestionPopUp";
 import EmptyStateContainer from "../../Common/EmptyStateContainer/EmptyStateContainer";
 
 import { IconSearchWhite } from "../../Common/Icon/Icon";
@@ -40,6 +41,7 @@ const Favorites = () => {
       />
     );
 
+  // if (data?.results)
   return (
     <S.MainContainer>
       <S.TitleWrapper>
@@ -72,14 +74,16 @@ const Favorites = () => {
 
       {isRemoveFromFavoritesOpen && (
         <PopUp
-          questionPopUp
           title="Remove from favorites"
-          description="Are you sure you want to remove Tel aviv Jaffo  from favorites list??"
-          linkText="Keep it"
-          btnText="Yes, remove"
           onClose={() => setIsRemoveFromFavoritesOpen(false)}
-          yesClick={() => {}}
-        />
+        >
+          <QuestionPopUp
+            description="Are you sure you want to remove Tel aviv Jaffo  from favorites list?"
+            linkText="Keep it"
+            btnText="Yes, remove"
+            yesClick={() => {}}
+          />
+        </PopUp>
       )}
     </S.MainContainer>
   );
