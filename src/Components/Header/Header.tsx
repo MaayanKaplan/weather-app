@@ -16,7 +16,6 @@ import LogoImg from "../../Images/logo.png";
 import { NavBarItem } from "../../Common/NavBar/types";
 import PopUp from "../../Common/PopUp/PopUp";
 import { HeaderProps } from "./types";
-import { useNavigate } from "react-router-dom";
 import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
@@ -24,8 +23,6 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle2, setToggle2] = useState<boolean>(false);
 
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
-
-  const navigate = useNavigate();
 
   const navBarItems: NavBarItem[] = [
     {
@@ -47,6 +44,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const [currentSelectedItem, setCurrentSelectedItem] = useState<string>(
     navBarItems[0].id
   );
+
   return (
     <S.HeaderWrapper>
       <S.LeftSideContainer>
@@ -116,12 +114,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       </S.RightSideContainer>
 
       {isLogoutPopUpOpen && (
-        <PopUp
-          title="Log out"
-          onClose={() => setIsLogoutPopUpOpen(false)}
-          // yesClick={() => navigate("/login")}
-        >
+        <PopUp title="Log out" onClose={() => setIsLogoutPopUpOpen(false)}>
           <QuestionPopUp
+            logout
             description="You about to log out from WeatherApp. Are you sure you want to log out?"
             linkText="I want to stay"
             btnText="Yes, log out"

@@ -40,10 +40,10 @@ const Layout = () => {
       {isLogoutPopUpOpen && (
         <PopUp title="Log out" onClose={() => setIsLogoutPopUpOpen(false)}>
           <QuestionPopUp
+            logout
             description="You about to log out from WeatherApp.
                    Are you sure you want to log out?"
             linkText="I want to stay"
-            btnText="Yes, log out"
           />
         </PopUp>
       )}

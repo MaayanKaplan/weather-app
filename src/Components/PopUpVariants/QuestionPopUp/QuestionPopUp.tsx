@@ -1,20 +1,24 @@
 import React from "react";
 import * as S from "./styles";
 import { QuestionProps } from "./types";
+import { Logout } from "../../../hooks/Logout";
 
 const QuestionPopUp: React.FC<QuestionProps> = ({
   description,
-  btnText,
   linkText,
   onClose,
-  yesClick,
+  logout,
+  removeFromFavotires,
 }) => {
   return (
     <>
       <S.Description>{description}</S.Description>
       <S.ButtonsWrapper>
         <S.Link onClick={onClose}>{linkText}</S.Link>
-        <S.PopUpButton onClick={() => yesClick}>{btnText}</S.PopUpButton>
+        {logout && <S.PopUpButton onClick={Logout}>Yes, log out</S.PopUpButton>}
+        {removeFromFavotires && (
+          <S.PopUpButton onClick={() => {}}>Yes, remove</S.PopUpButton>
+        )}
       </S.ButtonsWrapper>
     </>
   );

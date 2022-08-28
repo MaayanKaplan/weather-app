@@ -27,11 +27,12 @@ const App: React.FC = () => {
       <BackgroundStyle>
         <AuthenticationProvider>
           <Routes>
+            {!token && <Route path="/login" element={<LoginPage />} />}
+
             <Route element={<Layout />}>
               <Route path="*" element={<Home />} />
               <Route path="/favorites" element={<Favorites />} />
             </Route>
-            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </AuthenticationProvider>
       </BackgroundStyle>

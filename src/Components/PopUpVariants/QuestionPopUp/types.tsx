@@ -4,4 +4,6 @@ export type QuestionProps = {
   linkText?: string;
   onClose?: () => void;
   yesClick?: () => void;
+  logout?: boolean;
+  removeFromFavotires?: boolean;
 };
