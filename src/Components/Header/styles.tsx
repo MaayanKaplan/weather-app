@@ -14,6 +14,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   gap: 10px;
+  z-index: 5;
 `;
 
 export const LeftSideContainer = styled.div`

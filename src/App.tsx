@@ -6,12 +6,15 @@ import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites/Favorites";
 import { AuthenticationProvider } from "./api/Authentication";
+import Clouds from "./Components/Clouds/Clouds";
 
 const BackgroundStyle = styled.div`
   background-image: linear-gradient(241deg, #47bfdf, #4a91ff),
     linear-gradient(to bottom, #fff, #fff);
   height: 100vh;
-  height: 100%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 `;
 
 const App: React.FC = () => {
@@ -25,6 +28,7 @@ const App: React.FC = () => {
   return (
     <>
       <BackgroundStyle>
+        <Clouds numClouds={20}></Clouds>
         <AuthenticationProvider>
           <Routes>
             {!token && <Route path="/login" element={<LoginPage />} />}
