@@ -1,7 +1,9 @@
 export interface Theme {
   black: string;
   white: string;
+  header: string;
   primary: string;
+  secondaryBG: string;
   secondary: string;
   fadeText: string;
   gray: string;
@@ -10,10 +12,19 @@ export interface Theme {
   yellow: string;
 }
 
-const lightModeTheme = {
+// export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
+//   body {
+//     background: ${({ theme }) => theme.primary};
+//     transition: background 0.2s ease-in, color 0.2s ease-in;
+//   }
+// `;
+
+export const lightModeTheme: Theme = {
   black: "#222",
   white: "#fff",
+  header: "#48bae4",
   primary: "#48bae4",
+  secondaryBG: "#4a91ff",
   secondary: "#444e72",
   fadeText: "#838BAA",
   gray: "#BEBEBE",
@@ -23,9 +34,11 @@ const lightModeTheme = {
 };
 
 const darkMode = {
-  primary: "#1a2b55",
+  header: "#1a2b55",
+  primary: "#191634",
+  secondaryBG: "#1e437c",
 };
 
-const darkModeTheme = { ...lightModeTheme, ...darkMode };
+export const darkModeTheme: Theme = { ...lightModeTheme, ...darkMode };
 
 export default lightModeTheme;

@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
   -webkit-font-smoothing: antialiased;
 
   font-family: Overpass;
+  
   }
   /*
     6. Improve media defaults

@@ -12,6 +12,7 @@ interface Cloud {
   positionY: number;
   delayTime: number;
   speed: number;
+  key: number;
 }
 const Clouds: React.FC<CloudsProp> = ({ numClouds }) => {
   const [clouds, setClouds] = useState<Cloud[] | undefined>(undefined);
@@ -22,6 +23,7 @@ const Clouds: React.FC<CloudsProp> = ({ numClouds }) => {
         positionY: Math.random() * 100,
         delayTime: Math.random() * 10,
         speed: Math.random() * MAX_CLOUD_SPEED + MIN_CLOUD_SPEED,
+        key: i + 1,
       };
       newClouds.push(cloud);
     }
@@ -34,6 +36,7 @@ const Clouds: React.FC<CloudsProp> = ({ numClouds }) => {
           return (
             <S.Cloud
               src={cloudImage}
+              key={cloud.key}
               positionY={cloud.positionY}
               delayTime={cloud.delayTime}
               speed={cloud.speed}

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./GlobalStyle";
-import { ThemeProvider } from "styled-components";
+// import { ThemeProvider } from "styled-components";
 import theme from "./themes";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -19,10 +19,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <App />
-        </ThemeProvider>
+        {/* <ThemeProvider theme={theme}> */}
+        <GlobalStyles />
+        <App />
+        {/* </ThemeProvider> */}
         <ReactQueryDevtools />
       </QueryClientProvider>
     </BrowserRouter>
