@@ -16,7 +16,6 @@ export interface DefaultTheme {
 }
 
 const BackgroundStyle = styled.div<{ theme: DefaultTheme }>`
-  /* background-image: linear-gradient(241deg, #47bfdf, #4a91ff), */
   background-image: linear-gradient(
       241deg,
       ${({ theme }) => theme.primary},

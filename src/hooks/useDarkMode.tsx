@@ -9,13 +9,10 @@ export const useDarkMode = () => {
     setTheme(mode);
   };
 
-  // console.log(theme);
-  // const themeToggler = (): void => {
-  //   theme === "light" ? setMode("dark") : setMode("light");
-  //   setIsChecked(!isChecked);
-  // };
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+  console.log(theme);
+  const themeToggler = (): void => {
+    theme === "light" ? setMode("dark") : setMode("light");
+    setIsChecked(!isChecked);
   };
 
   useEffect(() => {
