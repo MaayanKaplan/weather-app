@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styles";
 import { QuestionProps } from "./types";
-import { Logout } from "../../../hooks/Logout";
+import { Logout } from "../../../api/AbraAPI";
 
 const QuestionPopUp: React.FC<QuestionProps> = ({
   description,

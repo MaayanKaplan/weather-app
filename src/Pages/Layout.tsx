@@ -8,8 +8,9 @@ import menuImg from "../Images/menu.svg";
 import QuestionPopUp from "../Components/PopUpVariants/QuestionPopUp/QuestionPopUp";
 import MenuMobile from "../Components/PopUpVariants/MenuMobile/MenuMobile";
 
+import { useMedia } from "../hooks/useMedia";
+
 const Layout = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
 
@@ -18,13 +19,7 @@ const Layout = () => {
     setIsMenuOpen(false);
   };
 
-  const updateMedia = () => {
-    setIsMobile(window.innerWidth < 900);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateMedia);
-    return () => window.removeEventListener("resize", updateMedia);
-  });
+  const [isMobile] = useMedia();
 
   return (
     <>
