@@ -1,33 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { SearchProps } from "./types";
-import { getAutoComplete } from "../../api/AccuweatherAPI";
-import { useQuery } from "@tanstack/react-query";
+import SearchModal from "./SearchModal/SearchModal";
 
 const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
-  const [value, setValue] = useState("");
+  const [searchValue, setSearchValue] = useState<string>("");
 
-  // const queryResult = useQuery(["Autocomplete"], getAutoComplete(value));
+  // Portal
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const onFocus = () => {
+    if (searchValue.length >= 2) setIsFocused(true);
+  };
+  const onBlur = () => setIsFocused(false);
 
   const inputValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value);
-    // console.log(e.target.value);
-    return value;
+    setSearchValue(e.target.value);
+    // console.log(value);
+    return searchValue;
   };
 
-  // useEffect(() => {
-  //   getAutoComplete(value);
-  // }, [value]);
-
   return (
-    <S.InputWrapper variant={variant}>
-      <S.Input
-        placeholder={placeholder}
-        variant={variant}
-        onChange={inputValue}
-      />
-      <div>{icon}</div>
-    </S.InputWrapper>
+    <>
+      <S.InputWrapper variant={variant}>
+        <S.Input
+          placeholder={placeholder}
+          variant={variant}
+          onChange={inputValue}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
+        <div>{icon}</div>
+      </S.InputWrapper>
+
+      <SearchModal isOpen={isFocused} searchValue={searchValue} />
+    </>
   );
 };
 

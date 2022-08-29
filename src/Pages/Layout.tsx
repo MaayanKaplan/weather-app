@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import MobileHeader from "../Components/MobileHeader/MobileHeader";
