@@ -19,7 +19,7 @@ const Layout = () => {
     setIsMenuOpen(false);
   };
 
-  const [isMobile] = useMedia();
+  const isMobile = useMedia();
 
   return (
     <>

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 
-export const useMedia = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+export const useMedia = (): boolean => {
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 900);
 
-  const updateMedia = () => {
+  const updateMedia: () => void = () => {
     setIsMobile(window.innerWidth < 900);
   };
+
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   }, []);
 
-  console.log(isMobile);
-  return [isMobile];
+  return isMobile;
 };
