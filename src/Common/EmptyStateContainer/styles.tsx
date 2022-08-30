@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Props } from "./types";
 
 export const MainEmptyContainer = styled.div`
   height: 100vh;
@@ -13,7 +14,7 @@ export const EmptyStateContainer = styled.div`
 `;
 
 export const EmptyStateImg = styled.img`
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 `;
 
 export const EmptyStateTitle = styled.h2`
@@ -30,5 +31,7 @@ export const EmptyStateDescription = styled.p`
   font-size: 1.8rem;
   line-height: 1.5;
   text-align: center;
-  color: #fff;
+  padding: 0 30px;
+
+  color: #444e72;
 `;

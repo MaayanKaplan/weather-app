@@ -5,13 +5,8 @@ import SearchModal from "./SearchModal/SearchModal";
 
 const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
   const [searchValue, setSearchValue] = useState<string>("");
-
   // Portal
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const onFocus = () => {
-    if (searchValue.length >= 2) setIsFocused(true);
-  };
-  const onBlur = () => setIsFocused(false);
 
   const inputValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchValue(e.target.value);
@@ -26,13 +21,16 @@ const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
           placeholder={placeholder}
           variant={variant}
           onChange={inputValue}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         />
         <div>{icon}</div>
       </S.InputWrapper>
 
-      <SearchModal isOpen={isFocused} searchValue={searchValue} />
+      <SearchModal
+        isOpen={!!searchValue && isFocused}
+        searchValue={searchValue}
+      />
     </>
   );
 };

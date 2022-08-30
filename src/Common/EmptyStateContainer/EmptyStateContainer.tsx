@@ -1,7 +1,12 @@
 import * as S from "./styles";
 import { Props } from "./types";
 
-const EmptyStateContainer: React.FC<Props> = ({ title, description, img }) => {
+const EmptyStateContainer: React.FC<Props> = ({
+  title,
+  description,
+  img,
+  // dark,
+}) => {
   return (
     <S.MainEmptyContainer>
       <S.EmptyStateContainer>

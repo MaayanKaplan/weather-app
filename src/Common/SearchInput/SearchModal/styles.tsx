@@ -13,17 +13,21 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-
-  overflow-y: scroll;
 `;
 
 export const List = styled.ul`
   padding: 24px 36px;
   list-style: none;
+  height: 324px;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 
 export const ListItem = styled.li`
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 `;
 
 export const City = styled.span`
@@ -37,4 +41,18 @@ export const Country = styled.span`
   font-size: 2rem;
   line-height: 1.5;
   color: #838baa;
+`;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+`;
+
+export const LoadingText = styled.p`
+  font-size: 2rem;
+  color: #444e72;
 `;
