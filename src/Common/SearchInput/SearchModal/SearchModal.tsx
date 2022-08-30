@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import * as S from "./styles";
 import { ModalProps } from "./types";
 import { getSearchAutoComplete } from "../../../api/AccuweatherAPI/AccuweatherAPI";
 import EmptyStateContainer from "../../EmptyStateContainer/EmptyStateContainer";
 import CityImg from "../../../Images/city.svg";
 import { TailSpin } from "react-loader-spinner";
+
+import { useDebounce } from "../../../hooks/useDebounce";
 
 export interface City {
   Key: string;
@@ -22,9 +24,22 @@ export interface DefaultTheme {
 }
 
 const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
+  const debouncedSearch = useDebounce(searchValue, 3000);
+  const client = useQueryClient();
+
+  const result = client.getQueryData(["Autocomplete", searchValue], {
+    exact: true,
+  });
+
   // return from autoComplete func.
-  const { data, isLoading } = useQuery(["autocomplete", searchValue], () =>
-    getSearchAutoComplete(searchValue)
+  const { data, isLoading } = useQuery(
+    ["autocomplete", result ? searchValue : debouncedSearch],
+    () => getSearchAutoComplete(result ? searchValue : debouncedSearch),
+    {
+      enabled: !!searchValue,
+      cacheTime: 6000,
+      staleTime: 6000,
+    }
   );
   if (!isOpen) return null;
 
