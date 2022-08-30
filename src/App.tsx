@@ -8,8 +8,11 @@ import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites/Favorites";
-import { AuthenticationProvider } from "./api/Authentication";
+import { AuthenticationProvider } from "./api/AbraApi/Authentication";
+import { verifyToken } from "./api/AbraApi/verifyToken";
 import Clouds from "./Components/Clouds/Clouds";
+
+import { useQuery } from "@tanstack/react-query";
 
 export interface DefaultTheme {
   primary: string;
@@ -32,13 +35,19 @@ const BackgroundStyle = styled.div<{ theme: DefaultTheme }>`
 
 const App: React.FC = () => {
   const [token, setToken] = useState<boolean>(false);
-  const [theme, themeToggle] = useDarkMode();
+  const [theme] = useDarkMode();
   const themeMode = theme === "light" ? lightModeTheme : darkModeTheme;
 
+  const { isSuccess, data } = useQuery(["verifyToken"], () => {
+    verifyToken();
+  });
+
+  console.log(data);
+  console.log(isSuccess);
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) setToken(true);
-  }, []);
+    if (isSuccess) setToken(true);
+  }, [isSuccess]);
 
   return (
     <>

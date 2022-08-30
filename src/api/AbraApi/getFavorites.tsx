@@ -11,7 +11,6 @@ interface Results {
 
 export const getFavorites = async (): Promise<Results> => {
   const token = localStorage.getItem("token");
-  // console.log(token);
 
   const response = await abraInstance.get("api/favorites/", {
     headers: {

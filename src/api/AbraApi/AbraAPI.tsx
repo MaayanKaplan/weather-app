@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { ABRA_SERVER_URL } from "../Utils/constants";
+import { ABRA_SERVER_URL } from "../../Utils/constants";
 
 export interface Credentials {
   email: string;
