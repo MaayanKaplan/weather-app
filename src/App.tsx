@@ -38,16 +38,11 @@ const App: React.FC = () => {
   const [theme] = useDarkMode();
   const themeMode = theme === "light" ? lightModeTheme : darkModeTheme;
 
-  const { isSuccess, data } = useQuery(["verifyToken"], () => {
-    verifyToken();
-  });
-
-  console.log(data);
-  console.log(isSuccess);
+  const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
 
   useEffect(() => {
     if (isSuccess) setToken(true);
-  }, [isSuccess]);
+  }, [isSuccess, data]);
 
   return (
     <>
