@@ -4,10 +4,10 @@ import SearchInput from "../../../Common/SearchInput/SearchInput";
 import EmptyStateContainer from "../../../Common/EmptyStateContainer/EmptyStateContainer";
 import { IconArrow, IconSearchDark } from "../../../Common/Icon/Icon";
 
-const SearchPopUp: React.FC<Props> = () => {
+const SearchPopUp: React.FC<Props> = ({ onClose }) => {
   return (
     <S.Container>
-      <S.BackIcon>
+      <S.BackIcon onClick={onClose}>
         <IconArrow />
       </S.BackIcon>
       <S.SearchWrapper>

@@ -49,7 +49,7 @@ const App: React.FC = () => {
       <ThemeProvider theme={themeMode}>
         <BackgroundStyle>
           <GlobalStyles />
-          <Clouds numClouds={20}></Clouds>
+          <Clouds numClouds={15}></Clouds>
           <AuthenticationProvider>
             <Routes>
               {!token && <Route path="/login" element={<LoginPage />} />}

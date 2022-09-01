@@ -17,21 +17,23 @@ const PopUp: React.FC<PopUpProps> = ({
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (!modalRef.current?.contains(event.target as Node)) {
-        setIsOpen(true);
+        setIsOpen(false);
       }
     };
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
+    window.addEventListener("click", handleClick, true);
+    return () => window.removeEventListener("click", handleClick, true);
   }, [setIsOpen]);
 
   return (
     <>
-      <S.BlurWrapper onClick={onClose} />
-      <S.Container className={className}>
-        <S.Title>{title}</S.Title>
-        <S.CloseIcon onClick={onClose} src={CloseIcon}></S.CloseIcon>
-        {children}
-      </S.Container>
+      <S.BlurWrapper />
+      <div id="modal" ref={modalRef}>
+        <S.Container className={className}>
+          <S.Title>{title}</S.Title>
+          <S.CloseIcon onClick={onClose} src={CloseIcon}></S.CloseIcon>
+          {children}
+        </S.Container>
+      </div>
     </>
   );
 };

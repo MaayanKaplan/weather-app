@@ -46,7 +46,7 @@ const MobileHeader = () => {
           isOpen={isSearchOpen}
           setIsOpen={setIsSearchOpen}
         >
-          <SearchPopUp />
+          <SearchPopUp onClose={() => setIsSearchOpen(false)} />
         </PopUp>
       )}
     </>

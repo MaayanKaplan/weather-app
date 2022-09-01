@@ -49,6 +49,7 @@ const Layout = () => {
             description="You about to log out from WeatherApp.
                    Are you sure you want to log out?"
             linkText="I want to stay"
+            onClose={() => setIsLogoutPopUpOpen(false)}
           />
         </PopUp>
       )}

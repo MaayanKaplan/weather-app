@@ -23,6 +23,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle2, setToggle2] = useState<boolean>(false);
 
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
+  console.log(isLogoutPopUpOpen);
 
   const navBarItems: NavBarItem[] = [
     {
@@ -125,6 +126,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             description="You about to log out from WeatherApp. Are you sure you want to log out?"
             linkText="I want to stay"
             btnText="Yes, log out"
+            onClose={() => setIsLogoutPopUpOpen(!isLogoutPopUpOpen)}
           />
         </PopUp>
       )}
