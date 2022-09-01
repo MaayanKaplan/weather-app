@@ -9,7 +9,7 @@ export const useDarkMode = () => {
     setTheme(mode);
   };
 
-  console.log(theme);
+  // console.log(theme);
   const themeToggler = (): void => {
     theme === "light" ? setMode("dark") : setMode("light");
     setIsChecked(!isChecked);

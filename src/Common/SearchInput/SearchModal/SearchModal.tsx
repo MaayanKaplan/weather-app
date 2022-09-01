@@ -24,7 +24,7 @@ export interface DefaultTheme {
 }
 
 const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
-  const debouncedSearch = useDebounce(searchValue, 3000);
+  const debouncedSearch = useDebounce(searchValue, 300);
   const client = useQueryClient();
 
   const result = client.getQueryData(["Autocomplete", searchValue], {

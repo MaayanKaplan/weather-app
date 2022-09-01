@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import deviceSize from "../../../Utils/deviceSize";
 
 export const Container = styled.div`
   width: 476px;
@@ -12,7 +13,17 @@ export const Container = styled.div`
   top: 274px;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+
+  @media ${deviceSize.mobile} {
+    /* top: unset; */
+    top: 250px;
+    transform: unset;
+    left: 30px;
+    border-radius: unset;
+    box-shadow: unset;
+    width: 100%;
+    background-color: transparent;
+  }
 `;
 
 export const List = styled.ul`
