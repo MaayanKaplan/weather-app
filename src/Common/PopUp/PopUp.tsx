@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { PopUpProps } from "./types";
 import * as S from "./styles";
 import CloseIcon from "../../Common/Icon/Icons/close-circle.svg";
-// import { useOnClickOutsideRef } from "../../hooks/useOnClickOutsideRef";
 
 const PopUp: React.FC<PopUpProps> = ({
   title,

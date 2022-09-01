@@ -19,7 +19,7 @@ export const Container = styled.div`
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
 
-  margin: 265px auto 0 auto;
+  /* margin: 265px auto 0 auto; */
 
   position: relative;
 

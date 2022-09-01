@@ -14,4 +14,6 @@ export const BackIcon = styled.div`
   left: 30px;
 `;
 
-export const SearchWrapper = styled.div``;
+export const SearchWrapper = styled.div`
+  margin-top: 16px;
+`;
