@@ -114,7 +114,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       </S.RightSideContainer>
 
       {isLogoutPopUpOpen && (
-        <PopUp title="Log out" onClose={() => setIsLogoutPopUpOpen(false)}>
+        <PopUp
+          title="Log out"
+          onClose={() => setIsLogoutPopUpOpen(!isLogoutPopUpOpen)}
+          isOpen={isLogoutPopUpOpen}
+          setIsOpen={setIsLogoutPopUpOpen}
+        >
           <QuestionPopUp
             logout
             description="You about to log out from WeatherApp. Are you sure you want to log out?"

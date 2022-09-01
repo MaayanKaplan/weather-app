@@ -22,7 +22,8 @@ export const Container = styled.div`
   margin: 265px auto 0 auto;
 
   position: relative;
-  z-index: 2;
+
+  z-index: 200;
 
   @media ${deviceSize.mobile} {
     width: 100%;

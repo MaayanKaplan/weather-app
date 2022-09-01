@@ -26,10 +26,7 @@ const MobileHeader = () => {
             </S.ContentWrapper>
           </S.NavButton>
           <S.Separator />
-          <S.NavButton
-            variant="ghost"
-            onClick={() => setIsSearchOpen(!isSearchOpen)}
-          >
+          <S.NavButton variant="ghost" onClick={() => setIsSearchOpen(true)}>
             <IconSearchWhite />
             Search
           </S.NavButton>

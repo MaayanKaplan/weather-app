@@ -76,6 +76,8 @@ const Favorites = () => {
         <PopUp
           title="Remove from favorites"
           onClose={() => setIsRemoveFromFavoritesOpen(false)}
+          isOpen={isRemoveFromFavoritesOpen}
+          setIsOpen={setIsRemoveFromFavoritesOpen}
         >
           <QuestionPopUp
             description="Are you sure you want to remove Tel aviv Jaffo  from favorites list?"

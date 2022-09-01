@@ -27,13 +27,23 @@ const Layout = () => {
       {isMobile && <Menu src={menuImg} onClick={() => setIsMenuOpen(true)} />}
 
       {isMenuOpen && (
-        <PopUp title="Menu" onClose={() => setIsMenuOpen(false)}>
+        <PopUp
+          title="Menu"
+          onClose={() => setIsMenuOpen(false)}
+          isOpen={isMenuOpen}
+          setIsOpen={setIsMenuOpen}
+        >
           <MenuMobile buttonAction={() => openCloseLogout()} />
         </PopUp>
       )}
 
       {isLogoutPopUpOpen && (
-        <PopUp title="Log out" onClose={() => setIsLogoutPopUpOpen(false)}>
+        <PopUp
+          title="Log out"
+          onClose={() => setIsLogoutPopUpOpen(false)}
+          isOpen={isLogoutPopUpOpen}
+          setIsOpen={setIsLogoutPopUpOpen}
+        >
           <QuestionPopUp
             logout
             description="You about to log out from WeatherApp.
