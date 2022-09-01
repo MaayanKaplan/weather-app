@@ -9,6 +9,7 @@ export const BlurWrapper = styled.div`
   background-color: rgba(140, 140, 140, 0.2);
   position: absolute;
   top: 0;
+  z-index: 100;
 `;
 
 export const Container = styled.div`
@@ -21,6 +22,7 @@ export const Container = styled.div`
   margin: 265px auto 0 auto;
 
   position: relative;
+  z-index: 2;
 
   @media ${deviceSize.mobile} {
     width: 100%;

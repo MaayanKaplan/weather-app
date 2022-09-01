@@ -11,6 +11,7 @@ export const HeaderWrapper = styled.div`
   bottom: 0;
   width: 100%;
   /* min-width: 414px; */
+  z-index: 1;
 `;
 
 export const NavBar = styled.nav`
