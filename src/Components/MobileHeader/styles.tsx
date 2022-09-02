@@ -17,13 +17,12 @@ export const HeaderWrapper = styled.div`
 export const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
-
-  padding: 0 50px 0 41px;
-
-  /* display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-content: center; */
   align-items: center;
+`;
+
+export const BtnWrapper = styled.div`
+  display: flex;
+  margin: 0 auto;
 `;
 
 export const NavButton = styled(Button)`
@@ -53,11 +52,11 @@ export const IconWrapper = styled(NavLink)`
 export const Text = styled(NavLink)`
   text-decoration: none;
   color: inherit;
+  text-align: center;
 `;
 
 export const Separator = styled.div`
   width: 1px;
   height: 46px;
-  /* margin: 3px 49.5px 3px 46.5px; */
   background-color: #fff;
 `;

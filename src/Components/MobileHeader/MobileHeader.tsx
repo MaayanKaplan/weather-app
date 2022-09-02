@@ -17,26 +17,33 @@ const MobileHeader = () => {
     <>
       <S.HeaderWrapper>
         <S.NavBar>
-          <S.NavButton variant="ghost" onClick={() => console.log("click")}>
-            <S.ContentWrapper>
-              <S.IconWrapper to={"/favorites"}>
-                <IconFavoritesOutline />
+          <S.BtnWrapper>
+            <S.NavButton variant="ghost" onClick={() => console.log("click")}>
+              <S.ContentWrapper>
+                <S.IconWrapper to={"/favorites"}>
+                  <IconFavoritesOutline />
+                </S.IconWrapper>
+                <S.Text to={"/favorites"}>Favorites</S.Text>
+              </S.ContentWrapper>
+            </S.NavButton>
+          </S.BtnWrapper>
+          <S.Separator />
+          <S.BtnWrapper>
+            <S.NavButton variant="ghost" onClick={() => setIsSearchOpen(true)}>
+              <IconSearchWhite />
+              Search
+            </S.NavButton>
+          </S.BtnWrapper>
+
+          <S.Separator />
+          <S.BtnWrapper>
+            <S.NavButton variant="ghost" onClick={() => console.log("click")}>
+              <S.IconWrapper to={"/"}>
+                <IconHomeOutline />
               </S.IconWrapper>
-              <S.Text to={"/favorites"}>Favorites</S.Text>
-            </S.ContentWrapper>
-          </S.NavButton>
-          <S.Separator />
-          <S.NavButton variant="ghost" onClick={() => setIsSearchOpen(true)}>
-            <IconSearchWhite />
-            Search
-          </S.NavButton>
-          <S.Separator />
-          <S.NavButton variant="ghost" onClick={() => console.log("click")}>
-            <S.IconWrapper to={"/"}>
-              <IconHomeOutline />
-            </S.IconWrapper>
-            <S.Text to={"/"}>Home</S.Text>
-          </S.NavButton>
+              <S.Text to={"/"}>Home</S.Text>
+            </S.NavButton>
+          </S.BtnWrapper>
         </S.NavBar>
       </S.HeaderWrapper>
 
