@@ -23,7 +23,6 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle2, setToggle2] = useState<boolean>(false);
 
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
-  console.log(isLogoutPopUpOpen);
 
   const navBarItems: NavBarItem[] = [
     {

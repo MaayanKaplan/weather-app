@@ -4,7 +4,11 @@ import SearchInput from "../../../Common/SearchInput/SearchInput";
 import EmptyStateContainer from "../../../Common/EmptyStateContainer/EmptyStateContainer";
 import { IconArrow, IconSearchDark } from "../../../Common/Icon/Icon";
 
+import { useMedia } from "../../../hooks/useMedia";
+import CityImg from "../../../Images/city.svg";
+
 const SearchPopUp: React.FC<Props> = ({ onClose }) => {
+  const isMobile = useMedia();
   return (
     <S.Container>
       <S.BackIcon onClick={onClose}>
@@ -17,6 +21,14 @@ const SearchPopUp: React.FC<Props> = ({ onClose }) => {
           icon={<IconSearchDark />}
         />
       </S.SearchWrapper>
+      <S.EntryState>
+        {/* {isMobile && ( */}
+        <EmptyStateContainer
+          img={CityImg}
+          description="Please search any city in the search button."
+        />
+        {/* )} */}
+      </S.EntryState>
     </S.Container>
   );
 };

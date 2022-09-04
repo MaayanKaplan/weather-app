@@ -15,7 +15,9 @@ const QuestionPopUp: React.FC<QuestionProps> = ({
       <S.Description>{description}</S.Description>
       <S.ButtonsWrapper>
         <S.Link onClick={onClose}>{linkText}</S.Link>
-        {logout && <S.PopUpButton onClick={Logout}>Yes, log out</S.PopUpButton>}
+        {logout && (
+          <S.PopUpButton onClick={() => Logout()}>Yes, log out</S.PopUpButton>
+        )}
         {removeFromFavotires && (
           <S.PopUpButton onClick={() => {}}>Yes, remove</S.PopUpButton>
         )}

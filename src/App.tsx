@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect, useMemo } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import GlobalStyles from "./GlobalStyle";
 import styled, { ThemeProvider } from "styled-components/macro";
 import { useDarkMode } from "./hooks/useDarkMode";
@@ -40,8 +40,16 @@ const App: React.FC = () => {
 
   const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
 
+  console.log(token);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isSuccess) setToken(true);
+    // else {
+    //   // setToken(false);
+    //   navigate("/login");
+    // }
   }, [isSuccess, data]);
 
   return (

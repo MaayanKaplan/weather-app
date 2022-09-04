@@ -10,6 +10,10 @@ export const BlurWrapper = styled.div`
   position: absolute;
   top: 0;
   z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Container = styled.div`
@@ -18,8 +22,6 @@ export const Container = styled.div`
   border-radius: 30px;
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.16);
   background-color: #fff;
-
-  /* margin: 265px auto 0 auto; */
 
   position: relative;
 
@@ -34,6 +36,7 @@ export const Container = styled.div`
 
     position: absolute;
     bottom: 0;
+    left: 0;
   }
 `;
 

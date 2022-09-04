@@ -22,10 +22,11 @@ export const Container = styled.div`
     border-radius: unset;
     box-shadow: unset;
     width: 100%;
-    background-color: transparent;
+    /* background-color: transparent; */
     /* margin: 16px 30px 0 30px; */
     justify-content: center;
     padding-right: 30px;
+    z-index: 1000;
   }
 `;
 

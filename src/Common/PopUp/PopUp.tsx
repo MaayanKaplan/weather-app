@@ -25,14 +25,15 @@ const PopUp: React.FC<PopUpProps> = ({
 
   return (
     <>
-      <S.BlurWrapper />
-      <div id="modal" ref={modalRef}>
-        <S.Container className={className}>
-          <S.Title>{title}</S.Title>
-          <S.CloseIcon onClick={onClose} src={CloseIcon}></S.CloseIcon>
-          {children}
-        </S.Container>
-      </div>
+      <S.BlurWrapper>
+        <div id="modal" ref={modalRef}>
+          <S.Container className={className}>
+            <S.Title>{title}</S.Title>
+            <S.CloseIcon onClick={onClose} src={CloseIcon}></S.CloseIcon>
+            {children}
+          </S.Container>
+        </div>
+      </S.BlurWrapper>
     </>
   );
 };
