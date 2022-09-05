@@ -22,12 +22,10 @@ const SearchPopUp: React.FC<Props> = ({ onClose }) => {
         />
       </S.SearchWrapper>
       <S.EntryState>
-        {/* {isMobile && ( */}
         <EmptyStateContainer
           img={CityImg}
           description="Please search any city in the search button."
         />
-        {/* )} */}
       </S.EntryState>
     </S.Container>
   );

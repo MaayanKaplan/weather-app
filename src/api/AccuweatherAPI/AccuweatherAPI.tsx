@@ -23,3 +23,24 @@ export const getSearchAutoComplete = async (value: string) => {
     }
   return undefined;
 };
+
+export const getGeoPositionKey = async (altitude: number, latitude: number) => {
+  try {
+    const response = await accuweatherInstance.get(
+      `locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${altitude}%2C%${latitude}`
+    );
+    return response.data.Key;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const get5DaysForecast = async (locationKey: number) => {
+  try {
+    const response = await accuweatherInstance.get(
+      `forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}`
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -3,4 +3,5 @@ export interface Props {
   description: string | undefined;
   img: string;
   dark?: boolean;
+  // modal?: boolean;
 }

@@ -6,7 +6,7 @@ import { useDarkMode } from "./hooks/useDarkMode";
 import { lightModeTheme, darkModeTheme } from "./themes";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/Home";
 import Favorites from "./Pages/Favorites/Favorites";
 import { AuthenticationProvider } from "./api/AbraApi/Authentication";
 import { verifyToken } from "./api/AbraApi/verifyToken";
@@ -39,8 +39,6 @@ const App: React.FC = () => {
   const themeMode = theme === "light" ? lightModeTheme : darkModeTheme;
 
   const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
-
-  console.log(token);
 
   const navigate = useNavigate();
 
