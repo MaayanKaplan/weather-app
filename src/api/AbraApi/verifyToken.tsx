@@ -9,6 +9,3 @@ export const verifyToken = async () => {
   });
   return response;
 };
-
-// if (response.status === 200) return true;
-// return false;

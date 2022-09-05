@@ -18,11 +18,19 @@ import PopUp from "../../Common/PopUp/PopUp";
 import { HeaderProps } from "./types";
 import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
 
+import { useAuthentication } from "../../api/AbraApi/Authentication";
+import { useNavigate } from "react-router-dom";
+
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
 
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+  const { logout } = useAuthentication(() => {
+    navigate("/login");
+  });
 
   const navBarItems: NavBarItem[] = [
     {
@@ -121,10 +129,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           setIsOpen={setIsLogoutPopUpOpen}
         >
           <QuestionPopUp
-            logout
             description="You about to log out from WeatherApp. Are you sure you want to log out?"
             linkText="I want to stay"
             btnText="Yes, log out"
+            yesClick={logout}
             onClose={() => setIsLogoutPopUpOpen(!isLogoutPopUpOpen)}
           />
         </PopUp>

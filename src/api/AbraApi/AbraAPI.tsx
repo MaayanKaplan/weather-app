@@ -53,8 +53,3 @@ const abraProtectAPI = async (
 export const abraGetFavorite = async (token: string) => {
   return await abraProtectAPI("get", token, "api/favorites/");
 };
-
-// LOGOUT
-export const Logout = () => {
-  return localStorage.removeItem("token");
-};

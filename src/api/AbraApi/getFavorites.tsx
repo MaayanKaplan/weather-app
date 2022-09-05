@@ -20,13 +20,3 @@ export const getFavorites = async (): Promise<Results> => {
   // console.log(response.data);
   return response.data;
 };
-
-// export const getFavorites = () => {
-//   const token = localStorage.getItem("token") as string;
-//   // console.log(token);
-
-//   const response = abraGetFavorite(token);
-//   console.log(response);
-
-//   // return abraGetFavorite(token);
-// };

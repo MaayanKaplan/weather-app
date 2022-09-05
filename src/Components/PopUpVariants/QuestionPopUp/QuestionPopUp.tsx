@@ -1,26 +1,20 @@
 import React from "react";
 import * as S from "./styles";
 import { QuestionProps } from "./types";
-import { Logout } from "../../../api/AbraApi/AbraAPI";
 
 const QuestionPopUp: React.FC<QuestionProps> = ({
   description,
   linkText,
   onClose,
-  logout,
-  removeFromFavotires,
+  yesClick,
+  btnText,
 }) => {
   return (
     <>
       <S.Description>{description}</S.Description>
       <S.ButtonsWrapper>
         <S.Link onClick={onClose}>{linkText}</S.Link>
-        {logout && (
-          <S.PopUpButton onClick={() => Logout()}>Yes, log out</S.PopUpButton>
-        )}
-        {removeFromFavotires && (
-          <S.PopUpButton onClick={() => {}}>Yes, remove</S.PopUpButton>
-        )}
+        <S.PopUpButton onClick={() => yesClick()}>{btnText}</S.PopUpButton>
       </S.ButtonsWrapper>
     </>
   );

@@ -40,8 +40,6 @@ const App: React.FC = () => {
 
   const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (isSuccess) setToken(true);
     // else {

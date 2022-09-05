@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import MobileHeader from "../Components/MobileHeader/MobileHeader";
 import PopUp from "../Common/PopUp/PopUp";
@@ -9,6 +9,7 @@ import QuestionPopUp from "../Components/PopUpVariants/QuestionPopUp/QuestionPop
 import MenuMobile from "../Components/PopUpVariants/MenuMobile/MenuMobile";
 
 import { useMedia } from "../hooks/useMedia";
+import { useAuthentication } from "../api/AbraApi/Authentication";
 
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -20,6 +21,11 @@ const Layout = () => {
   };
 
   const isMobile = useMedia();
+
+  const navigate = useNavigate();
+  const { logout } = useAuthentication(() => {
+    navigate("/login");
+  });
 
   return (
     <>
@@ -45,10 +51,11 @@ const Layout = () => {
           setIsOpen={setIsLogoutPopUpOpen}
         >
           <QuestionPopUp
-            logout
             description="You about to log out from WeatherApp.
                    Are you sure you want to log out?"
             linkText="I want to stay"
+            btnText="Yes, log out"
+            yesClick={logout}
             onClose={() => setIsLogoutPopUpOpen(false)}
           />
         </PopUp>

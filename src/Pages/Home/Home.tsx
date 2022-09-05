@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 import EmptyStateContainer from "../../Common/EmptyStateContainer/EmptyStateContainer";
 import NoLocationImg from "../../Images/location.svg";
@@ -8,26 +9,36 @@ import { TailSpin } from "react-loader-spinner";
 import {
   getGeoPositionKey,
   get5DaysForecast,
+  searchByLocationKey,
 } from "../../api/AccuweatherAPI/AccuweatherAPI";
 import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-  const { latitude, longitude, loading, error, timestamp, googleMapsResults } =
-    useGeoLocation();
-
-  console.log(loading);
-  console.log(error);
-
+  const [zibi, setZibi] = useState({});
+  const { latitude, longitude, error } = useGeoLocation();
   const lat = latitude;
   const lng = longitude;
 
-  const { data } = useQuery(["LocationKey"], () => getGeoPositionKey(lat, lng));
-  const locationKey = data;
+  const { data: keyLocation } = useQuery(
+    [lat, lng],
+    () => getGeoPositionKey(lat, lng),
+    { onSuccess: (data) => console.log({ dodo: data }) }
+  );
 
-  const { data, isLoading } = useQuery([
-    "5daysForecase",
-    () => get5DaysForecast(locationKey),
-  ]);
+  const { data, isLoading } = useQuery([keyLocation], () =>
+    searchByLocationKey(keyLocation)
+  );
+
+  // const { data, isLoading } = useQuery([
+  //   "5daysForecase",
+  //   () => get5DaysForecast(locationKey.data),
+  //   {
+  //     cacheTime: 600,
+  //     staleTime: 600,
+  //   },
+  // ]);
+  console.log(data);
+  console.log(isLoading);
 
   return (
     <S.Container>
@@ -41,13 +52,14 @@ const Home = () => {
           />
         </S.Wrapper>
       )}
-      {loading && (
+      {isLoading ? (
         <S.LoadingContainer>
           <TailSpin width="80" height="80" color="#fff" />
           <S.LoadingText>Loading...</S.LoadingText>
         </S.LoadingContainer>
+      ) : (
+        <div>hello</div>
       )}
-      ;<div>hello</div>
     </S.Container>
   );
 };

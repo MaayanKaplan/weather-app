@@ -80,9 +80,9 @@ const Favorites = () => {
           setIsOpen={setIsRemoveFromFavoritesOpen}
         >
           <QuestionPopUp
-            removeFromFavotires
             description="Are you sure you want to remove Tel aviv Jaffo  from favorites list?"
             linkText="Keep it"
+            btnText="Yes, remove"
             onClose={() => setIsRemoveFromFavoritesOpen(false)}
             yesClick={() => {}}
           />
