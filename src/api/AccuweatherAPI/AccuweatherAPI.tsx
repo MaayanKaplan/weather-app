@@ -24,23 +24,23 @@ export const getSearchAutoComplete = async (value: string) => {
   return undefined;
 };
 
-export const getGeoPositionKey = async (altitude: number, latitude: number) => {
-  if (!altitude || !latitude) return;
+export const getGeoPosition = async (latitude: number, longitude: number) => {
+  if (!latitude || !longitude) return;
   try {
     const response = await accuweatherInstance.get(
-      `locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${altitude}%2C%${latitude}`
+      `/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${latitude}%2C${longitude}`
     );
-    return response.data.Key;
+    return response.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const searchByLocationKey = async (locationKey: number) => {
-  // if (!locationKey) return;
+export const dailyForecast = async (locationKey: number) => {
+  if (!locationKey) return;
   try {
     const response = await accuweatherInstance.get(
-      `locations/v1/${locationKey}?apikey=${apiKey}`
+      `/forecasts/v1/daily/1day/${locationKey}?apikey=${apiKey}`
     );
     return response.data;
   } catch (error) {
@@ -49,9 +49,10 @@ export const searchByLocationKey = async (locationKey: number) => {
 };
 
 export const get5DaysForecast = async (locationKey: number) => {
+  if (!locationKey) return;
   try {
     const response = await accuweatherInstance.get(
-      `forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}`
+      `/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}`
     );
     return response;
   } catch (error) {

@@ -10,6 +10,7 @@ import { ReactComponent as IconArrow } from "./Icons/arrow.svg";
 // import { ReactComponent as IconCheckV } from "./Icons/check-v.svg";
 import { ReactComponent as IconFavoritesFull } from "./Icons/fav-full.svg";
 import { ReactComponent as IconFavoritesOutline } from "./Icons/fav-outline.svg";
+import { ReactComponent as IconFavoritesDark } from "./Icons/fav-dark.svg";
 import { ReactComponent as IconHomeFull } from "./Icons/home-full.svg";
 import { ReactComponent as IconHomeOutline } from "./Icons/home-outline.svg";
 import { ReactComponent as IconLayout } from "./Icons/layout.svg";
@@ -53,6 +54,7 @@ export {
   // IconCheckV,
   IconFavoritesFull,
   IconFavoritesOutline,
+  IconFavoritesDark,
   IconHomeFull,
   IconHomeOutline,
   IconLayout,
