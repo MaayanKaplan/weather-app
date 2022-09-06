@@ -57,6 +57,14 @@ export const WeatherText = styled.h2`
   color: #fff;
 `;
 
+export const Date = styled.p`
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1),
+    -1px 1px 2px rgba(255, 255, 255, 0.25);
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.25;
+`;
+
 export const AddFavButton = styled(Button)`
   padding: 16px 24px;
   align-self: end;
