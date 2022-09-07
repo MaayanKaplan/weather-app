@@ -11,7 +11,6 @@ import { AuthenticationProvider } from "./api/AbraApi/Authentication";
 import { verifyToken } from "./api/AbraApi/verifyToken";
 import Clouds from "./Components/Clouds/Clouds";
 import { useQuery } from "@tanstack/react-query";
-import { create } from "yup/lib/array";
 
 export interface DefaultTheme {
   primary: string;
@@ -59,9 +58,10 @@ const App: React.FC = () => {
       <ThemeToggleContext.Provider
         value={{
           toggleTheme: () =>
-            setTheme(({ mode }) =>
-              mode === ThemesMode.light ? lightTheme : darkTheme
-            ),
+            setTheme((theme) => {
+              console.log(theme);
+              return theme.mode === ThemesMode.light ? darkTheme : lightTheme;
+            }),
         }}
       >
         <BackgroundStyle>

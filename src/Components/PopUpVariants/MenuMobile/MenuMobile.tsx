@@ -2,16 +2,18 @@ import { useState } from "react";
 import * as S from "./styles";
 import { MenuMobileProps } from "./types";
 import Switch from "../../../Common/Switch";
-
 import {
   IconLogoutDark,
   IconDarkMoon,
   IconDarkSun,
 } from "../../../Common/Icon/Icon";
 
+import { useToggleTheme } from "../../../App";
+
 const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
   const [toggle, setToggle] = useState<boolean>(false);
-  const [toggle2, setToggle2] = useState<boolean>(false);
+
+  const { toggleTheme } = useToggleTheme();
 
   return (
     <>
@@ -22,9 +24,7 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
             id={"darkmode-id"}
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
-            onChange={() => {
-              setToggle2(!toggle2);
-            }}
+            onChange={toggleTheme}
           />
         </S.ChangeWrapper>
         <S.ChangeWrapper>

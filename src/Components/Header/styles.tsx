@@ -4,7 +4,7 @@ import NavBar from "../../Common/NavBar/NavBar";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import Button from "../../Common/Button/Button";
 import PopUp from "../../Common/PopUp/PopUp";
-import { log } from "console";
+
 // import { NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.header`
@@ -12,7 +12,6 @@ export const HeaderWrapper = styled.header`
   width: 100%;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   background-color: ${({ theme }) => {
-    console.log(theme);
     return "";
   }};
 

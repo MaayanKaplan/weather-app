@@ -1,4 +1,5 @@
 import styled, { useTheme } from "styled-components/macro";
+import { Theme } from "../themes";
 
 type SwitchProps = {
   id: string;
@@ -8,7 +9,7 @@ type SwitchProps = {
   // onClick: () => void;
 };
 
-const Switch: React.FC<SwitchProps> = ({ id, onChange, left, right }) => {
+const Switch = ({ id, onChange, left, right }: SwitchProps) => {
   const theme = useTheme();
   return (
     <SwitchWrapper onChange={() => onChange()}>
@@ -17,7 +18,7 @@ const Switch: React.FC<SwitchProps> = ({ id, onChange, left, right }) => {
         <SwitchLeftThumbWrapper>{left}</SwitchLeftThumbWrapper>
         <SwitchRightThumbWrapper>{right}</SwitchRightThumbWrapper>
       </IconsWrapper>
-      {/* <Notch checked={theme.mode === "light"} htmlFor={id}></Notch> */}
+      <Notch checked={theme.mode === "light"} htmlFor={id}></Notch>
     </SwitchWrapper>
   );
 };

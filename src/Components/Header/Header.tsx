@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import {
   IconHomeFull,
@@ -25,6 +25,7 @@ import { useToggleTheme } from "../../App";
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const { toggleTheme } = useToggleTheme();
+
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
