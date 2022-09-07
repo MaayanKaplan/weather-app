@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import * as S from "./styles";
 import {
   IconHomeFull,
@@ -20,11 +20,11 @@ import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
 
 import { useAuthentication } from "../../api/AbraApi/Authentication";
 import { useNavigate } from "react-router-dom";
+import { useToggleTheme } from "../../App";
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const [toggle, setToggle] = useState<boolean>(false);
-  const [toggle2, setToggle2] = useState<boolean>(false);
-
+  const { toggleTheme } = useToggleTheme();
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -89,7 +89,6 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         <S.SwitchesWrapper>
           <Switch
             id={"temperature-id"}
-            value={toggle}
             left={"F°"}
             right={"C°"}
             onChange={() => {
@@ -99,12 +98,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
 
           <Switch
             id={"darkmode-id"}
-            value={toggle2}
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
-            onChange={() => {
-              setToggle2(!toggle2);
-            }}
+            onChange={toggleTheme}
           />
         </S.SwitchesWrapper>
 

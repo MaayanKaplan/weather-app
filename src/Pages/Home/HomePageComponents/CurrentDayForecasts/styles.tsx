@@ -2,10 +2,10 @@ import styled from "styled-components/macro";
 import Button from "../../../../Common/Button/Button";
 
 export const CurrentDayContainer = styled.div`
-  margin: 120px 378px 0 370px;
   color: #fff;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 88px;
 `;
 
 export const InfoWrapper = styled.div``;

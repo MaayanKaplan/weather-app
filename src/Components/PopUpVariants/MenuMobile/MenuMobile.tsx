@@ -20,7 +20,6 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
           <S.ChangeTitle>Change mode</S.ChangeTitle>
           <Switch
             id={"darkmode-id"}
-            value={toggle2}
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
             onChange={() => {
@@ -32,7 +31,6 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
           <S.ChangeTitle>Change degrees</S.ChangeTitle>
           <Switch
             id={"temperature-id"}
-            value={toggle}
             left={"F°"}
             right={"C°"}
             onChange={() => {

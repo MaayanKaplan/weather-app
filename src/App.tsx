@@ -1,9 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext, createContext } from "react";
+import { Routes, Route } from "react-router-dom";
 import GlobalStyles from "./GlobalStyle";
 import styled, { ThemeProvider } from "styled-components/macro";
-import { useDarkMode } from "./hooks/useDarkMode";
-import { lightModeTheme, darkModeTheme } from "./themes";
+import { lightTheme, darkTheme, ThemesMode } from "./themes";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home/Home";
@@ -11,8 +10,8 @@ import Favorites from "./Pages/Favorites/Favorites";
 import { AuthenticationProvider } from "./api/AbraApi/Authentication";
 import { verifyToken } from "./api/AbraApi/verifyToken";
 import Clouds from "./Components/Clouds/Clouds";
-
 import { useQuery } from "@tanstack/react-query";
+import { create } from "yup/lib/array";
 
 export interface DefaultTheme {
   primary: string;
@@ -33,11 +32,18 @@ const BackgroundStyle = styled.div<{ theme: DefaultTheme }>`
   overflow: hidden;
 `;
 
+const ThemeToggleContext =
+  createContext<{ toggleTheme: VoidFunction } | null>(null);
+
+export const useToggleTheme = () => {
+  const context = useContext(ThemeToggleContext);
+  if (!context) throw new Error("Toggle theme context ios not ready");
+  return context;
+};
+
 const App: React.FC = () => {
   const [token, setToken] = useState<boolean>(false);
-  const [theme] = useDarkMode();
-  const themeMode = theme === "light" ? lightModeTheme : darkModeTheme;
-
+  const [theme, setTheme] = useState(lightTheme);
   const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
 
   useEffect(() => {
@@ -49,8 +55,15 @@ const App: React.FC = () => {
   }, [isSuccess, data]);
 
   return (
-    <>
-      <ThemeProvider theme={themeMode}>
+    <ThemeProvider theme={theme}>
+      <ThemeToggleContext.Provider
+        value={{
+          toggleTheme: () =>
+            setTheme(({ mode }) =>
+              mode === ThemesMode.light ? lightTheme : darkTheme
+            ),
+        }}
+      >
         <BackgroundStyle>
           <GlobalStyles />
           <Clouds numClouds={15}></Clouds>
@@ -64,8 +77,8 @@ const App: React.FC = () => {
             </Routes>
           </AuthenticationProvider>
         </BackgroundStyle>
-      </ThemeProvider>
-    </>
+      </ThemeToggleContext.Provider>
+    </ThemeProvider>
   );
 };
 

@@ -1,20 +1,15 @@
-import styled from "styled-components/macro";
+import styled, { useTheme } from "styled-components/macro";
 
 type SwitchProps = {
   id: string;
   left?: React.ReactNode | string;
   right?: React.ReactNode | string;
-  value: boolean;
   onChange: () => void;
+  // onClick: () => void;
 };
 
-const Switch: React.FC<SwitchProps> = ({
-  id,
-  value,
-  onChange,
-  left,
-  right,
-}) => {
+const Switch: React.FC<SwitchProps> = ({ id, onChange, left, right }) => {
+  const theme = useTheme();
   return (
     <SwitchWrapper onChange={() => onChange()}>
       <SwitchCheckbox id={id} type="checkbox" />
@@ -22,7 +17,7 @@ const Switch: React.FC<SwitchProps> = ({
         <SwitchLeftThumbWrapper>{left}</SwitchLeftThumbWrapper>
         <SwitchRightThumbWrapper>{right}</SwitchRightThumbWrapper>
       </IconsWrapper>
-      <Notch checked={value} htmlFor={id}></Notch>
+      {/* <Notch checked={theme.mode === "light"} htmlFor={id}></Notch> */}
     </SwitchWrapper>
   );
 };

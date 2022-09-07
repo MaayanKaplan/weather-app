@@ -4,17 +4,21 @@ import SunCloudImg from "../../../../Images/sun-cloud.svg";
 import { IconFavoritesDark } from "../../../../Common/Icon/Icon";
 
 import { useQuery } from "@tanstack/react-query";
-import { dailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
+import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import { format } from "date-fns";
 
 const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
-  const { data } = useQuery([locationKey], () => dailyForecast(locationKey), {
-    cacheTime: 600,
-    staleTime: 600,
-  });
+  const { data } = useQuery(
+    [locationKey],
+    () => getDailyForecast(locationKey),
+    {
+      cacheTime: 600,
+      staleTime: 600,
+    }
+  );
 
-  const date = new Date();
-  const hour = Number(format(date, "h"));
+  const today = new Date();
+  const hour = Number(format(today, "h"));
 
   return (
     <S.CurrentDayContainer>
@@ -35,15 +39,15 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
           </S.DegreesContainer>
         </S.TemperatureWrapper>
         <S.WeatherText>
-          {(hour >= 6 && format(date, "aaa") === "am") ||
-          (hour < 6 && format(date, "aaa") === "pm")
+          {(hour >= 6 && format(today, "aaa") === "am") ||
+          (hour < 6 && format(today, "aaa") === "pm")
             ? data?.DailyForecasts[0].Day.IconPhrase
             : data?.DailyForecasts[0].Night.IconPhrase}
         </S.WeatherText>
         <S.Date>
-          {format(date, "EEEE")}, {format(date, "dd")}-{format(date, "	MMM")}-
-          {format(date, "	yyyy")}, {format(date, "h")}:{format(date, "m")}
-          {format(date, "aaa")}
+          {format(today, "EEEE")}, {format(today, "dd")}-{format(today, "	MMM")}-
+          {format(today, "	yyyy")}, {format(today, "h")}:{format(today, "m")}
+          {format(today, "aaa")}
         </S.Date>
       </S.InfoWrapper>
       <S.AddFavButton variant="white" onClick={() => {}}>

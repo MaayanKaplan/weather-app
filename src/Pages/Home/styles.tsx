@@ -28,3 +28,6 @@ export const LoadingText = styled.p`
   font-size: 2rem;
   color: #fff;
 `;
+export const DataContainer = styled.div`
+  margin: 120px 378px 0 370px;
+`;

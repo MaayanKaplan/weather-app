@@ -36,11 +36,11 @@ export const getGeoPosition = async (latitude: number, longitude: number) => {
   }
 };
 
-export const dailyForecast = async (locationKey: number) => {
+export const getDailyForecast = async (locationKey: number) => {
   if (!locationKey) return;
   try {
     const response = await accuweatherInstance.get(
-      `/forecasts/v1/daily/1day/${locationKey}?apikey=${apiKey}`
+      `/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}`
     );
     return response.data;
   } catch (error) {
@@ -48,13 +48,31 @@ export const dailyForecast = async (locationKey: number) => {
   }
 };
 
-export const get5DaysForecast = async (locationKey: number) => {
+// export const get5DaysForecast = async (locationKey: number) => {
+//   console.log(locationKey);
+//   if (!locationKey) return;
+//   try {
+//     // const response = await accuweatherInstance.get(
+//     //   `/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}`
+//     // );
+//     const response = await axios.get(
+//       " http://dataservice.accuweather.com/forecasts/v1/daily/5day/215755?apikey=iPhYfyxyG6K9NLfWg7fiuNBGafzfP4iY"
+//     );
+//     console.log(response);
+//     return response.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+export const get12HoursForecast = async (locationKey: number) => {
   if (!locationKey) return;
+
   try {
     const response = await accuweatherInstance.get(
-      `/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}`
+      `/forecasts/v1/hourly/12hour/${locationKey}?apikey=${apiKey}`
     );
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }

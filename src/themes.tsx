@@ -1,4 +1,10 @@
+export enum ThemesMode {
+  light = "light",
+  dark = "dark",
+}
+
 export interface Theme {
+  mode: ThemesMode;
   black: string;
   white: string;
   header: string;
@@ -19,7 +25,8 @@ export interface Theme {
 //   }
 // `;
 
-export const lightModeTheme: Theme = {
+export const lightTheme: Theme = {
+  mode: ThemesMode.light,
   black: "#222",
   white: "#fff",
   header: "#48bae4",
@@ -34,11 +41,12 @@ export const lightModeTheme: Theme = {
 };
 
 const darkMode = {
+  mode: ThemesMode.dark,
   header: "#1a2b55",
   primary: "#191634",
   secondaryBG: "#1e437c",
 };
 
-export const darkModeTheme: Theme = { ...lightModeTheme, ...darkMode };
+export const darkTheme: Theme = { ...lightTheme, ...darkMode };
 
-export default lightModeTheme;
+export default lightTheme;

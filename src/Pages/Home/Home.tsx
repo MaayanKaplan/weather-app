@@ -4,14 +4,11 @@ import NoLocationImg from "../../Images/location.svg";
 import { useGeoLocation } from "use-geo-location";
 import { TailSpin } from "react-loader-spinner";
 
-import {
-  getGeoPosition,
-  get5DaysForecast,
-  dailyForecast,
-} from "../../api/AccuweatherAPI/AccuweatherAPI";
+import { getGeoPosition } from "../../api/AccuweatherAPI/AccuweatherAPI";
 import { useQuery } from "@tanstack/react-query";
 
-import CurrentDayContainer from "./HomePageComponents/CurrentDay/CurrentDay";
+import CurrentDayContainer from "./HomePageComponents/CurrentDayForecasts/CurrentDay";
+import DailyForecasts from "./HomePageComponents/DailyForecasts/DailyForecasts";
 
 const Home = () => {
   const { latitude, longitude, error, loading } = useGeoLocation();
@@ -43,12 +40,13 @@ const Home = () => {
           <S.LoadingText>Loading...</S.LoadingText>
         </S.LoadingContainer>
       ) : (
-        <>
+        <S.DataContainer>
           <CurrentDayContainer
             cityTitle={locationKey?.AdministrativeArea.EnglishName}
             locationKey={locationKey?.Key}
           />
-        </>
+          <DailyForecasts locationKey={locationKey?.Key} />
+        </S.DataContainer>
       )}
     </S.Container>
   );
