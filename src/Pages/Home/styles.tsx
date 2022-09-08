@@ -3,10 +3,11 @@ import deviceSize from "../../Utils/deviceSize";
 
 export const Container = styled.div`
   padding: 0 0 399px;
-  height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
 `;
 
-export const Wrapper = styled.div`
+export const ErrorWrapper = styled.div`
   width: 380px;
   margin: 200px auto 0 auto;
 
@@ -30,4 +31,10 @@ export const LoadingText = styled.p`
 `;
 export const DataContainer = styled.div`
   margin: 120px 378px 0 370px;
+  /* height: 100vh;
+  overflow-y: scroll; */
+
+  @media ${deviceSize.tablet} {
+    margin: 64px 58px 0 50px;
+  }
 `;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import GlobalStyles from "./GlobalStyle";
 import styled, { ThemeProvider } from "styled-components/macro";
 import { lightTheme, darkTheme, ThemesMode } from "./themes";
@@ -36,7 +36,7 @@ const ThemeToggleContext =
 
 export const useToggleTheme = () => {
   const context = useContext(ThemeToggleContext);
-  if (!context) throw new Error("Toggle theme context ios not ready");
+  if (!context) throw new Error("Toggle theme context is not ready");
   return context;
 };
 
@@ -45,13 +45,15 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState(lightTheme);
   const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isSuccess) setToken(true);
     // else {
-    //   // setToken(false);
-    //   navigate("/login");
+    //   setToken(false);
+    //   // navigate("/login");
     // }
-  }, [isSuccess, data]);
+  }, [isSuccess]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -44,11 +44,7 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
             ? data?.DailyForecasts[0].Day.IconPhrase
             : data?.DailyForecasts[0].Night.IconPhrase}
         </S.WeatherText>
-        <S.Date>
-          {format(today, "EEEE")}, {format(today, "dd")}-{format(today, "	MMM")}-
-          {format(today, "	yyyy")}, {format(today, "h")}:{format(today, "m")}
-          {format(today, "aaa")}
-        </S.Date>
+        <S.Date>{format(today, `EEEE, dd-MMM-yyyy, h:maaa `)}</S.Date>
       </S.InfoWrapper>
       <S.AddFavButton variant="white" onClick={() => {}}>
         <S.Wrapper>

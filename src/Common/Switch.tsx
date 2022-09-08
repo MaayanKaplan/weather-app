@@ -1,16 +1,14 @@
-import styled, { useTheme } from "styled-components/macro";
-import { Theme } from "../themes";
+import styled from "styled-components/macro";
 
 type SwitchProps = {
   id: string;
   left?: React.ReactNode | string;
   right?: React.ReactNode | string;
   onChange: () => void;
-  // onClick: () => void;
+  checked: boolean;
 };
 
-const Switch = ({ id, onChange, left, right }: SwitchProps) => {
-  const theme = useTheme();
+const Switch = ({ id, onChange, left, right, checked }: SwitchProps) => {
   return (
     <SwitchWrapper onChange={() => onChange()}>
       <SwitchCheckbox id={id} type="checkbox" />
@@ -18,7 +16,7 @@ const Switch = ({ id, onChange, left, right }: SwitchProps) => {
         <SwitchLeftThumbWrapper>{left}</SwitchLeftThumbWrapper>
         <SwitchRightThumbWrapper>{right}</SwitchRightThumbWrapper>
       </IconsWrapper>
-      <Notch checked={theme.mode === "light"} htmlFor={id}></Notch>
+      <Notch checked={checked} htmlFor={id}></Notch>
     </SwitchWrapper>
   );
 };
@@ -55,7 +53,7 @@ const Notch = styled.label<Props>`
   `
       : `
   top: 3px;
-  right:4px;`}
+  right:4px;`}/* transition: transform; */
 `;
 
 const SwitchCheckbox = styled.input`

@@ -9,6 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import CurrentDayContainer from "./HomePageComponents/CurrentDayForecasts/CurrentDay";
 import DailyForecasts from "./HomePageComponents/DailyForecasts/DailyForecasts";
+import HourlyForecasts from "./HomePageComponents/HourlyForecasts/HourlyForecasts";
+import FiveDaysForecast from "./HomePageComponents/FiveDaysForecast/FiveDaysForecats";
 
 const Home = () => {
   const { latitude, longitude, error, loading } = useGeoLocation();
@@ -25,14 +27,14 @@ const Home = () => {
   return (
     <S.Container>
       {error && (
-        <S.Wrapper>
+        <S.ErrorWrapper>
           <EmptyStateContainer
             img={NoLocationImg}
             title="Set up location"
             description="To identify your location please allow
           WeatherApp to know your location."
           />
-        </S.Wrapper>
+        </S.ErrorWrapper>
       )}
       {loading ? (
         <S.LoadingContainer>
@@ -46,6 +48,8 @@ const Home = () => {
             locationKey={locationKey?.Key}
           />
           <DailyForecasts locationKey={locationKey?.Key} />
+          <HourlyForecasts locationKey={locationKey?.Key} />
+          <FiveDaysForecast />
         </S.DataContainer>
       )}
     </S.Container>

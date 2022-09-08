@@ -2,15 +2,22 @@ import * as S from "./styles";
 import { DailyProps } from "./types";
 import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import { useQuery } from "@tanstack/react-query";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
+import {
+  IconCloud,
+  IconRain,
+  IconStorm,
+  IconSnow,
+  IconSun,
+  IconSunCloud,
+} from "../Icons/Icons";
 
 const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
-  const { data, isSuccess } = useQuery(
+  const { data } = useQuery(
     [locationKey],
     async () => {
-      const test = await getDailyForecast(locationKey);
-      return test;
-      // console.log(test);
+      const returnedData = await getDailyForecast(locationKey);
+      return returnedData;
     },
     {
       cacheTime: 0,
@@ -18,19 +25,52 @@ const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
     }
   );
 
-  console.log(data);
+  const today = new Date();
+  const tomorrow = addDays(today, 1);
+  const afterTomorrow = addDays(today, 2);
+  const in3Days = addDays(today, 3);
+  const in4Days = addDays(today, 4);
 
-  // const temp = data.slice(2, -1);
-  const temp = data?.DailyForecasts.slice(1, 5);
+  const nextDaysOfWeek = [
+    format(tomorrow, "EEE"),
+    format(afterTomorrow, "EEE"),
+    format(in3Days, "EEE"),
+    format(in4Days, "EEE"),
+  ];
 
-  // console.log(temp.length);
+  const fourDaysView = data?.DailyForecasts.slice(1, 5);
 
   return (
     <S.Container>
-      {temp?.map((item: any) => {
+      {fourDaysView?.map((item: any) => {
         return (
           <S.EachDayWrapper>
-            <S.Title>{item.Day.IconPhrase}</S.Title>
+            <S.Title>
+              {nextDaysOfWeek[fourDaysView.indexOf(item)]}
+              {" - "}
+              {item.Day.IconPhrase}
+            </S.Title>
+            <S.TempWrapper>
+              <S.TempIcon>
+                {" "}
+                {(() => {
+                  switch (item.Day.IconPhrase) {
+                    case "Sunny":
+                      return <IconSun />;
+                    case "Storm":
+                      return <IconStorm />;
+                    case "Cloudy":
+                      return <IconCloud />;
+                    default:
+                      return;
+                  }
+                })()}
+              </S.TempIcon>
+
+              <S.TempMin>{item.Temperature.Minimum.Value}</S.TempMin>
+              <S.DegreesSign>°</S.DegreesSign>
+              <S.TempMax>-{item.Temperature.Maximum.Value}</S.TempMax>
+            </S.TempWrapper>
           </S.EachDayWrapper>
         );
       })}

@@ -21,9 +21,10 @@ import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
 import { useAuthentication } from "../../api/AbraApi/Authentication";
 import { useNavigate } from "react-router-dom";
 import { useToggleTheme } from "../../App";
+import { useTheme } from "styled-components/macro";
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const theme = useTheme();
   const { toggleTheme } = useToggleTheme();
 
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
@@ -92,9 +93,8 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             id={"temperature-id"}
             left={"F°"}
             right={"C°"}
-            onChange={() => {
-              setToggle(!toggle);
-            }}
+            onChange={() => {}}
+            checked={true}
           />
 
           <Switch
@@ -102,6 +102,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
             onChange={toggleTheme}
+            checked={theme.mode === "light"}
           />
         </S.SwitchesWrapper>
 

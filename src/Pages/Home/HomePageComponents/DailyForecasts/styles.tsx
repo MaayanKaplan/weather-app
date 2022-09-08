@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: space-between;
+  margin-bottom: 140px;
 `;
 
 export const EachDayWrapper = styled.div``;
@@ -15,4 +16,30 @@ export const EachDayWrapper = styled.div``;
 export const Title = styled.h3`
   font-size: 2.4rem;
   line-height: 1.25;
+  margin-bottom: 40px;
+`;
+
+export const TempWrapper = styled.div`
+  display: flex;
+`;
+
+export const TempIcon = styled.div`
+  align-self: center;
+`;
+
+export const TempMin = styled.span`
+  font-size: 3.2rem;
+  font-weight: bold;
+  line-height: 1.25;
+`;
+export const TempMax = styled.span`
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.25;
+  align-self: flex-end;
+`;
+
+export const DegreesSign = styled.span`
+  font-size: 2rem;
+  align-self: flex-start;
 `;

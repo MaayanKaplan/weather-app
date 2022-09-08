@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as S from "./styles";
 import { MenuMobileProps } from "./types";
 import Switch from "../../../Common/Switch";
@@ -9,11 +8,11 @@ import {
 } from "../../../Common/Icon/Icon";
 
 import { useToggleTheme } from "../../../App";
+import { useTheme } from "styled-components/macro";
 
 const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
-  const [toggle, setToggle] = useState<boolean>(false);
-
   const { toggleTheme } = useToggleTheme();
+  const theme = useTheme();
 
   return (
     <>
@@ -25,6 +24,7 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
             onChange={toggleTheme}
+            checked={theme.mode === "light"}
           />
         </S.ChangeWrapper>
         <S.ChangeWrapper>
@@ -33,9 +33,8 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
             id={"temperature-id"}
             left={"F°"}
             right={"C°"}
-            onChange={() => {
-              setToggle(!toggle);
-            }}
+            onChange={() => {}}
+            checked={true}
           />
         </S.ChangeWrapper>
       </S.SwitchesContainer>
