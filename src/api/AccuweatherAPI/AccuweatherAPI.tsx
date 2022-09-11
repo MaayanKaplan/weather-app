@@ -52,7 +52,13 @@ export const get12HoursForecast = async (locationKey: number) => {
   if (!locationKey) return;
   try {
     const response = await accuweatherInstance.get(
-      `/forecasts/v1/hourly/12hour/${locationKey}?apikey=${apiKey}`
+      `/forecasts/v1/hourly/12hour/${locationKey}`,
+      {
+        params: {
+          apikey: apiKey,
+          details: true,
+        },
+      }
     );
     return response.data;
   } catch (error) {

@@ -6,7 +6,7 @@ export const Container = styled.div`
   gap: 100px;
   width: 100%;
   overflow-x: scroll;
-  margin-bottom: 156px;
+  margin-bottom: 56px;
 `;
 
 export const EachHourWrapper = styled.div`
@@ -34,7 +34,9 @@ export const TempSign = styled.span`
 
 export const IconWrapper = styled.div``;
 
-export const WindWrapper = styled.div``;
+export const WindWrapper = styled.div`
+  display: flex;
+`;
 
 export const WindIcon = styled.img``;
 
@@ -42,3 +44,14 @@ export const WindText = styled.p`
   font-size: 1.8rem;
   line-height: 1.5;
 `;
+
+export const ArrowWrapper = styled.div`
+  display: flex;
+  margin-bottom: 156px;
+  justify-content: end;
+  gap: 22px;
+`;
+
+export const LeftArrow = styled.img``;
+
+export const RightArrow = styled.img``;
