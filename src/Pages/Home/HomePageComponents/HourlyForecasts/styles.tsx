@@ -44,14 +44,3 @@ export const WindText = styled.p`
   font-size: 1.8rem;
   line-height: 1.5;
 `;
-
-export const ArrowWrapper = styled.div`
-  display: flex;
-  margin-bottom: 156px;
-  justify-content: end;
-  gap: 22px;
-`;
-
-export const LeftArrow = styled.img``;
-
-export const RightArrow = styled.img``;

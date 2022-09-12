@@ -21,10 +21,12 @@ export const Title = styled.h3`
 
 export const TempWrapper = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 export const TempIcon = styled.div`
   align-self: center;
+  margin-right: 4px;
 `;
 
 export const TempMin = styled.span`

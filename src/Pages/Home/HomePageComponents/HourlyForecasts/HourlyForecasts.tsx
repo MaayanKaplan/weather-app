@@ -10,9 +10,9 @@ import {
   IconSun,
   IconSunCloud,
 } from "../Icons/Icons";
-import WindIcon from "./Icons/arrow.svg";
-import LeftArrow from "./Icons/arrow-square-left.svg";
-import RightArrow from "./Icons/vuesax-linear-arrow-square-left.svg";
+import WindIcon from "./Icons/windIcon.svg";
+
+import Carousel from "../../../../Common/Carousel/Carousel";
 
 interface HourlyProps {
   locationKey: number;
@@ -34,8 +34,15 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
 
   return (
     <>
-      <S.Container>
-        {data?.map((item: any) => {
+      <Carousel show={3}>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        {/* {data?.map((item: any) => {
           return (
             <S.EachHourWrapper>
               <S.Hour>hello</S.Hour>
@@ -45,7 +52,9 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
                   switch (item.WeatherIcon) {
                     case 1: //Sunny
                       return <IconSun />;
-                    case "Storm":
+                    case 2: //Sunny
+                      return <IconSun />;
+                    case 15: //Storm
                       return <IconStorm />;
                     case 7: //Cloudy
                       return <IconCloud />;
@@ -70,12 +79,8 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
               </S.WindWrapper>
             </S.EachHourWrapper>
           );
-        })}
-      </S.Container>
-      <S.ArrowWrapper>
-        <S.LeftArrow src={LeftArrow} />
-        <S.RightArrow src={RightArrow} />
-      </S.ArrowWrapper>
+        })} */}
+      </Carousel>
     </>
   );
 };
