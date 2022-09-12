@@ -35,6 +35,6 @@ export const EmptyStateDescription = styled.p<Props>`
   line-height: 1.5;
   text-align: center;
   padding: 0 30px;
-
-  color: ${(props) => (props.modal ? "#444e72" : "#fff")};
+  color: #444e72;
+  /* color: ${(props) => (props.modal ? "#444e72" : "#fff")}; */
 `;

@@ -60,9 +60,7 @@ const App: React.FC = () => {
       setToken(false);
       navigate("/login");
     }
-  }, [isSuccess]);
-
-  console.log(token);
+  }, [isSuccess, navigate]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -15,7 +15,6 @@ export const Container = styled.div`
   transform: translate(-50%, -50%);
 
   @media ${deviceSize.mobile} {
-    /* top: unset; */
     top: 250px;
     transform: unset;
     left: 30px;
@@ -25,6 +24,7 @@ export const Container = styled.div`
     justify-content: center;
     padding-right: 30px;
     z-index: 1000;
+    background-color: #fcfcfc;
   }
 `;
 
