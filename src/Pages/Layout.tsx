@@ -23,9 +23,12 @@ const Layout = () => {
   const isMobile = useMedia();
 
   const navigate = useNavigate();
-  const { logout } = useAuthentication(() => {
+  const { logout } = useAuthentication();
+  const handleLogout = () => {
+    logout();
+    setIsLogoutPopUpOpen(false);
     navigate("/login");
-  });
+  };
 
   return (
     <>
@@ -55,7 +58,7 @@ const Layout = () => {
                    Are you sure you want to log out?"
             linkText="I want to stay"
             btnText="Yes, log out"
-            yesClick={logout}
+            yesClick={handleLogout}
             onClose={() => setIsLogoutPopUpOpen(false)}
           />
         </PopUp>

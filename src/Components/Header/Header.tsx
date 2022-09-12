@@ -30,9 +30,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const [isLogoutPopUpOpen, setIsLogoutPopUpOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const { logout } = useAuthentication(() => {
+  const { logout } = useAuthentication();
+  const handleLogout = () => {
+    logout();
+    setIsLogoutPopUpOpen(false);
     navigate("/login");
-  });
+  };
 
   const navBarItems: NavBarItem[] = [
     {
@@ -130,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             description="You about to log out from WeatherApp. Are you sure you want to log out?"
             linkText="I want to stay"
             btnText="Yes, log out"
-            yesClick={logout}
+            yesClick={handleLogout}
             onClose={() => setIsLogoutPopUpOpen(!isLogoutPopUpOpen)}
           />
         </PopUp>

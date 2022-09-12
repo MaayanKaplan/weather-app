@@ -30,19 +30,11 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
       staleTime: 600,
     }
   );
-  console.log(data);
 
   return (
     <>
-      <Carousel show={3}>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        {/* {data?.map((item: any) => {
+      <Carousel show={6}>
+        {data?.map((item: any) => {
           return (
             <S.EachHourWrapper>
               <S.Hour>hello</S.Hour>
@@ -79,7 +71,7 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
               </S.WindWrapper>
             </S.EachHourWrapper>
           );
-        })} */}
+        })}
       </Carousel>
     </>
   );

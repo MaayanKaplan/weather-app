@@ -43,17 +43,26 @@ export const useToggleTheme = () => {
 const App: React.FC = () => {
   const [token, setToken] = useState<boolean>(false);
   const [theme, setTheme] = useState(lightTheme);
-  const { isSuccess, data } = useQuery(["verifyToken"], verifyToken);
+
+  const { isSuccess } = useQuery(["verifyToken"], () => verifyToken(), {
+    cacheTime: 1000 * 60 * 15,
+    staleTime: 1000 * 60 * 15,
+  });
+
+  console.log(isSuccess);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isSuccess) setToken(true);
-    // else {
-    //   setToken(false);
-    //   // navigate("/login");
-    // }
+    if (isSuccess) {
+      setToken(true);
+    } else {
+      setToken(false);
+      navigate("/login");
+    }
   }, [isSuccess]);
+
+  console.log(token);
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,7 +80,12 @@ const App: React.FC = () => {
           <Clouds numClouds={15}></Clouds>
           <AuthenticationProvider>
             <Routes>
-              {!token && <Route path="/login" element={<LoginPage />} />}
+              {!token && (
+                <Route>
+                  <Route path="/login" element={<LoginPage />} />
+                </Route>
+              )}
+
               <Route element={<Layout />}>
                 <Route path="*" element={<Home />} />
                 <Route path="/favorites" element={<Favorites />} />

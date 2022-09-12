@@ -4,6 +4,7 @@ export const Container = styled.div``;
 
 export const ContentWrapper = styled.div`
   display: flex;
+  margin-bottom: 59px;
 `;
 
 export const ArrowWrapper = styled.div`
