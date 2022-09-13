@@ -2,18 +2,10 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import * as S from "./styles";
 import { get12HoursForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
-import { format } from "date-fns";
-import {
-  IconCloud,
-  IconRain,
-  IconStorm,
-  IconSnow,
-  IconSun,
-  IconSunCloud,
-} from "../Icons/Icons";
-import WindIcon from "./Icons/windIcon.svg";
+
 import LeftArrow from "./Icons/arrow-square-left.svg";
 import RightArrow from "./Icons/arrow-square-right.svg";
+import EachHourItem from "./EachHourItem/EachHourItem";
 
 interface HourlyProps {
   locationKey: number;
@@ -33,78 +25,49 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
   );
 
   // Carousel functionality
-  const [current, setCurrent] = useState<any>(0);
-  const length = data?.length;
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+
   const next = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    setActiveIndex(activeIndex === data.length - 1 ? 0 : activeIndex + 1);
   };
 
   const prev = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setActiveIndex(activeIndex === 0 ? data.length - 1 : activeIndex - 1);
   };
 
   if (!Array.isArray(data) || data.length <= 0) {
     return null;
   }
 
-  let settings = {
-    // draggable: false,
-    slideToShow: 6,
-    // autoplay: false,
-    // dots: true,
-    // lazyLoad: "ondemand",
-    // arrows: true,
+  console.log(data);
+
+  const ConvertTime = (date: Date) => {
+    const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+    const minutes =
+      date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+    return `${hour}:${minutes}`;
+  };
+
+  const setActiveIndexOnClick = (index: number) => {
+    setActiveIndex(index);
   };
 
   return (
     <>
-      <S.Carousel {...settings}>
-        <S.ContentWrapper
-        // style={{ transform: `translateX(-${current}%)` }}
-        >
+      <S.Carousel>
+        <S.ContentWrapper>
           {data?.map((item: any, index: number) => {
             return (
-              <div
-                className={index === current ? "slide active" : "slide"}
+              <EachHourItem
+                isActive={activeIndex === index}
+                index={index}
                 key={index}
-              >
-                {index === current && (
-                  <S.EachHourWrapper>
-                    <S.Hour>hello</S.Hour>
-                    <S.Temperature>{item.Temperature.Value}</S.Temperature>
-                    <S.IconWrapper>
-                      {(() => {
-                        switch (item.WeatherIcon) {
-                          case 1: //Sunny
-                            return <IconSun />;
-                          case 2: //Sunny
-                            return <IconSun />;
-                          case 15: //Storm
-                            return <IconStorm />;
-                          case 7: //Cloudy
-                            return <IconCloud />;
-                          case 18: //Rain
-                            return <IconRain />;
-                          case 22: //Snow
-                            return <IconSnow />;
-                          case 33: //Clear
-                            return <IconSun />;
-                          case 34: //Mostly Clear
-                            return <IconSunCloud />;
-                          default:
-                            return;
-                        }
-                      })()}
-                    </S.IconWrapper>
-                    <S.WindWrapper>
-                      <S.WindIcon src={WindIcon} />
-                      <S.WindText>
-                        {(item.Wind.Speed.Value * 1.6).toFixed(1)} km/h
-                      </S.WindText>
-                    </S.WindWrapper>
-                  </S.EachHourWrapper>
-                )}
-              </div>
+                hour={ConvertTime(new Date(item.DateTime))}
+                weatherIcon={item.WeatherIcon}
+                temperature={item.Temperature.Value}
+                windSpeed={(item.Wind.Speed.Value * 1.6).toFixed(1)}
+                onClick={setActiveIndexOnClick}
+              />
             );
           })}
         </S.ContentWrapper>
