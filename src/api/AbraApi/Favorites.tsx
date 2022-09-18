@@ -20,3 +20,21 @@ export const getFavorites = async (): Promise<Results> => {
   // console.log(response.data);
   return response.data;
 };
+
+export const addToFavorites = async (key: number, title: string) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    const response = await abraInstance.post(
+      "api/favorites/",
+      { key, title },
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token as string)}`,
+        },
+      }
+    );
+    return response;
+  }
+  return null;
+};

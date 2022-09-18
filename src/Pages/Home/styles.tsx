@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
 
 export const Container = styled.div`
-  padding: 0 0 399px;
+  padding: 0 0 85px;
   height: 100%;
   overflow-y: scroll;
 `;

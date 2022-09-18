@@ -5,7 +5,7 @@ const EmptyStateContainer: React.FC<Props> = ({
   title,
   description,
   img,
-  // dark,
+  textColor,
 }) => {
   return (
     <S.MainEmptyContainer>

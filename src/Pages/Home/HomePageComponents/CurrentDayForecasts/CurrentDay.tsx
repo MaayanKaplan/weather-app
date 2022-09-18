@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { CurrentDayProps } from "./types";
 import SunCloudImg from "../../../../Images/sun-cloud.svg";
 import { IconFavoritesDark } from "../../../../Common/Icon/Icon";
+import { addToFavorites } from "../../../../api/AbraApi/Favorites";
 
 import { useQuery } from "@tanstack/react-query";
 import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
@@ -46,7 +47,10 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
         </S.WeatherText>
         <S.Date>{format(today, `EEEE, dd-MMM-yyyy, h:maaa `)}</S.Date>
       </S.InfoWrapper>
-      <S.AddFavButton variant="white" onClick={() => {}}>
+      <S.AddFavButton
+        variant="white"
+        onClick={() => addToFavorites(locationKey, cityTitle)}
+      >
         <S.Wrapper>
           <IconFavoritesDark />
           Add to favorites

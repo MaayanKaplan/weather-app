@@ -68,6 +68,7 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
       )}
       {!isLoading && data && data.length === 0 && (
         <EmptyStateContainer
+          // textColor="dark"
           img={CityImg}
           description={`We couldn't find any city named "${searchValue}", please try again.`}
         />

@@ -16,7 +16,6 @@ export const getSearchAutoComplete = async (value: string) => {
       const response = await accuweatherInstance.get(
         `/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${value}`
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
