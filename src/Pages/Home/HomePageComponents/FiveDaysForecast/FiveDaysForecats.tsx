@@ -25,13 +25,15 @@ const FiveDaysForecast = ({ locationKey }: DailyProps) => {
   const series = [
     {
       name: "Days Temps",
-      show: false,
-      data: [28, 29, 33, 36, 32],
+      data: data?.DailyForecasts.map(
+        (item: any) => item.Temperature.Maximum.Value
+      ),
     },
     {
       name: "Nights Temps",
-      show: false,
-      data: [12, 11, 14, 18, 17],
+      data: data?.DailyForecasts.map(
+        (item: any) => item.Temperature.Minimum.Value
+      ),
     },
   ];
 
@@ -47,20 +49,12 @@ const FiveDaysForecast = ({ locationKey }: DailyProps) => {
       },
     },
     colors: ["#fff"],
-
-    // plotOptions: {
-    //   bar: {
-    //     dataLabels: {
-    //       position: "top",
-    //     },
-    //   },
-    // },
-
     dataLabels: {
-      formatter: function (value: any) {
-        return value + ` °`;
-      },
       enabled: true,
+      formatter: function (value: any) {
+        return value + `°`;
+      },
+
       offsetY: -10,
       style: {
         fontSize: "2rem",
@@ -68,7 +62,6 @@ const FiveDaysForecast = ({ locationKey }: DailyProps) => {
       },
       background: {
         enabled: false,
-        foreColor: "#fff",
         dropShadow: {
           enabled: false,
         },
@@ -77,18 +70,12 @@ const FiveDaysForecast = ({ locationKey }: DailyProps) => {
     stroke: {
       curve: "straight",
     },
-
     grid: {
       show: false,
     },
-    markers: {
-      size: 1,
-    },
-
     legend: {
       show: false,
     },
-
     xaxis: {
       categories: [1, 2, 3, 4, 5],
       labels: {
