@@ -1,9 +1,25 @@
+import { format, addDays } from "date-fns";
+
 export const ConvertTime = (date: Date) => {
   const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
   const minutes =
     date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
   return `${hour}:${minutes}`;
 };
+
+const today = new Date();
+const tomorrow = addDays(today, 1);
+const afterTomorrow = addDays(today, 2);
+const in3Days = addDays(today, 3);
+const in4Days = addDays(today, 4);
+
+export const nextDaysOfWeek = [
+  format(today, "EEE"),
+  format(tomorrow, "EEE"),
+  format(afterTomorrow, "EEE"),
+  format(in3Days, "EEE"),
+  format(in4Days, "EEE"),
+];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

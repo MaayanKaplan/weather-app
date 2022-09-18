@@ -2,8 +2,8 @@ import * as S from "./styles";
 import { DailyProps } from "./types";
 import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import { useQuery } from "@tanstack/react-query";
-import { format, addDays } from "date-fns";
 import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
+import { nextDaysOfWeek } from "../../../../Utils/TimeConverter";
 
 const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
   const { data } = useQuery(
@@ -18,28 +18,15 @@ const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
     }
   );
 
-  const today = new Date();
-  const tomorrow = addDays(today, 1);
-  const afterTomorrow = addDays(today, 2);
-  const in3Days = addDays(today, 3);
-  const in4Days = addDays(today, 4);
-
-  const nextDaysOfWeek = [
-    format(tomorrow, "EEE"),
-    format(afterTomorrow, "EEE"),
-    format(in3Days, "EEE"),
-    format(in4Days, "EEE"),
-  ];
-
   const fourDaysView = data?.DailyForecasts.slice(1, 5);
 
   return (
     <S.Container>
-      {fourDaysView?.map((item: any) => {
+      {fourDaysView?.map((item: any, index: number) => {
         return (
-          <S.EachDayWrapper>
+          <S.EachDayWrapper key={index}>
             <S.Title>
-              {nextDaysOfWeek[fourDaysView.indexOf(item)]}
+              {nextDaysOfWeek[fourDaysView.indexOf(item) + 1]}
               {" - "}
               {item.Day.IconPhrase}
             </S.Title>
