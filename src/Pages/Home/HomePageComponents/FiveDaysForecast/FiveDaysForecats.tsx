@@ -1,14 +1,14 @@
 import * as S from "./styles";
 import { DailyProps } from "./types";
 import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 import { useQuery } from "@tanstack/react-query";
 import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import IconSun from "./Icons/sun-flat.svg";
 import IconMoon from "./Icons/moon-flat.svg";
-import { nextDaysOfWeek } from "../../../../Utils/TimeConverter";
+import { nextDaysOfWeek, ConvertDate } from "../../../../Utils/TimeConverter";
 
-// const FiveDaysForecast = ({ locationKey }: DailyProps) => {
-const FiveDaysForecast = ({ locationKey }) => {
+const FiveDaysForecast = ({ locationKey }: DailyProps) => {
   const { data } = useQuery(
     [locationKey],
     async () => {
@@ -25,15 +25,17 @@ const FiveDaysForecast = ({ locationKey }) => {
   const series = [
     {
       name: "Days Temps",
+      show: false,
       data: [28, 29, 33, 36, 32],
     },
     {
       name: "Nights Temps",
+      show: false,
       data: [12, 11, 14, 18, 17],
     },
   ];
 
-  const options = {
+  const options: ApexOptions = {
     chart: {
       height: 350,
       type: "line",
@@ -45,8 +47,32 @@ const FiveDaysForecast = ({ locationKey }) => {
       },
     },
     colors: ["#fff"],
+
+    // plotOptions: {
+    //   bar: {
+    //     dataLabels: {
+    //       position: "top",
+    //     },
+    //   },
+    // },
+
     dataLabels: {
+      formatter: function (value: any) {
+        return value + ` °`;
+      },
       enabled: true,
+      offsetY: -10,
+      style: {
+        fontSize: "2rem",
+        fontWeight: "500",
+      },
+      background: {
+        enabled: false,
+        foreColor: "#fff",
+        dropShadow: {
+          enabled: false,
+        },
+      },
     },
     stroke: {
       curve: "straight",
@@ -60,25 +86,24 @@ const FiveDaysForecast = ({ locationKey }) => {
     },
 
     legend: {
-      show: true,
+      show: false,
     },
 
-    // xaxis: {
-    //   categories: [1, 2, 3, 4, 5],
-
-    // labels: {
-    //   show: false,
-    // },
-    //   axisBorder: {
-    //     show: false,
-    //   },
-    //   axisTicks: {
-    //     show: false,
-    //   },
-    // },
-    // yaxis: {
-    //   show: false,
-    // }
+    xaxis: {
+      categories: [1, 2, 3, 4, 5],
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: false,
+    },
   };
 
   return (
@@ -86,14 +111,13 @@ const FiveDaysForecast = ({ locationKey }) => {
       <S.Title>5-days forecast</S.Title>
       <S.Container>
         <S.ContentWrapper>
-          {/* {data?.DailyForecasts.map((item: any, index: number) => { */}
-          {data?.DailyForecasts.map((item, index) => {
+          {data?.DailyForecasts.map((item: any, index: number) => {
             return (
               <S.EachDayWrapper key={index}>
                 <S.Day>
                   {nextDaysOfWeek[data.DailyForecasts.indexOf(item)]}
                 </S.Day>
-                <S.Date></S.Date>
+                <S.Date>{ConvertDate(new Date(item.Date))}</S.Date>
                 <S.Icon src={IconSun} />
               </S.EachDayWrapper>
             );
@@ -101,16 +125,15 @@ const FiveDaysForecast = ({ locationKey }) => {
         </S.ContentWrapper>
         <S.ChartWrapper>
           <ReactApexChart
+            type="line"
             options={options}
             series={series}
-            type="line"
             height={350}
           />
         </S.ChartWrapper>
 
         <S.IconsWrapper>
-          {/* {data?.DailyForecasts.map((item: any, index: number) => { */}
-          {data?.DailyForecasts.map((item, index) => {
+          {data?.DailyForecasts.map((item: any, index: number) => {
             return <S.Icon key={index} src={IconMoon} />;
           })}
         </S.IconsWrapper>

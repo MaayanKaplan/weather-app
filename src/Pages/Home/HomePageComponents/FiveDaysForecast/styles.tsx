@@ -36,9 +36,14 @@ export const Day = styled.span`
   font-weight: 500;
   line-height: 1.25;
   text-align: center;
+  margin-bottom: 6px;
 `;
 
-export const Date = styled.span``;
+export const Date = styled.span`
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+`;
 
 export const Icon = styled.img``;
 

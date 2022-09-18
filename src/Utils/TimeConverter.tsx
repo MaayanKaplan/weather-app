@@ -7,6 +7,9 @@ export const ConvertTime = (date: Date) => {
   return `${hour}:${minutes}`;
 };
 
+export const ConvertDate = (date: Date) =>
+  `${date.getDate()}.${date.getMonth()}`;
+
 const today = new Date();
 const tomorrow = addDays(today, 1);
 const afterTomorrow = addDays(today, 2);
@@ -36,22 +39,19 @@ export const DayNames = [
   "Friday",
   "Saturday",
 ];
-export const ConvertDate = () => {
-  const currentDate = new Date();
-  const day = currentDate.getDate();
-  const dayWeek = currentDate.getDay();
-  const x = currentDate.toDateString().substr(4, 3);
-  const year = currentDate.getFullYear();
-  const hours = currentDate.getHours();
-  let minutes: string | number = currentDate.getMinutes();
-  const ampm = hours >= 12 ? "pm" : "am";
-  minutes = minutes < 10 ? `0${minutes}` : minutes;
-  const strTime = `${hours}:${minutes}${ampm}`;
-  return `${DayNames[dayWeek]}, ${day}-${x}-${year}, ${strTime}`;
-};
-
-export const CovertOnlyDate = (date: Date) =>
-  `${date.getDate()}.${date.getMonth()}`;
+// export const ConvertDate = () => {
+//   const currentDate = new Date();
+//   const day = currentDate.getDate();
+//   const dayWeek = currentDate.getDay();
+//   const x = currentDate.toDateString().substr(4, 3);
+//   const year = currentDate.getFullYear();
+//   const hours = currentDate.getHours();
+//   let minutes: string | number = currentDate.getMinutes();
+//   const ampm = hours >= 12 ? "pm" : "am";
+//   minutes = minutes < 10 ? `0${minutes}` : minutes;
+//   const strTime = `${hours}:${minutes}${ampm}`;
+//   return `${DayNames[dayWeek]}, ${day}-${x}-${year}, ${strTime}`;
+// };
 
 export const ConvertDayOfWeek = (date: Date) =>
   DayNames[date.getDay()].slice(0, 3);
