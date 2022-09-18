@@ -2,4 +2,4 @@ export const ACUUWEATHER_BASE_URL = "http://dataservice.accuweather.com/";
 
 export const ABRA_SERVER_URL = "http://weather-abra.herokuapp.com/";
 
-export const apiKey = "cCMQdepaiUHx0RKQPIw9eLEGWdU9I4kq";
+export const apiKey = "QdW8oHMOfjAR0FDwAqE59cHLnV73d8qO";

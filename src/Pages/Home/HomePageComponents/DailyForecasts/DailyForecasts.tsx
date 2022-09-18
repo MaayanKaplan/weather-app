@@ -3,14 +3,7 @@ import { DailyProps } from "./types";
 import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import { useQuery } from "@tanstack/react-query";
 import { format, addDays } from "date-fns";
-import {
-  IconCloud,
-  IconRain,
-  IconStorm,
-  IconSnow,
-  IconSun,
-  IconSunCloud,
-} from "../Icons/Icons";
+import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 
 const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
   const { data } = useQuery(
@@ -51,22 +44,7 @@ const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
               {item.Day.IconPhrase}
             </S.Title>
             <S.TempWrapper>
-              <S.TempIcon>
-                {" "}
-                {(() => {
-                  switch (item.Day.IconPhrase) {
-                    case "Sunny":
-                      return <IconSun />;
-                    case "Storm":
-                      return <IconStorm />;
-                    case "Cloudy":
-                      return <IconCloud />;
-                    default:
-                      return;
-                  }
-                })()}
-              </S.TempIcon>
-
+              <S.TempIcon> {WeatherIcons(item.Day.Icon)}</S.TempIcon>
               <S.TempMin>{item.Temperature.Minimum.Value}</S.TempMin>
               <S.DegreesSign>°</S.DegreesSign>
               <S.TempMax>-{item.Temperature.Maximum.Value}</S.TempMax>

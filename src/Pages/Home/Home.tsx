@@ -49,7 +49,7 @@ const Home = () => {
           />
           <DailyForecasts locationKey={locationKey?.Key} />
           <HourlyForecasts locationKey={locationKey?.Key} />
-          <FiveDaysForecast />
+          <FiveDaysForecast locationKey={locationKey?.Key} />
         </S.DataContainer>
       )}
     </S.Container>

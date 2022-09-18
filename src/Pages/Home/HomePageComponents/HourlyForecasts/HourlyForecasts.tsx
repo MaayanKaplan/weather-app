@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import * as S from "./styles";
 import { get12HoursForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
-
+import { ConvertTime } from "../../../../Utils/TimeConverter";
 import LeftArrow from "./Icons/arrow-square-left.svg";
 import RightArrow from "./Icons/arrow-square-right.svg";
 import EachHourItem from "./EachHourItem/EachHourItem";
@@ -38,15 +38,6 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
   if (!Array.isArray(data) || data.length <= 0) {
     return null;
   }
-
-  console.log(data);
-
-  const ConvertTime = (date: Date) => {
-    const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
-    const minutes =
-      date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
-    return `${hour}:${minutes}`;
-  };
 
   const setActiveIndexOnClick = (index: number) => {
     setActiveIndex(index);

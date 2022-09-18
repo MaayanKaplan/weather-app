@@ -25,7 +25,7 @@ export const TempWrapper = styled.div`
 `;
 
 export const TempIcon = styled.div`
-  align-self: center;
+  /* align-self: center; */
   margin-right: 4px;
 `;
 
