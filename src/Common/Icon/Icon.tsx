@@ -16,6 +16,7 @@ import { ReactComponent as IconHomeOutline } from "./Icons/home-outline.svg";
 import { ReactComponent as IconLayout } from "./Icons/layout.svg";
 import { ReactComponent as IconMapWeather } from "./Icons/map-weather.svg";
 import { ReactComponent as IconMap } from "./Icons/map.svg";
+import { ReactComponent as IconMapDark } from "./Icons/map-dark.svg";
 import { ReactComponent as IconMenu } from "./Icons/menu.svg";
 import { ReactComponent as IconDarkMoon } from "./Icons/moon-dark.svg";
 import { ReactComponent as IconWhiteMoon } from "./Icons/moon-white.svg";
@@ -60,6 +61,7 @@ export {
   IconLayout,
   IconMapWeather,
   IconMap,
+  IconMapDark,
   IconMenu,
   IconDarkMoon,
   IconWhiteMoon,

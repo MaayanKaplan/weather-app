@@ -24,19 +24,21 @@ const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
     <S.Container>
       {fourDaysView?.map((item: any, index: number) => {
         return (
-          <S.EachDayWrapper key={index}>
-            <S.Title>
-              {nextDaysOfWeek[fourDaysView.indexOf(item) + 1]}
-              {" - "}
-              {item.Day.IconPhrase}
-            </S.Title>
-            <S.TempWrapper>
-              <S.TempIcon> {WeatherIcons(item.Day.Icon)}</S.TempIcon>
-              <S.TempMin>{item.Temperature.Minimum.Value}</S.TempMin>
-              <S.DegreesSign>°</S.DegreesSign>
-              <S.TempMax>-{item.Temperature.Maximum.Value}</S.TempMax>
-            </S.TempWrapper>
-          </S.EachDayWrapper>
+          <>
+            <S.EachDayWrapper key={index}>
+              <S.Title>
+                {nextDaysOfWeek[fourDaysView.indexOf(item) + 1]}
+                {" - "}
+                {item.Day.IconPhrase}
+              </S.Title>
+              <S.TempWrapper>
+                <S.TempIcon> {WeatherIcons(item.Day.Icon)}</S.TempIcon>
+                <S.TempMin>{item.Temperature.Minimum.Value}</S.TempMin>
+                <S.DegreesSign>°</S.DegreesSign>
+                <S.TempMax>-{item.Temperature.Maximum.Value}</S.TempMax>
+              </S.TempWrapper>
+            </S.EachDayWrapper>
+          </>
         );
       })}
     </S.Container>

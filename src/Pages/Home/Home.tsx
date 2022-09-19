@@ -12,6 +12,9 @@ import DailyForecasts from "./HomePageComponents/DailyForecasts/DailyForecasts";
 import HourlyForecasts from "./HomePageComponents/HourlyForecasts/HourlyForecasts";
 import FiveDaysForecast from "./HomePageComponents/FiveDaysForecast/FiveDaysForecats";
 
+import { useMedia } from "../../hooks/useMedia";
+import { IconMapDark } from "../../Common/Icon/Icon";
+
 const Home = () => {
   const { latitude, longitude, error, loading } = useGeoLocation();
 
@@ -23,6 +26,8 @@ const Home = () => {
       staleTime: 600,
     }
   );
+
+  const isMobile = useMedia();
 
   return (
     <S.Container>
@@ -48,8 +53,24 @@ const Home = () => {
             locationKey={locationKey?.Key}
           />
           <DailyForecasts locationKey={locationKey?.Key} />
+          {isMobile && (
+            <S.FiveDaysForecastButton variant="ghost" onClick={() => {}}>
+              5 Days Forecast
+            </S.FiveDaysForecastButton>
+          )}
           <HourlyForecasts locationKey={locationKey?.Key} />
-          <FiveDaysForecast locationKey={locationKey?.Key} />
+
+          {!isMobile && <FiveDaysForecast locationKey={locationKey?.Key} />}
+          {isMobile && (
+            <S.MapButton variant="white" onClick={() => {}}>
+              <S.BtnContentWrapper>
+                <S.BtnIconWrapper>
+                  <IconMapDark />
+                </S.BtnIconWrapper>
+                <S.BtnText>Map</S.BtnText>
+              </S.BtnContentWrapper>
+            </S.MapButton>
+          )}
         </S.DataContainer>
       )}
     </S.Container>

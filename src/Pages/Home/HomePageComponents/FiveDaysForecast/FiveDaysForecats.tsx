@@ -91,6 +91,18 @@ const FiveDaysForecast = ({ locationKey }: DailyProps) => {
     yaxis: {
       show: false,
     },
+    markers: {
+      size: [5, 5],
+      colors: undefined,
+      strokeColors: "#fff",
+      strokeWidth: 2,
+      strokeOpacity: 0.9,
+      strokeDashArray: 0,
+      fillOpacity: 1,
+      discrete: [],
+
+      radius: 2,
+    },
   };
 
   return (

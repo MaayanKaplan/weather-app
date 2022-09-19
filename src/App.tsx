@@ -49,18 +49,19 @@ const App: React.FC = () => {
     staleTime: 1000 * 60 * 15,
   });
 
-  console.log(isSuccess);
-
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isSuccess) {
-      setToken(true);
-    } else {
-      setToken(false);
-      // navigate("/login");
-    }
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     setToken(true);
+  //   } else {
+  //     setTimeout(() => {
+  //       setToken(false);
+  //     }, 1500);
+
+  //     // navigate("/login");
+  //   }
+  // }, [isSuccess, navigate]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -68,7 +69,6 @@ const App: React.FC = () => {
         value={{
           toggleTheme: () =>
             setTheme((theme) => {
-              console.log(theme);
               return theme.mode === ThemesMode.light ? darkTheme : lightTheme;
             }),
         }}
@@ -78,12 +78,11 @@ const App: React.FC = () => {
           <Clouds numClouds={15}></Clouds>
           <AuthenticationProvider>
             <Routes>
-              {!token && (
+              {!isSuccess && (
                 <Route>
                   <Route path="/login" element={<LoginPage />} />
                 </Route>
               )}
-
               <Route element={<Layout />}>
                 <Route path="*" element={<Home />} />
                 <Route path="/favorites" element={<Favorites />} />

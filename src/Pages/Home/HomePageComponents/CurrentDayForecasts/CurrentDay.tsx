@@ -60,10 +60,10 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
         <S.Date>{format(today, `EEEE, dd-MMM-yyyy, h:maaa `)}</S.Date>
       </S.InfoWrapper>
       <S.AddFavButton variant="white" onClick={() => addToFavoritesSuccess()}>
-        <S.Wrapper>
+        <S.BtnIconWrapper>
           <IconFavoritesDark />
           Add to favorites
-        </S.Wrapper>
+        </S.BtnIconWrapper>
       </S.AddFavButton>
 
       {isAddToFavorites && (

@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import deviceSize from "../../../../Utils/deviceSize";
 
 export const Carousel = styled.div``;
 
@@ -9,6 +10,11 @@ export const ContentWrapper = styled.div`
   margin-bottom: 59px;
   width: 100%;
   overflow-x: scroll;
+
+  @media ${deviceSize.mobile} {
+    gap: 11px;
+    margin: 0 30px 60px 30px;
+  }
 `;
 
 export const ArrowWrapper = styled.div`
@@ -16,6 +22,10 @@ export const ArrowWrapper = styled.div`
   margin-bottom: 156px;
   justify-content: end;
   gap: 22px;
+
+  @media ${deviceSize.mobile} {
+    display: none;
+  }
 `;
 
 export const LeftArrow = styled.img`
