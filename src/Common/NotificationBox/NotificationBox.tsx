@@ -7,9 +7,10 @@ import IconError from "./Icons/info-circle.svg";
 const NotificationBox: React.FC<NotificationProps> = ({
   severity,
   children,
+  className,
 }) => {
   return (
-    <S.NotificationBoxWrapper severity={severity}>
+    <S.NotificationBoxWrapper className={className} severity={severity}>
       {severity === "success" ? (
         <S.Icon src={IconSuccess} />
       ) : (

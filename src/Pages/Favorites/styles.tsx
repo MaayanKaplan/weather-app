@@ -76,6 +76,7 @@ export const CountryName = styled.h3`
 export const Icon = styled.img`
   width: 40px;
   height: 40px;
+  cursor: pointer;
 `;
 
 export const Separator = styled.div`

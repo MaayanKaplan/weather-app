@@ -36,7 +36,7 @@ const Favorites = () => {
       />
     );
 
-  console.log(data?.results);
+  console.log(data?.results[0].city);
 
   return (
     <S.MainContainer>
@@ -51,23 +51,25 @@ const Favorites = () => {
       <S.FavoritesWrapper>
         {data?.results && (
           <>
-            <S.Favorite>
-              {data.results.map((item: any) => {
-                return (
-                  <S.FavoriteContainer>
-                    <S.EachCityWrapper>
-                      <S.CityName>{item.city}</S.CityName>
-                      <S.CountryName>{item.country}</S.CountryName>
-                    </S.EachCityWrapper>
-                    <S.Icon
-                      onClick={() => setIsRemoveFromFavoritesOpen(true)}
-                      src={IconFavoritesFull}
-                    />
-                  </S.FavoriteContainer>
-                );
-              })}
-            </S.Favorite>
-            <S.Separator />
+            {data.results.map((item: any) => {
+              return (
+                <>
+                  <S.Favorite>
+                    <S.FavoriteContainer>
+                      <S.EachCityWrapper>
+                        <S.CityName>{item.city}</S.CityName>
+                        <S.CountryName>{item.country}</S.CountryName>
+                      </S.EachCityWrapper>
+                      <S.Icon
+                        onClick={() => setIsRemoveFromFavoritesOpen(true)}
+                        src={IconFavoritesFull}
+                      />
+                    </S.FavoriteContainer>
+                  </S.Favorite>
+                  <S.Separator />
+                </>
+              );
+            })}
           </>
         )}
       </S.FavoritesWrapper>
@@ -80,7 +82,7 @@ const Favorites = () => {
           setIsOpen={setIsRemoveFromFavoritesOpen}
         >
           <QuestionPopUp
-            description="Are you sure you want to remove Tel aviv Jaffo  from favorites list?"
+            description={`Are you sure you want to remove ${data?.results[0].city}  from favorites list?`}
             linkText="Keep it"
             btnText="Yes, remove"
             onClose={() => setIsRemoveFromFavoritesOpen(false)}

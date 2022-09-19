@@ -6,6 +6,8 @@ const successStyle = () => {
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.16);
   color: #fff
+  font-size: 2rem;
+  font-weight: 300;
   `;
 };
 
@@ -13,6 +15,7 @@ const errorStyle = () => {
   return `
   background-color: #ffe7e7;
   color: #4d4d4d;
+  font-size: 1.4rem;
   `;
 };
 
@@ -29,7 +32,7 @@ export const NotificationBoxWrapper = styled.div<NotificationProps>`
   margin-bottom: 32px;
 
   ${(props) => {
-    if (props.security === "success") {
+    if (props.severity === "success") {
       return successStyle();
     } else {
       return errorStyle();
@@ -43,6 +46,5 @@ export const Icon = styled.img`
 `;
 
 export const StyledDescription = styled.p`
-  font-size: 1.4rem;
   line-height: 1.25;
 `;

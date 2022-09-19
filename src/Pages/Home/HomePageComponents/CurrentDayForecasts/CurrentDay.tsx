@@ -1,3 +1,4 @@
+import * as React from "react";
 import * as S from "./styles";
 import { CurrentDayProps } from "./types";
 import SunCloudImg from "../../../../Images/sun-cloud.svg";
@@ -9,6 +10,17 @@ import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI"
 import { format } from "date-fns";
 
 const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
+  const [isAddToFavorites, setIsAddToFavorites] =
+    React.useState<boolean>(false);
+
+  const addToFavoritesSuccess = () => {
+    addToFavorites(locationKey, cityTitle);
+    setIsAddToFavorites(true);
+    setTimeout(() => {
+      setIsAddToFavorites(false);
+    }, 1500);
+  };
+
   const { data } = useQuery(
     [locationKey],
     () => getDailyForecast(locationKey),
@@ -47,15 +59,18 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
         </S.WeatherText>
         <S.Date>{format(today, `EEEE, dd-MMM-yyyy, h:maaa `)}</S.Date>
       </S.InfoWrapper>
-      <S.AddFavButton
-        variant="white"
-        onClick={() => addToFavorites(locationKey, cityTitle)}
-      >
+      <S.AddFavButton variant="white" onClick={() => addToFavoritesSuccess()}>
         <S.Wrapper>
           <IconFavoritesDark />
           Add to favorites
         </S.Wrapper>
       </S.AddFavButton>
+
+      {isAddToFavorites && (
+        <S.AddFavNotification severity={"success"}>
+          {cityTitle} has added to favorites
+        </S.AddFavNotification>
+      )}
     </S.CurrentDayContainer>
   );
 };

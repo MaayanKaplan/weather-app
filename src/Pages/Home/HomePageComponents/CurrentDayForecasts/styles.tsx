@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import Button from "../../../../Common/Button/Button";
+import NotificationBox from "../../../../Common/NotificationBox/NotificationBox";
 
 export const CurrentDayContainer = styled.div`
   color: #fff;
@@ -75,4 +76,20 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+`;
+
+export const AddFavNotification = styled(NotificationBox)`
+  position: absolute;
+  top: 600px;
+  /* left: auto;
+  right: auto; */
+  display: flex;
+  align-self: center;
+  margin: 0 auto;
+  /* margin-top: 80px; */
+  /* margin: 80px auto 0 auto; */
+  width: 434px;
+  height: 86px;
+  font-size: 2rem;
+  font-weight: 300;
 `;
