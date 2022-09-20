@@ -10,7 +10,7 @@ import { IconSearchWhite } from "../../Common/Icon/Icon";
 import IconFavoritesFull from "../../Common/Icon/Icons/fav-full.svg";
 import EmptyStateImg from "../../Images/stars.svg";
 
-import { getFavorites } from "../../api/AbraApi/Favorites";
+import { getFavorites } from "../../api/AbraApi/getFavorites";
 
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
@@ -36,7 +36,7 @@ const Favorites = () => {
       />
     );
 
-  console.log(data?.results[0].city);
+  console.log(data?.results);
 
   return (
     <S.MainContainer>
