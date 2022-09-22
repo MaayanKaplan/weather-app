@@ -22,19 +22,25 @@ export const getFavorites = async (): Promise<Results> => {
       Authorization: `Bearer ${JSON.parse(token as string)}`,
     },
   });
-  // console.log(response.data);
   return response.data;
 };
 
 interface CityData {
   key: number;
   title: string;
+  city: string;
+  country: string;
 }
 
 export const useAddAndRemoveFavorites = () => {
   const queryClient = useQueryClient();
 
-  const addToFavorites = async (key: number, title: string) => {
+  const addToFavorites = async (
+    key: number,
+    title: string,
+    city: string,
+    country: string
+  ) => {
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -54,7 +60,7 @@ export const useAddAndRemoveFavorites = () => {
 
   const { mutate, isSuccess } = useMutation(
     (data: CityData) => {
-      return addToFavorites(data.key, data.title);
+      return addToFavorites(data.key, data.title, data.city, data.country);
     },
     {
       onSuccess: () => {

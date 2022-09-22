@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import * as S from "./styles";
 import { ModalProps } from "./types";
@@ -9,6 +8,7 @@ import CityImg from "../../../Images/city.svg";
 import { TailSpin } from "react-loader-spinner";
 
 import { useDebounce } from "../../../hooks/useDebounce";
+import { useNavigate } from "react-router-dom";
 
 export interface City {
   Key: string;
@@ -23,7 +23,8 @@ export interface DefaultTheme {
   primary: string;
 }
 
-const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
+const SearchModal: React.FC<ModalProps> = ({ searchValue, onClose }) => {
+  const navigate = useNavigate();
   const debouncedSearch = useDebounce(searchValue, 300);
   const client = useQueryClient();
 
@@ -41,9 +42,15 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
       staleTime: 6000,
     }
   );
-  if (!isOpen) return null;
 
-  return ReactDOM.createPortal(
+  // navigates to home page
+  const handleSelect = (key: string, cityName: string) => {
+    navigate(`/${key}/${cityName}`);
+    onClose();
+  };
+
+  // return ReactDOM.createPortal(
+  return (
     <S.Container>
       {isLoading && (
         <S.LoadingContainer>
@@ -59,10 +66,15 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
       {data && data.length > 0 && (
         <S.List>
           {data.map((city: City) => (
-            <S.ListItem key={city.Key}>
-              <S.City>{city.LocalizedName}, </S.City>
-              <S.Country>{city.Country.LocalizedName}</S.Country>
-            </S.ListItem>
+            <S.ItemWrapper>
+              <S.ListItem
+                key={city.Key}
+                onClick={() => handleSelect(city.Key, city.LocalizedName)}
+              >
+                <S.City>{city.LocalizedName}, </S.City>
+                <S.Country>{city.Country.LocalizedName}</S.Country>
+              </S.ListItem>
+            </S.ItemWrapper>
           ))}
         </S.List>
       )}
@@ -73,8 +85,7 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, isOpen }) => {
           description={`We couldn't find any city named "${searchValue}", please try again.`}
         />
       )}
-    </S.Container>,
-    document.getElementById("portal") as HTMLElement
+    </S.Container>
   );
 };
 

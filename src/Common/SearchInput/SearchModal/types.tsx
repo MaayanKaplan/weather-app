@@ -1,4 +1,6 @@
+import { Dispatch } from "react";
+
 export interface ModalProps {
   searchValue: string;
-  isOpen: boolean;
+  onClose: Dispatch<void>;
 }

@@ -1,4 +1,4 @@
 export interface CurrentDayProps {
-  cityTitle: string;
+  cityTitle: string | any;
   locationKey: number;
 }

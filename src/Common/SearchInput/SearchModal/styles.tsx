@@ -29,7 +29,7 @@ export const Container = styled.div`
 `;
 
 export const List = styled.ul`
-  padding: 24px 36px;
+  padding: 24px 0;
   list-style: none;
   height: 324px;
   overflow-y: scroll;
@@ -39,8 +39,18 @@ export const List = styled.ul`
   gap: 24px;
 `;
 
+export const ItemWrapper = styled.div`
+  cursor: pointer;
+
+  :hover {
+    background-color: #f2f2f2;
+    padding: 12px 0;
+  }
+`;
+
 export const ListItem = styled.li`
-  /* margin-bottom: 24px; */
+  padding: 0 36px;
+  height: 30px;
 `;
 
 export const City = styled.span`

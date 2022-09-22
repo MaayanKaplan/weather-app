@@ -11,12 +11,15 @@ import CurrentDayContainer from "./HomePageComponents/CurrentDayForecasts/Curren
 import DailyForecasts from "./HomePageComponents/DailyForecasts/DailyForecasts";
 import HourlyForecasts from "./HomePageComponents/HourlyForecasts/HourlyForecasts";
 import FiveDaysForecast from "./HomePageComponents/FiveDaysForecast/FiveDaysForecats";
+import { useParams } from "react-router-dom";
 
 import { useMedia } from "../../hooks/useMedia";
 import { IconMapDark } from "../../Common/Icon/Icon";
 
 const Home = () => {
   const { latitude, longitude, error, loading } = useGeoLocation();
+  const params = useParams();
+  console.log(params);
 
   const { data: locationKey } = useQuery(
     [latitude, longitude],
@@ -26,6 +29,8 @@ const Home = () => {
       staleTime: 600,
     }
   );
+
+  // use data from the geo location and use it in enabled next query with !!(turns it to boolean)
 
   const isMobile = useMedia();
 
@@ -41,11 +46,38 @@ const Home = () => {
           />
         </S.ErrorWrapper>
       )}
-      {loading ? (
+      {loading && (
         <S.LoadingContainer>
           <TailSpin width="80" height="80" color="#fff" />
           <S.LoadingText>Loading...</S.LoadingText>
         </S.LoadingContainer>
+      )}
+      {params.locationKey ? (
+        <S.DataContainer>
+          <CurrentDayContainer
+            cityTitle={params?.cityName}
+            locationKey={+params?.locationKey}
+          />
+          <DailyForecasts locationKey={+params?.locationKey} />
+          {isMobile && (
+            <S.FiveDaysForecastButton variant="ghost" onClick={() => {}}>
+              5 Days Forecast
+            </S.FiveDaysForecastButton>
+          )}
+          <HourlyForecasts locationKey={+params?.locationKey} />
+
+          {!isMobile && <FiveDaysForecast locationKey={+params?.locationKey} />}
+          {isMobile && (
+            <S.MapButton variant="white" onClick={() => {}}>
+              <S.BtnContentWrapper>
+                <S.BtnIconWrapper>
+                  <IconMapDark />
+                </S.BtnIconWrapper>
+                <S.BtnText>Map</S.BtnText>
+              </S.BtnContentWrapper>
+            </S.MapButton>
+          )}
+        </S.DataContainer>
       ) : (
         <S.DataContainer>
           <CurrentDayContainer

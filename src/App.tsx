@@ -44,24 +44,28 @@ const App: React.FC = () => {
   const [token, setToken] = useState<boolean>(false);
   const [theme, setTheme] = useState(lightTheme);
 
-  const { isSuccess } = useQuery(["verifyToken"], () => verifyToken(), {
-    cacheTime: 1000 * 60 * 15,
-    staleTime: 1000 * 60 * 15,
-  });
+  const { isSuccess, isLoading, isFetching } = useQuery(
+    ["verifyToken"],
+    () => verifyToken(),
+    {
+      cacheTime: 1000 * 60 * 15,
+      staleTime: 1000 * 60 * 15,
+    }
+  );
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setToken(true);
-  //   } else {
-  //     setTimeout(() => {
-  //       setToken(false);
-  //     }, 1500);
+  useEffect(() => {
+    if (isSuccess) {
+      setToken(true);
+    } else {
+      setTimeout(() => {
+        setToken(false);
+      }, 1500);
 
-  //     // navigate("/login");
-  //   }
-  // }, [isSuccess, navigate]);
+      // navigate("/login");
+    }
+  }, [isSuccess, navigate]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,13 +82,14 @@ const App: React.FC = () => {
           <Clouds numClouds={15}></Clouds>
           <AuthenticationProvider>
             <Routes>
-              {!isSuccess && (
+              {!token && (
                 <Route>
                   <Route path="/login" element={<LoginPage />} />
                 </Route>
               )}
               <Route element={<Layout />}>
-                <Route path="*" element={<Home />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/:locationKey/:cityName" element={<Home />} />
                 <Route path="/favorites" element={<Favorites />} />
               </Route>
             </Routes>

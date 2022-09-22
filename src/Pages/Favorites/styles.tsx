@@ -1,9 +1,10 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
-import PopUp from "../../Common/PopUp/PopUp";
+import NotificationBox from "../../Common/NotificationBox/NotificationBox";
 
 export const MainContainer = styled.div`
   height: 100vh;
+  overflow-x: scroll;
 `;
 
 export const TitleWrapper = styled.div`
@@ -36,6 +37,7 @@ export const StyledTitle = styled.h1`
 
 export const FavoritesWrapper = styled.div`
   margin-top: 65px;
+  height: 500px;
 `;
 
 export const Favorite = styled.div``;
@@ -94,4 +96,16 @@ export const Separator = styled.div`
   @media ${deviceSize.mobile} {
     margin: 16px 0;
   }
+`;
+
+export const RemoveFavNotification = styled(NotificationBox)`
+  color: #fff;
+  position: absolute;
+  bottom: 54px;
+  display: flex;
+  align-self: center;
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 493px;
 `;
