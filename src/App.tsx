@@ -5,12 +5,13 @@ import styled, { ThemeProvider } from "styled-components/macro";
 import { lightTheme, darkTheme, ThemesMode } from "./themes";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Pages/Layout";
-import Home from "./Pages/Home/Home";
+import HomePage from "./Pages/HomePage/HomePage";
 import Favorites from "./Pages/Favorites/Favorites";
 import { AuthenticationProvider } from "./api/AbraApi/Authentication";
 import { verifyToken } from "./api/AbraApi/verifyToken";
 import Clouds from "./Components/Clouds/Clouds";
 import { useQuery } from "@tanstack/react-query";
+import GoogleMaps from "./Pages/GoogleMaps/GoogleMaps";
 
 export interface DefaultTheme {
   primary: string;
@@ -88,8 +89,9 @@ const App: React.FC = () => {
                 </Route>
               )}
               <Route element={<Layout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/:locationKey/:cityName" element={<Home />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/:locationKey/:cityName" element={<HomePage />} />
+                <Route path="/map" element={<GoogleMaps />} />
                 <Route path="/favorites" element={<Favorites />} />
               </Route>
             </Routes>

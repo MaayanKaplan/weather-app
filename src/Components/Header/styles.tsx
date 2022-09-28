@@ -4,16 +4,15 @@ import NavBar from "../../Common/NavBar/NavBar";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import Button from "../../Common/Button/Button";
 import PopUp from "../../Common/PopUp/PopUp";
-
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const HeaderWrapper = styled.header`
   height: 94px;
   width: 100%;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }) => {
-    return "";
-  }};
+  background-color: ${({ theme }) => theme.primary};
+  position: fixed;
+  top: 0;
 
   display: flex;
   align-items: center;
@@ -70,12 +69,15 @@ export const RightSideContainer = styled.div`
   align-items: right center;
   /* display: flex;
   justify-content: space-between; */
+
   width: 35%;
   padding-right: 70px;
 
   @media ${deviceSize.tablet} {
-    width: 25%;
+    display: flex;
+    /* width: 25%; */
     padding-right: 50px;
+    justify-content: space-between;
   }
 `;
 

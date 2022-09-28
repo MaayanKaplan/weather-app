@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   max-width: 1180px;
   height: 602px;
-  margin: 24px 0 0;
+  margin: 24px 0 85px 0;
   padding: 35px 96px 16px 95px;
   border-radius: 20px;
   /* -webkit-filter: blur(1px); */
@@ -20,6 +20,12 @@ export const Title = styled.h2`
 `;
 
 export const ContentWrapper = styled.div`
+  min-width: 1180px;
+  /* 
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 193px; */
+
   display: flex;
   gap: 193px;
 `;
@@ -29,6 +35,17 @@ export const EachDayWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  :hover {
+    width: 146px;
+    height: 570px;
+
+    /* margin: 0 140px 0 141px; */
+    padding: 19px 50px 34px 49px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* z-index: -1; */
+  }
 `;
 
 export const Day = styled.span`

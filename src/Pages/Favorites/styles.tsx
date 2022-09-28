@@ -3,7 +3,8 @@ import deviceSize from "../../Utils/deviceSize";
 import NotificationBox from "../../Common/NotificationBox/NotificationBox";
 
 export const MainContainer = styled.div`
-  height: 100vh;
+  margin: 120px 0;
+  height: 100%;
   overflow-x: scroll;
 `;
 
@@ -37,7 +38,7 @@ export const StyledTitle = styled.h1`
 
 export const FavoritesWrapper = styled.div`
   margin-top: 65px;
-  height: 500px;
+  /* height: 500px; */
 `;
 
 export const Favorite = styled.div``;

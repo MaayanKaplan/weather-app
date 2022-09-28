@@ -1,23 +1,9 @@
 import * as S from "./styles";
 import { DailyProps } from "./types";
-import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
-import { useQuery } from "@tanstack/react-query";
 import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 import { nextDaysOfWeek } from "../../../../Utils/TimeConverter";
 
-const DailyForecasts: React.FC<DailyProps> = ({ locationKey }) => {
-  const { data } = useQuery(
-    [locationKey],
-    async () => {
-      const returnedData = await getDailyForecast(locationKey);
-      return returnedData;
-    },
-    {
-      cacheTime: 0,
-      staleTime: 600,
-    }
-  );
-
+const DailyForecasts: React.FC<DailyProps> = ({ data }) => {
   const fourDaysView = data?.DailyForecasts.slice(1, 5);
 
   return (

@@ -43,6 +43,16 @@ export const TemperatureWrapper = styled.div`
   align-items: center;
 `;
 
+export const WeatherImage = styled.div`
+  width: 180px;
+  height: 180px;
+  @media ${deviceSize.mobile} {
+    width: 120px;
+    height: 100px;
+    align-self: end;
+  }
+`;
+
 export const Image = styled.img`
   @media ${deviceSize.mobile} {
     width: 120px;

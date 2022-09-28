@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../../Utils/deviceSize";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 476px;

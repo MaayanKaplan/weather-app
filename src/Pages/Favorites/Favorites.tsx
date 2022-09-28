@@ -30,11 +30,11 @@ const Favorites = () => {
   const { mutate, isSuccess } = useAddAndRemoveFavorites();
   const handleRemoveFavorite = () => {
     // mutate({
-    //           key: locationKey,
-    //           title: cityTitle,
-    //           city: item.city,
-    //           country: cityTitle,
-    //         });
+    //   key: locationKey,
+    //   title: cityTitle,
+    //   city: item.city,
+    //   country: cityTitle,
+    // });
     setIsRemoveFromFavoritesOpen(false);
     setRemoveSuccess(true);
     setTimeout(() => {

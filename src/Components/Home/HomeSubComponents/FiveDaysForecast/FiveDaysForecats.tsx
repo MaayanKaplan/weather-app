@@ -8,20 +8,95 @@ import IconSun from "./Icons/sun-flat.svg";
 import IconMoon from "./Icons/moon-flat.svg";
 import { nextDaysOfWeek, ConvertDate } from "../../../../Utils/TimeConverter";
 
-const FiveDaysForecast = ({ locationKey }: DailyProps) => {
-  const { data } = useQuery(
-    [locationKey],
-    async () => {
-      const returnedData = await getDailyForecast(locationKey);
-      return returnedData;
-    },
-    {
-      cacheTime: 0,
-      staleTime: 600,
-    }
-  );
+const FiveDaysForecast = ({ data }: DailyProps) => {
+  // const { data } = useQuery(
+  //   [locationKey],
+  //   async () => {
+  //     const returnedData = await getDailyForecast(locationKey);
+  //     return returnedData;
+  //   },
+  //   {
+  //     cacheTime: 0,
+  //     staleTime: 600,
+  //   }
+  // );
 
   // CHART DATA
+  const responsive = [
+    {
+      breakpoint: 414,
+      options: {
+        chart: {
+          width: 300,
+          height: 100,
+        },
+      },
+    },
+    {
+      breakpoint: 650,
+      options: {
+        chart: {
+          width: 350,
+          height: 100,
+        },
+      },
+    },
+    {
+      breakpoint: 750,
+      options: {
+        chart: {
+          width: 450,
+          height: 100,
+        },
+      },
+    },
+    {
+      breakpoint: 980,
+      options: {
+        chart: {
+          width: 580,
+          height: 100,
+        },
+      },
+    },
+
+    {
+      breakpoint: 1180,
+      options: {
+        chart: {
+          width: 780,
+          height: 100,
+        },
+      },
+    },
+    {
+      breakpoint: 1280,
+      options: {
+        chart: {
+          width: 880,
+          height: 300,
+        },
+      },
+    },
+    {
+      breakpoint: 1080,
+      options: {
+        chart: {
+          width: 680,
+          height: 300,
+        },
+      },
+    },
+    {
+      breakpoint: 5000,
+      options: {
+        chart: {
+          width: 880,
+          height: 300,
+        },
+      },
+    },
+  ];
   const series = [
     {
       name: "Days Temps",

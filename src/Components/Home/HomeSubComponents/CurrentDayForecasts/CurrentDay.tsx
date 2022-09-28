@@ -4,12 +4,13 @@ import { CurrentDayProps } from "./types";
 import SunCloudImg from "../../../../Images/sun-cloud.svg";
 import { IconFavoritesDark } from "../../../../Common/Icon/Icon";
 import { useAddAndRemoveFavorites } from "../../../../api/AbraApi/getFavorites";
+import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 
-import { useQuery } from "@tanstack/react-query";
-import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
+// import { useQuery } from "@tanstack/react-query";
+// import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import { format } from "date-fns";
 
-const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
+const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, data }) => {
   const [isAddToFavorites, setIsAddToFavorites] =
     React.useState<boolean>(false);
 
@@ -17,7 +18,7 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
 
   const AddToFavoritesSuccess = () => {
     mutate({
-      key: locationKey,
+      key: data.locationKey,
       title: cityTitle,
       city: cityTitle,
       country: cityTitle,
@@ -28,15 +29,6 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
     }, 1500);
   };
 
-  const { data } = useQuery(
-    [locationKey],
-    () => getDailyForecast(locationKey),
-    {
-      cacheTime: 600,
-      staleTime: 600,
-    }
-  );
-
   const today = new Date();
   const hour = Number(format(today, "h"));
 
@@ -46,6 +38,9 @@ const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, locationKey }) => {
         <S.CityTitle>{cityTitle}</S.CityTitle>
         <S.TemperatureWrapper>
           <S.Image src={SunCloudImg} alt="Sun and cloud image" />
+          {/* <S.WeatherImage>
+            {WeatherIcons(data?.DailyForecasts[0].Day.Icon)}
+          </S.WeatherImage> */}
           <S.DegreesContainer>
             <S.MinTemp>
               {data?.DailyForecasts[0].Temperature.Minimum?.Value}

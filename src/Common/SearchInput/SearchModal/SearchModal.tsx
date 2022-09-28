@@ -70,6 +70,7 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, onClose }) => {
               <S.ListItem
                 key={city.Key}
                 onClick={() => handleSelect(city.Key, city.LocalizedName)}
+                // to={`/${key}/${cityName}`}
               >
                 <S.City>{city.LocalizedName}, </S.City>
                 <S.Country>{city.Country.LocalizedName}</S.Country>
