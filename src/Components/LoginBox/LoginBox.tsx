@@ -1,6 +1,6 @@
 import Button from "../../Common/Button/Button";
 import Input from "../../Common/Input/Input";
-import NotificationBox from "../../Common/NotificationBox/NotificationBox";
+import Toast from "../../Common/Toast/Toast";
 import { IconFacebookLogo, IconGoogleLogo } from "../../Common/Icon/Icon";
 import { FormData } from "./types";
 import * as S from "./styles";
@@ -53,9 +53,7 @@ const LoginBox = () => {
       <S.Title>Log in</S.Title>
 
       {authenticationError && (
-        <NotificationBox severity="error">
-          {authenticationError}
-        </NotificationBox>
+        <Toast severity="error">{authenticationError}</Toast>
       )}
 
       <Controller

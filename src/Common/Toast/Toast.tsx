@@ -4,7 +4,7 @@ import { NotificationProps } from "./types";
 import IconSuccess from "./Icons/check-v.svg";
 import IconError from "./Icons/info-circle.svg";
 
-const NotificationBox: React.FC<NotificationProps> = ({
+const Toast: React.FC<NotificationProps> = ({
   severity,
   children,
   className,
@@ -22,4 +22,4 @@ const NotificationBox: React.FC<NotificationProps> = ({
   );
 };
 
-export default NotificationBox;
+export default Toast;

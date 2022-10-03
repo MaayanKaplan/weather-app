@@ -16,7 +16,7 @@ const MobileHeader = () => {
       <S.HeaderWrapper>
         <S.NavBar>
           <S.BtnWrapper>
-            <S.NavButton variant="ghost" onClick={() => console.log("click")}>
+            <S.NavButton variant="ghost" onClick={() => {}}>
               <S.ContentWrapper>
                 <S.IconWrapper to={"/favorites"}>
                   <IconFavoritesOutline />

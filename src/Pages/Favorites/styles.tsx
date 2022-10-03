@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
-import NotificationBox from "../../Common/NotificationBox/NotificationBox";
+import Toast from "../../Common/Toast/Toast";
 
 export const MainContainer = styled.div`
   margin: 120px 0;
@@ -99,7 +99,7 @@ export const Separator = styled.div`
   }
 `;
 
-export const RemoveFavNotification = styled(NotificationBox)`
+export const RemoveFavNotification = styled(Toast)`
   color: #fff;
   position: absolute;
   bottom: 54px;

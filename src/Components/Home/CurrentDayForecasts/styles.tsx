@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import Button from "../../../Common/Button/Button";
-import NotificationBox from "../../../Common/NotificationBox/NotificationBox";
+import Toast from "../../../Common/Toast/Toast";
 import deviceSize from "../../../Utils/deviceSize";
 
 export const CurrentDayContainer = styled.div`
@@ -142,7 +142,7 @@ export const BtnIconWrapper = styled.div`
   gap: 8px;
 `;
 
-export const AddFavNotification = styled(NotificationBox)`
+export const AddFavNotification = styled(Toast)`
   position: absolute;
   top: 600px;
   /* left: auto;
