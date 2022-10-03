@@ -25,23 +25,14 @@ interface HomeProps {
 
 const Home = ({ params, locationKey }: HomeProps) => {
   const isMobile = useMedia();
-  const { data: geoLocationData } = useQuery([locationKey], () =>
-    getDailyForecast(locationKey?.Key)
-  );
-
-  const { data: searchData } = useQuery([params], () =>
-    getDailyForecast(+params?.locationKey!)
-  );
 
   const { data } = useQuery([params, locationKey], () => {
-    if (params.locationKey) {
-      return getDailyForecast(+params.locationKey!);
+    if (params?.locationKey) {
+      return getDailyForecast(+params?.locationKey);
     } else {
       return getDailyForecast(locationKey?.Key);
     }
   });
-
-  console.log(data);
 
   // Add to favorites logic
   const [isAddToFavorites, setIsAddToFavorites] =
@@ -51,10 +42,16 @@ const Home = ({ params, locationKey }: HomeProps) => {
 
   const AddToFavoritesSuccess = () => {
     mutate({
-      key: data.locationKey,
-      // title: cityTitle,
-      // city: cityTitle,
-      // country: cityTitle,
+      key: params?.locationKey ? +params?.locationKey : locationKey?.Key,
+      title: params.locationKey
+        ? params?.cityName
+        : locationKey?.AdministrativeArea?.EnglishName,
+      city: params.locationKey
+        ? params?.cityName
+        : locationKey?.AdministrativeArea?.EnglishName,
+      country: params.locationKey
+        ? params?.cityName
+        : locationKey?.AdministrativeArea?.EnglishName,
     });
     setIsAddToFavorites(true);
     setTimeout(() => {
@@ -64,65 +61,43 @@ const Home = ({ params, locationKey }: HomeProps) => {
 
   return (
     <>
-      {isMobile && <S.FavButton src={FavImg} onClick={() => {}} />}
+      <S.FavButton src={FavImg} onClick={AddToFavoritesSuccess} />
 
-      {params.locationKey ? (
-        <S.DataContainer>
-          <CurrentDayContainer
-            cityTitle={params?.cityName}
-            data={searchData}
-            isAddToFavorites={isAddToFavorites}
-            AddToFavoritesSuccess={AddToFavoritesSuccess}
-          />
-          <DailyForecasts data={searchData} />
-          {isMobile && (
-            <S.FiveDaysForecastButton variant="ghost" onClick={() => {}}>
-              5 Days Forecast
-            </S.FiveDaysForecastButton>
-          )}
-          <HourlyForecasts locationKey={+params?.locationKey} />
+      <S.DataContainer>
+        <CurrentDayContainer
+          data={data}
+          isAddToFavorites={isAddToFavorites}
+          AddToFavoritesSuccess={AddToFavoritesSuccess}
+          cityTitle={
+            params.locationKey
+              ? params?.cityName
+              : locationKey?.AdministrativeArea?.EnglishName
+          }
+        />
+        <DailyForecasts data={data} />
+        {isMobile && (
+          <S.FiveDaysForecastButton variant="ghost" onClick={() => {}}>
+            5 Days Forecast
+          </S.FiveDaysForecastButton>
+        )}
 
-          {!isMobile && <FiveDaysForecast data={searchData} />}
-          {isMobile && (
-            <S.MapButton variant="white" onClick={() => {}}>
-              <S.BtnContentWrapper>
-                <S.BtnIconWrapper>
-                  <IconMapDark />
-                </S.BtnIconWrapper>
-                <S.BtnText>Map</S.BtnText>
-              </S.BtnContentWrapper>
-            </S.MapButton>
-          )}
-        </S.DataContainer>
-      ) : (
-        <S.DataContainer>
-          <CurrentDayContainer
-            cityTitle={locationKey?.AdministrativeArea?.EnglishName}
-            data={geoLocationData}
-            isAddToFavorites={isAddToFavorites}
-            AddToFavoritesSuccess={AddToFavoritesSuccess}
-          />
-          <DailyForecasts data={geoLocationData} />
-          {isMobile && (
-            <S.FiveDaysForecastButton variant="ghost" onClick={() => {}}>
-              5 Days Forecast
-            </S.FiveDaysForecastButton>
-          )}
-          <HourlyForecasts locationKey={locationKey?.Key} />
-
-          {!isMobile && <FiveDaysForecast data={geoLocationData} />}
-          {isMobile && (
-            <S.MapButton variant="white" onClick={() => {}}>
-              <S.BtnContentWrapper>
-                <S.BtnIconWrapper>
-                  <IconMapDark />
-                </S.BtnIconWrapper>
-                <S.BtnText>Map</S.BtnText>
-              </S.BtnContentWrapper>
-            </S.MapButton>
-          )}
-        </S.DataContainer>
-      )}
+        <HourlyForecasts
+          locationKey={
+            params.locationKey ? +params?.locationKey : locationKey?.Key
+          }
+        />
+        {!isMobile && <FiveDaysForecast data={data} />}
+        {isMobile && (
+          <S.MapButton variant="white" onClick={() => {}}>
+            <S.BtnContentWrapper>
+              <S.BtnIconWrapper>
+                <IconMapDark />
+              </S.BtnIconWrapper>
+              <S.BtnText>Map</S.BtnText>
+            </S.BtnContentWrapper>
+          </S.MapButton>
+        )}
+      </S.DataContainer>
     </>
   );
 };

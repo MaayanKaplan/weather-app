@@ -15,6 +15,7 @@ export const DataContainer = styled.div`
 `;
 
 export const FiveDaysForecastButton = styled(Button)`
+  display: none;
   @media ${deviceSize.mobile} {
     display: flex;
     order: -1;
@@ -43,10 +44,15 @@ export const BtnText = styled.span`
 `;
 
 export const FavButton = styled.img`
-  position: absolute;
-  top: 32px;
-  left: 30px;
-  cursor: pointer;
-  width: 35px;
-  height: 35px;
+  display: none;
+
+  @media ${deviceSize.mobile} {
+    display: block;
+    position: absolute;
+    top: 32px;
+    left: 30px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+  }
 `;
