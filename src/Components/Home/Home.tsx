@@ -1,8 +1,8 @@
 import * as S from "./styles";
-import CurrentDayContainer from "../../Components/Home/HomeSubComponents/CurrentDayForecasts/CurrentDay";
-import DailyForecasts from "../../Components/Home/HomeSubComponents/DailyForecasts/DailyForecasts";
-import HourlyForecasts from "../../Components/Home/HomeSubComponents/HourlyForecasts/HourlyForecasts";
-import FiveDaysForecast from "../../Components/Home/HomeSubComponents/FiveDaysForecast/FiveDaysForecats";
+import CurrentDayContainer from "./CurrentDayForecasts/CurrentDay";
+import DailyForecasts from "./DailyForecasts/DailyForecasts";
+import HourlyForecasts from "./HourlyForecasts/HourlyForecasts";
+import FiveDaysForecast from "./FiveDaysForecast/FiveDaysForecats";
 import { useMedia } from "../../hooks/useMedia";
 import { IconMapDark } from "../../Common/Icon/Icon";
 
@@ -10,10 +10,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getDailyForecast } from "../../api/AccuweatherAPI/AccuweatherAPI";
 
 interface HomeProps {
-  params: any;
-
-  // locationKey: number;
-
+  params: {
+    locationKey?: string;
+    cityName?: string;
+  };
   locationKey: {
     AdministrativeArea: { EnglishName: string };
     Key: number;
@@ -22,28 +22,13 @@ interface HomeProps {
 
 const Home = ({ params, locationKey }: HomeProps) => {
   const isMobile = useMedia();
-
-  console.log(locationKey);
-
-  const { data: geoLocationData } = useQuery(
-    [locationKey],
-    () => getDailyForecast(locationKey?.Key),
-    {
-      cacheTime: 600,
-      staleTime: 600,
-    }
+  const { data: geoLocationData } = useQuery([locationKey], () =>
+    getDailyForecast(locationKey?.Key)
   );
 
-  const { data: searchData } = useQuery(
-    [params],
-    () => getDailyForecast(+params?.locationKey),
-    {
-      cacheTime: 600,
-      staleTime: 600,
-    }
+  const { data: searchData } = useQuery([params], () =>
+    getDailyForecast(+params?.locationKey!)
   );
-
-  console.log(geoLocationData);
 
   return (
     <>

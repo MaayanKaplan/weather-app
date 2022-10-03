@@ -6,6 +6,10 @@ export const Container = styled.div`
   margin-top: 120px;
   height: 100%;
   overflow-y: scroll;
+
+  @media ${deviceSize.mobile} {
+    margin-top: 0;
+  }
 `;
 
 export const ErrorWrapper = styled.div`
@@ -14,6 +18,10 @@ export const ErrorWrapper = styled.div`
 
   @media ${deviceSize.tablet} {
     margin: 52px auto 0 auto;
+  }
+
+  @media ${deviceSize.mobile} {
+    margin: 0 auto;
   }
 `;
 

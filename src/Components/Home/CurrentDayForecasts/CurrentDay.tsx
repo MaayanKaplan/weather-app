@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as S from "./styles";
 import { CurrentDayProps } from "./types";
-import SunCloudImg from "../../../../Images/sun-cloud.svg";
-import { IconFavoritesDark } from "../../../../Common/Icon/Icon";
-import { useAddAndRemoveFavorites } from "../../../../api/AbraApi/getFavorites";
+import SunCloudImg from "../../../Images/sun-cloud.svg";
+import { IconFavoritesDark } from "../../../Common/Icon/Icon";
+import { useAddAndRemoveFavorites } from "../../../api/AbraApi/getFavorites";
 // import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 import { format } from "date-fns";
 

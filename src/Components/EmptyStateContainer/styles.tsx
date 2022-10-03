@@ -26,12 +26,10 @@ export const EmptyStateTitle = styled.h2`
   margin-bottom: 16px; ;
 `;
 
-export const EmptyStateDescription = styled.p`
+export const EmptyStateDescription = styled.p<{ color: string }>`
   font-size: 1.8rem;
   line-height: 1.5;
   text-align: center;
   padding: 0 30px;
-  color: #444e72;
+  color: ${({ color }) => (color === "dark" ? "#444e72" : "#fff")};
 `;
-
-/* color: ${(props) => (props. === "dark" ? "#444e72" : "#fff")}; */

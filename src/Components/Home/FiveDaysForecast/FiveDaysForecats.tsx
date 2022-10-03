@@ -2,25 +2,11 @@ import * as S from "./styles";
 import { DailyProps } from "./types";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { useQuery } from "@tanstack/react-query";
-import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
 import IconSun from "./Icons/sun-flat.svg";
 import IconMoon from "./Icons/moon-flat.svg";
-import { nextDaysOfWeek, ConvertDate } from "../../../../Utils/TimeConverter";
+import { nextDaysOfWeek, ConvertDate } from "../../../Utils/TimeConverter";
 
 const FiveDaysForecast = ({ data }: DailyProps) => {
-  // const { data } = useQuery(
-  //   [locationKey],
-  //   async () => {
-  //     const returnedData = await getDailyForecast(locationKey);
-  //     return returnedData;
-  //   },
-  //   {
-  //     cacheTime: 0,
-  //     staleTime: 600,
-  //   }
-  // );
-
   // CHART DATA
   const responsive = [
     {

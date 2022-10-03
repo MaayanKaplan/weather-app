@@ -42,7 +42,10 @@ const Layout = () => {
           isOpen={isMenuOpen}
           setIsOpen={setIsMenuOpen}
         >
-          <MenuMobile buttonAction={() => openCloseLogout()} />
+          <MenuMobile
+            buttonAction={() => openCloseLogout()}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         </PopUp>
       )}
 

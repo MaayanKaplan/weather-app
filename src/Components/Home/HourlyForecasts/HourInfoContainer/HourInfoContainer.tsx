@@ -2,9 +2,9 @@ import * as React from "react";
 import * as S from "./styles";
 import { EachHourProps } from "./types";
 import WindIcon from "../Icons/windIcon.svg";
-import WeatherIcons from "../../../../../Utils/WeatherIcons/WeatherIcons";
+import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 
-export const EachHourItem = ({
+export const HourInfoContainer = ({
   isActive,
   index,
   key,
@@ -49,4 +49,4 @@ export const EachHourItem = ({
   );
 };
 
-export default EachHourItem;
+export default HourInfoContainer;

@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { DailyProps } from "./types";
-import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
-import { nextDaysOfWeek } from "../../../../Utils/TimeConverter";
+import WeatherIcons from "../../../Utils/WeatherIcons/WeatherIcons";
+import { nextDaysOfWeek } from "../../../Utils/TimeConverter";
 
 const DailyForecasts: React.FC<DailyProps> = ({ data }) => {
   const fourDaysView = data?.DailyForecasts.slice(1, 5);

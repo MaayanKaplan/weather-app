@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
-import Button from "../../../../Common/Button/Button";
-import NotificationBox from "../../../../Common/NotificationBox/NotificationBox";
-import deviceSize from "../../../../Utils/deviceSize";
+import Button from "../../../Common/Button/Button";
+import NotificationBox from "../../../Common/NotificationBox/NotificationBox";
+import deviceSize from "../../../Utils/deviceSize";
 
 export const CurrentDayContainer = styled.div`
   color: #fff;

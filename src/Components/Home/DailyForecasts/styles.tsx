@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import deviceSize from "../../../../Utils/deviceSize";
+import deviceSize from "../../../Utils/deviceSize";
 
 export const Container = styled.div`
   padding: 35px 70px;

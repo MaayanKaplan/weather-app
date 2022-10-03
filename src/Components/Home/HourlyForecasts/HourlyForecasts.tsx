@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import * as S from "./styles";
-import { get12HoursForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
-import { ConvertTime } from "../../../../Utils/TimeConverter";
+import { get12HoursForecast } from "../../../api/AccuweatherAPI/AccuweatherAPI";
+import { ConvertTime } from "../../../Utils/TimeConverter";
 import LeftArrow from "./Icons/arrow-square-left.svg";
 import RightArrow from "./Icons/arrow-square-right.svg";
-import EachHourItem from "./EachHourItem/EachHourItem";
+import HourInfoContainer from "./HourInfoContainer/HourInfoContainer";
 
 interface HourlyProps {
   locationKey: number;
@@ -20,7 +20,6 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
     },
     {
       cacheTime: 0,
-      staleTime: 600,
     }
   );
 
@@ -49,7 +48,7 @@ const HourlyForecasts = ({ locationKey }: HourlyProps) => {
         <S.ContentWrapper>
           {data?.map((item: any, index: number) => {
             return (
-              <EachHourItem
+              <HourInfoContainer
                 isActive={activeIndex === index}
                 index={index}
                 key={index}

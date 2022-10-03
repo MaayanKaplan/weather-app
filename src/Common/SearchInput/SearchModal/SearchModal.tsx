@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import * as S from "./styles";
 import { ModalProps } from "./types";
 import { getSearchAutoComplete } from "../../../api/AccuweatherAPI/AccuweatherAPI";
-import EmptyStateContainer from "../../EmptyStateContainer/EmptyStateContainer";
+import EmptyStateContainer from "../../../Components/EmptyStateContainer/EmptyStateContainer";
 import CityImg from "../../../Images/city.svg";
 import { TailSpin } from "react-loader-spinner";
 
@@ -81,7 +81,7 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, onClose }) => {
       )}
       {!isLoading && data && data.length === 0 && (
         <EmptyStateContainer
-          // textColor="dark"
+          color="dark"
           img={CityImg}
           description={`We couldn't find any city named "${searchValue}", please try again.`}
         />

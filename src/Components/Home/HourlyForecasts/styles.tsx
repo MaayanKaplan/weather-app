@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import deviceSize from "../../../../Utils/deviceSize";
+import deviceSize from "../../../Utils/deviceSize";
 
 export const Carousel = styled.div``;
 

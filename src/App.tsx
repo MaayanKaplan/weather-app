@@ -13,7 +13,6 @@ import Clouds from "./Components/Clouds/Clouds";
 import { useQuery } from "@tanstack/react-query";
 import Map from "./Pages/Map/Map";
 import { useGeoLocation } from "use-geo-location";
-
 import { getGeoPosition } from "./api/AccuweatherAPI/AccuweatherAPI";
 
 export interface DefaultTheme {
@@ -48,14 +47,10 @@ const App: React.FC = () => {
   const [token, setToken] = useState<boolean>(false);
   const [theme, setTheme] = useState(lightTheme);
 
-  const { isSuccess, isLoading, isFetching } = useQuery(
-    ["verifyToken"],
-    () => verifyToken(),
-    {
-      cacheTime: 1000 * 60 * 15,
-      staleTime: 1000 * 60 * 15,
-    }
-  );
+  const { isSuccess } = useQuery(["verifyToken"], () => verifyToken(), {
+    cacheTime: 1000 * 60 * 15,
+    staleTime: 1000 * 60 * 15,
+  });
 
   const navigate = useNavigate();
 
@@ -66,25 +61,15 @@ const App: React.FC = () => {
       setTimeout(() => {
         setToken(false);
       }, 1500);
-
-      // navigate("/login");
     }
   }, [isSuccess, navigate]);
 
-  const { latitude, longitude, error, loading } = useGeoLocation();
-
-  const { data: locationKey } = useQuery(
-    [latitude, longitude],
-    () => getGeoPosition(latitude, longitude),
-
-    {
-      // enabled: !!latitude,
-      cacheTime: 600,
-      staleTime: 600,
-    }
+  const { latitude, longitude } = useGeoLocation();
+  const { data: locationKey } = useQuery([latitude, longitude], () =>
+    getGeoPosition(latitude, longitude)
   );
 
-  console.log(+locationKey?.Key);
+  console.log(locationKey);
 
   return (
     <ThemeProvider theme={theme}>

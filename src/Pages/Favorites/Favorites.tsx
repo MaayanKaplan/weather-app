@@ -3,7 +3,7 @@ import * as S from "./styles";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import PopUp from "../../Common/PopUp/PopUp";
 import QuestionPopUp from "../../Components/PopUpVariants/QuestionPopUp/QuestionPopUp";
-import EmptyStateContainer from "../../Common/EmptyStateContainer/EmptyStateContainer";
+import EmptyStateContainer from "../../Components/EmptyStateContainer/EmptyStateContainer";
 
 import { IconSearchWhite } from "../../Common/Icon/Icon";
 import IconFavoritesFull from "../../Common/Icon/Icons/fav-full.svg";

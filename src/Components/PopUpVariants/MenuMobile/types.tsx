@@ -1,3 +1,5 @@
+import React from "react";
+
 export type MenuMobileProps = {
   icon?: React.ReactNode;
   linkText?: string;
@@ -6,4 +8,5 @@ export type MenuMobileProps = {
   degreesTitle?: string;
   modeTitle?: string;
   buttonAction?: () => void;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };

@@ -4,13 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./GlobalStyle";
-// import { ThemeProvider } from "styled-components";
-import theme from "./themes";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-const client = new QueryClient({ defaultOptions: {} });
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 600,
+      cacheTime: 600,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,10 +24,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={client}>
-        {/* <ThemeProvider theme={theme}> */}
         <GlobalStyles />
         <App />
-        {/* </ThemeProvider> */}
         <ReactQueryDevtools />
       </QueryClientProvider>
     </BrowserRouter>

@@ -10,9 +10,17 @@ import {
 import { useToggleTheme } from "../../../App";
 import { useTheme } from "styled-components/macro";
 
-const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
+const MenuMobile: React.FC<MenuMobileProps> = ({
+  buttonAction,
+  setIsMenuOpen,
+}) => {
   const { toggleTheme } = useToggleTheme();
   const theme = useTheme();
+
+  const changeTheme = () => {
+    toggleTheme();
+    setIsMenuOpen(false);
+  };
 
   return (
     <>
@@ -23,7 +31,7 @@ const MenuMobile: React.FC<MenuMobileProps> = ({ buttonAction }) => {
             id={"darkmode-id"}
             left={<IconDarkSun />}
             right={<IconDarkMoon />}
-            onChange={toggleTheme}
+            onChange={changeTheme}
             checked={theme.mode === "light"}
           />
         </S.ChangeWrapper>

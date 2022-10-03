@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { Props } from "./types";
 import SearchInput from "../../../Common/SearchInput/SearchInput";
-import EmptyStateContainer from "../../../Common/EmptyStateContainer/EmptyStateContainer";
+import EmptyStateContainer from "../../EmptyStateContainer/EmptyStateContainer";
 import { IconArrow, IconSearchDark } from "../../../Common/Icon/Icon";
 
 import { useMedia } from "../../../hooks/useMedia";
@@ -25,6 +25,7 @@ const SearchPopUp: React.FC<Props> = ({ onClose }) => {
         <EmptyStateContainer
           img={CityImg}
           description="Please search any city in the search button."
+          color={"dark"}
         />
       </S.EntryState>
     </S.Container>
