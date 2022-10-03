@@ -27,9 +27,9 @@ export const getFavorites = async (): Promise<Results> => {
 
 interface CityData {
   key: number;
-  title: string;
-  city: string;
-  country: string;
+  title?: string;
+  city?: string;
+  country?: string;
 }
 
 export const useAddAndRemoveFavorites = () => {
@@ -37,9 +37,9 @@ export const useAddAndRemoveFavorites = () => {
 
   const addToFavorites = async (
     key: number,
-    title: string,
-    city: string,
-    country: string
+    title?: string,
+    city?: string,
+    country?: string
   ) => {
     const token = localStorage.getItem("token");
 

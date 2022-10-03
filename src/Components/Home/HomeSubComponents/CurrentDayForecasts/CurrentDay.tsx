@@ -4,10 +4,7 @@ import { CurrentDayProps } from "./types";
 import SunCloudImg from "../../../../Images/sun-cloud.svg";
 import { IconFavoritesDark } from "../../../../Common/Icon/Icon";
 import { useAddAndRemoveFavorites } from "../../../../api/AbraApi/getFavorites";
-import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
-
-// import { useQuery } from "@tanstack/react-query";
-// import { getDailyForecast } from "../../../../api/AccuweatherAPI/AccuweatherAPI";
+// import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 import { format } from "date-fns";
 
 const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, data }) => {

@@ -10,22 +10,26 @@ import { useParams } from "react-router-dom";
 
 import Home from "../../Components/Home/Home";
 
-const HomePage = () => {
+const HomePage = (locationKey: any) => {
   const { latitude, longitude, error, loading } = useGeoLocation();
   const params = useParams();
 
-  const { data: locationKey } = useQuery(
-    [latitude, longitude],
-    () => getGeoPosition(latitude, longitude),
-    {
-      cacheTime: 600,
-      staleTime: 600,
-    }
-  );
+  // const { data: locationKey } = useQuery(
+  //   [latitude, longitude],
+  //   () => getGeoPosition(latitude, longitude),
+  //   {
+  //     cacheTime: 600,
+  //     staleTime: 600,
+  //   }
+  // );
+
+  // console.log(locationKey?.locationKey);
+
+  console.log(error?.code);
 
   return (
     <S.Container>
-      {error && (
+      {error?.code === 1 && (
         <S.ErrorWrapper>
           <EmptyStateContainer
             img={NoLocationImg}
@@ -43,7 +47,9 @@ const HomePage = () => {
         </S.LoadingContainer>
       )}
 
-      {!error && !loading && <Home params={params} locationKey={locationKey} />}
+      {!error && !loading && (
+        <Home params={params} locationKey={locationKey?.locationKey} />
+      )}
     </S.Container>
   );
 };

@@ -21,16 +21,21 @@ const Map = () => {
 
 const MyMap = () => {
   const { latitude, longitude } = useGeoLocation();
-  const center = React.useMemo(() => ({ lat: latitude!, lng: longitude! }), []);
+  const center = React.useMemo(
+    () => ({ lat: latitude!, lng: longitude! }),
+    [latitude, longitude]
+  );
 
   console.log(latitude, longitude);
+
   return (
     <GoogleMap
-      zoom={8}
-      center={{ lat: latitude!, lng: longitude! }}
+      zoom={10}
+      // center={{ lat: +latitude!, lng: +longitude! }}
+      center={center}
       mapContainerClassName="map-container"
     >
-      <Marker position={{ lat: latitude!, lng: longitude! }} />
+      <Marker position={{ lat: 31.674891, lng: 31.674891 }} />
     </GoogleMap>
   );
 };

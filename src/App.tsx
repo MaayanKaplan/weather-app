@@ -14,6 +14,8 @@ import { useQuery } from "@tanstack/react-query";
 import Map from "./Pages/Map/Map";
 import { useGeoLocation } from "use-geo-location";
 
+import { getGeoPosition } from "./api/AccuweatherAPI/AccuweatherAPI";
+
 export interface DefaultTheme {
   primary: string;
 }
@@ -69,6 +71,21 @@ const App: React.FC = () => {
     }
   }, [isSuccess, navigate]);
 
+  const { latitude, longitude, error, loading } = useGeoLocation();
+
+  const { data: locationKey } = useQuery(
+    [latitude, longitude],
+    () => getGeoPosition(latitude, longitude),
+
+    {
+      // enabled: !!latitude,
+      cacheTime: 600,
+      staleTime: 600,
+    }
+  );
+
+  console.log(+locationKey?.Key);
+
   return (
     <ThemeProvider theme={theme}>
       <ThemeToggleContext.Provider
@@ -90,10 +107,19 @@ const App: React.FC = () => {
                 </Route>
               )}
               <Route element={<Layout />}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/:locationKey/:cityName" element={<HomePage />} />
+                <Route
+                  path="/"
+                  element={<HomePage locationKey={locationKey} />}
+                />
+                <Route
+                  path="/:locationKey/:cityName"
+                  element={<HomePage locationKey={locationKey} />}
+                />
                 <Route path="/map" element={<Map />} />
-                <Route path="/favorites" element={<Favorites />} />
+                <Route
+                  path="/favorites"
+                  element={<Favorites locationKey={+locationKey?.Key} />}
+                />
               </Route>
             </Routes>
           </AuthenticationProvider>

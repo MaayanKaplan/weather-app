@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import * as S from "./styles";
-import { FavoritesProps } from "./types";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import PopUp from "../../Common/PopUp/PopUp";
 import QuestionPopUp from "../../Components/PopUpVariants/QuestionPopUp/QuestionPopUp";
@@ -18,7 +17,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 
-const Favorites = () => {
+const Favorites = (locationKey: any) => {
   const [isRemoveFromFavoritesOpen, setIsRemoveFromFavoritesOpen] =
     useState<boolean>(false);
   const [removeSuccess, setRemoveSuccess] = useState<boolean>(false);
@@ -27,14 +26,18 @@ const Favorites = () => {
     getFavorites()
   );
 
+  // console.log(typeof +locationKey.locationKey);
+
+  console.log(locationKey.locationKey);
+
   const { mutate, isSuccess } = useAddAndRemoveFavorites();
   const handleRemoveFavorite = () => {
-    // mutate({
-    // key: locationKey,
-    //   title: cityTitle,
-    //   city: item.city,
-    //   country: cityTitle,
-    // });
+    mutate({
+      key: locationKey.locationKey,
+      // title: cityTitle,
+      // city: cityTitle,
+      // country: cityTitle,
+    });
     setIsRemoveFromFavoritesOpen(false);
     setRemoveSuccess(true);
     setTimeout(() => {
