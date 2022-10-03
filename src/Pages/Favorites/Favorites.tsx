@@ -4,16 +4,13 @@ import SearchInput from "../../Common/SearchInput/SearchInput";
 import PopUp from "../../Common/PopUp/PopUp";
 import QuestionPopUp from "../../Components/PopUpVariants/QuestionPopUp/QuestionPopUp";
 import EmptyStateContainer from "../../Components/EmptyStateContainer/EmptyStateContainer";
-
 import { IconSearchWhite } from "../../Common/Icon/Icon";
 import IconFavoritesFull from "../../Common/Icon/Icons/fav-full.svg";
 import EmptyStateImg from "../../Images/stars.svg";
-
 import {
   getFavorites,
   useAddAndRemoveFavorites,
 } from "../../api/AbraApi/getFavorites";
-
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 
@@ -26,17 +23,10 @@ const Favorites = (locationKey: any) => {
     getFavorites()
   );
 
-  // console.log(typeof +locationKey.locationKey);
-
-  console.log(locationKey.locationKey);
-
-  const { mutate, isSuccess } = useAddAndRemoveFavorites();
+  const { mutate } = useAddAndRemoveFavorites();
   const handleRemoveFavorite = () => {
     mutate({
       key: locationKey.locationKey,
-      // title: cityTitle,
-      // city: cityTitle,
-      // country: cityTitle,
     });
     setIsRemoveFromFavoritesOpen(false);
     setRemoveSuccess(true);

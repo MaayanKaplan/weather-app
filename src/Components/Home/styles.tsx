@@ -41,3 +41,12 @@ export const BtnText = styled.span`
   line-height: 1.2;
   color: #222;
 `;
+
+export const FavButton = styled.img`
+  position: absolute;
+  top: 32px;
+  left: 30px;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+`;

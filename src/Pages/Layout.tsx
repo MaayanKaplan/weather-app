@@ -76,7 +76,9 @@ export default Layout;
 
 const Menu = styled.img`
   position: absolute;
-  top: 11px;
+  top: 32px;
   right: 30px;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 `;

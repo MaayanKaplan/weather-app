@@ -69,8 +69,6 @@ const App: React.FC = () => {
     getGeoPosition(latitude, longitude)
   );
 
-  console.log(locationKey);
-
   return (
     <ThemeProvider theme={theme}>
       <ThemeToggleContext.Provider

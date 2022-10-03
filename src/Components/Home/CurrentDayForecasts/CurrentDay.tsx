@@ -7,24 +7,29 @@ import { useAddAndRemoveFavorites } from "../../../api/AbraApi/getFavorites";
 // import WeatherIcons from "../../../../Utils/WeatherIcons/WeatherIcons";
 import { format } from "date-fns";
 
-const CurrentDay: React.FC<CurrentDayProps> = ({ cityTitle, data }) => {
-  const [isAddToFavorites, setIsAddToFavorites] =
-    React.useState<boolean>(false);
+const CurrentDay: React.FC<CurrentDayProps> = ({
+  cityTitle,
+  data,
+  isAddToFavorites,
+  AddToFavoritesSuccess,
+}) => {
+  // const [isAddToFavorites, setIsAddToFavorites] =
+  //   React.useState<boolean>(false);
 
-  const { mutate, isSuccess } = useAddAndRemoveFavorites();
+  // const { mutate, isSuccess } = useAddAndRemoveFavorites();
 
-  const AddToFavoritesSuccess = () => {
-    mutate({
-      key: data.locationKey,
-      title: cityTitle,
-      city: cityTitle,
-      country: cityTitle,
-    });
-    setIsAddToFavorites(true);
-    setTimeout(() => {
-      setIsAddToFavorites(false);
-    }, 1500);
-  };
+  // const AddToFavoritesSuccess = () => {
+  //   mutate({
+  //     key: data.locationKey,
+  //     title: cityTitle,
+  //     city: cityTitle,
+  //     country: cityTitle,
+  //   });
+  //   setIsAddToFavorites(true);
+  //   setTimeout(() => {
+  //     setIsAddToFavorites(false);
+  //   }, 1500);
+  // };
 
   const today = new Date();
   const hour = Number(format(today, "h"));

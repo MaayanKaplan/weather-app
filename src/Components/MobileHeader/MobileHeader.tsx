@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { HeaderProps } from "./types";
 import * as S from "./styles";
 import PopUp from "../../Common/PopUp/PopUp";
 import SearchPopUp from "../PopUpVariants/SearchPopUp/SearchPopUp";
-
 import {
   IconFavoritesOutline,
   IconHomeOutline,
@@ -37,7 +35,7 @@ const MobileHeader = () => {
 
           <S.Separator />
           <S.BtnWrapper>
-            <S.NavButton variant="ghost" onClick={() => console.log("click")}>
+            <S.NavButton variant="ghost" onClick={() => {}}>
               <S.IconWrapper to={"/"}>
                 <IconHomeOutline />
               </S.IconWrapper>
