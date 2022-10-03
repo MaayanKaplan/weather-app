@@ -84,12 +84,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           variant="link"
           onClick={() => console.log("click")}
         >
-          <S.ContentWrapper>
+          <S.ContentMapWrapper to={"/map"}>
             <S.IconWrapper>
               <IconMap />
             </S.IconWrapper>
             <S.Text>Switch to map</S.Text>
-          </S.ContentWrapper>
+          </S.ContentMapWrapper>
         </S.SwitchToMapButton>
         <S.SwitchesWrapper>
           <Switch

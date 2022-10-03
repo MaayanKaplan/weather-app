@@ -100,6 +100,14 @@ export const ContentWrapper = styled.div`
   gap: 8px;
 `;
 
+export const ContentMapWrapper = styled(NavLink)`
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
 export const IconWrapper = styled.div``;
 
 export const Text = styled.span`

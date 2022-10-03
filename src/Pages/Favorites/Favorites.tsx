@@ -30,7 +30,7 @@ const Favorites = () => {
   const { mutate, isSuccess } = useAddAndRemoveFavorites();
   const handleRemoveFavorite = () => {
     // mutate({
-    //   key: locationKey,
+    // key: locationKey,
     //   title: cityTitle,
     //   city: item.city,
     //   country: cityTitle,
@@ -41,6 +41,8 @@ const Favorites = () => {
       setRemoveSuccess(false);
     }, 1500);
   };
+
+  console.log(data);
 
   if (isLoading) {
     <TailSpin width="70" height="70" color="fff"></TailSpin>;

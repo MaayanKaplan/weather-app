@@ -11,7 +11,8 @@ import { AuthenticationProvider } from "./api/AbraApi/Authentication";
 import { verifyToken } from "./api/AbraApi/verifyToken";
 import Clouds from "./Components/Clouds/Clouds";
 import { useQuery } from "@tanstack/react-query";
-import GoogleMaps from "./Pages/GoogleMaps/GoogleMaps";
+import Map from "./Pages/Map/Map";
+import { useGeoLocation } from "use-geo-location";
 
 export interface DefaultTheme {
   primary: string;
@@ -91,7 +92,7 @@ const App: React.FC = () => {
               <Route element={<Layout />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/:locationKey/:cityName" element={<HomePage />} />
-                <Route path="/map" element={<GoogleMaps />} />
+                <Route path="/map" element={<Map />} />
                 <Route path="/favorites" element={<Favorites />} />
               </Route>
             </Routes>

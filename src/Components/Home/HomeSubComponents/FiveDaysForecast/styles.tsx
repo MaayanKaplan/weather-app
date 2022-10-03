@@ -36,16 +36,14 @@ export const EachDayWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  :hover {
+  /* :hover {
     width: 146px;
     height: 570px;
-
-    /* margin: 0 140px 0 141px; */
     padding: 19px 50px 34px 49px;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.3);
-    /* z-index: -1; */
-  }
+
+  } */
 `;
 
 export const Day = styled.span`

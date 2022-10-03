@@ -13,7 +13,6 @@ import Home from "../../Components/Home/Home";
 const HomePage = () => {
   const { latitude, longitude, error, loading } = useGeoLocation();
   const params = useParams();
-  console.log(params);
 
   const { data: locationKey } = useQuery(
     [latitude, longitude],
