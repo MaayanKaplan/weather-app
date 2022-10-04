@@ -10,7 +10,7 @@ const Toast: React.FC<NotificationProps> = ({
   className,
 }) => {
   return (
-    <S.NotificationBoxWrapper className={className} severity={severity}>
+    <S.ToastWrapper className={className} severity={severity}>
       {severity === "success" ? (
         <S.Icon src={IconSuccess} />
       ) : (
@@ -18,7 +18,7 @@ const Toast: React.FC<NotificationProps> = ({
       )}
 
       <S.StyledDescription>{children}</S.StyledDescription>
-    </S.NotificationBoxWrapper>
+    </S.ToastWrapper>
   );
 };
 

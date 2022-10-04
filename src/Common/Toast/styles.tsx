@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import { NotificationProps } from "./types";
+import deviceSize from "../../Utils/deviceSize";
 
 const successStyle = () => {
   return `
@@ -19,7 +20,7 @@ const errorStyle = () => {
   `;
 };
 
-export const NotificationBoxWrapper = styled.div<NotificationProps>`
+export const ToastWrapper = styled.div<NotificationProps>`
   width: 354px;
   display: flex;
   justify-content: center;
@@ -29,7 +30,9 @@ export const NotificationBoxWrapper = styled.div<NotificationProps>`
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
+
+  /* position: absolute; */
 
   ${(props) => {
     if (props.severity === "success") {
@@ -40,10 +43,7 @@ export const NotificationBoxWrapper = styled.div<NotificationProps>`
   }}
 `;
 
-export const Icon = styled.img`
-  /* height: 28px;
-  width: 28px; */
-`;
+export const Icon = styled.img``;
 
 export const StyledDescription = styled.p`
   line-height: 1.25;
