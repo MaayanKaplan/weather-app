@@ -5,8 +5,11 @@ import { ApexOptions } from "apexcharts";
 import IconSun from "./Icons/sun-flat.svg";
 import IconMoon from "./Icons/moon-flat.svg";
 import { nextDaysOfWeek, ConvertDate } from "../../../Utils/TimeConverter";
+import { useMedia } from "../../../hooks/useMedia";
 
 const FiveDaysForecast = ({ data }: DailyProps) => {
+  const isMobile = useMedia();
+
   // CHART DATA
   const responsive = [
     {
@@ -109,7 +112,7 @@ const FiveDaysForecast = ({ data }: DailyProps) => {
         show: false,
       },
     },
-    colors: ["#fff"],
+    colors: isMobile ? ["#BEBEBE"] : ["#fff"],
     dataLabels: {
       enabled: true,
       formatter: function (value: any) {
@@ -118,8 +121,9 @@ const FiveDaysForecast = ({ data }: DailyProps) => {
 
       offsetY: -10,
       style: {
-        fontSize: "2rem",
+        fontSize: isMobile ? "1.4rem" : "2rem",
         fontWeight: "500",
+        colors: isMobile ? ["#444E72"] : ["#fff"],
       },
       background: {
         enabled: false,

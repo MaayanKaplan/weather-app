@@ -16,7 +16,9 @@ const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
   };
 
   const isOpen = !!searchValue && isFocused;
-  const handleOpen = (state: boolean) => () => setIsFocused(state);
+  const handleOpen = (state: boolean) => () => {
+    setIsFocused(state);
+  };
   return (
     <>
       <S.InputWrapper variant={variant}>
@@ -32,9 +34,9 @@ const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
       <OverlaySearchModal
         isVisible={isOpen}
         searchValue={searchValue}
+        setSearchValue={setSearchValue}
         onClickOverlay={handleOpen(false)}
         onClose={handleOpen(false)}
-        // onClickOutside={handleClickOutside}
       />
     </>
   );

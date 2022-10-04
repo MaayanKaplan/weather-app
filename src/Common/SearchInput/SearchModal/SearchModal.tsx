@@ -23,7 +23,11 @@ export interface DefaultTheme {
   primary: string;
 }
 
-const SearchModal: React.FC<ModalProps> = ({ searchValue, onClose }) => {
+const SearchModal: React.FC<ModalProps> = ({
+  searchValue,
+  setSearchValue,
+  onClose,
+}) => {
   const navigate = useNavigate();
   const debouncedSearch = useDebounce(searchValue, 300);
   const client = useQueryClient();
@@ -45,21 +49,17 @@ const SearchModal: React.FC<ModalProps> = ({ searchValue, onClose }) => {
 
   // navigates to home page
   const handleSelect = (key: string, cityName: string) => {
+    // console.log("click");
+    setSearchValue("");
     navigate(`/${key}/${cityName}`);
     onClose();
   };
 
-  // return ReactDOM.createPortal(
   return (
     <S.Container>
       {isLoading && (
         <S.LoadingContainer>
-          <TailSpin
-            width="80"
-            height="80"
-            // color={`${({ theme: DefaultTheme }) => theme.primary}` as string}
-            color="#47bfdf"
-          />
+          <TailSpin width="80" height="80" color="#47bfdf" />
           <S.LoadingText>Loading...</S.LoadingText>
         </S.LoadingContainer>
       )}

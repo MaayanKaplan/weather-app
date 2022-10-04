@@ -13,32 +13,34 @@ const HomePage = (locationKey: any) => {
   const params = useParams();
   const isMobile = useMedia();
 
-  if (error?.code === 1)
+  if (loading)
     return (
       <S.Container>
-        {isMobile ? (
-          <SetupLocationMobile />
-        ) : (
-          <S.ErrorWrapper>
-            <EmptyStateContainer
-              img={NoLocationImg}
-              title="Set up location"
-              description="To identify your location please allow
-          WeatherApp to know your location."
-              color="white"
-            />
-          </S.ErrorWrapper>
-        )}
+        <S.LoadingContainer>
+          <TailSpin width="80" height="80" color="#fff" />
+          <S.LoadingText>Loading...</S.LoadingText>
+        </S.LoadingContainer>
       </S.Container>
     );
 
   return (
     <S.Container>
-      {loading ? (
-        <S.LoadingContainer>
-          <TailSpin width="80" height="80" color="#fff" />
-          <S.LoadingText>Loading...</S.LoadingText>
-        </S.LoadingContainer>
+      {error?.code! === 1 ? (
+        <>
+          {isMobile ? (
+            <SetupLocationMobile />
+          ) : (
+            <S.ErrorWrapper>
+              <EmptyStateContainer
+                img={NoLocationImg}
+                title="Set up location"
+                description="To identify your location please allow
+                            WeatherApp to know your location."
+                color="white"
+              />
+            </S.ErrorWrapper>
+          )}
+        </>
       ) : (
         <Home params={params} locationKey={locationKey?.locationKey} />
       )}

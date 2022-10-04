@@ -5,12 +5,12 @@ import DailyForecasts from "./DailyForecasts/DailyForecasts";
 import HourlyForecasts from "./HourlyForecasts/HourlyForecasts";
 import FiveDaysForecast from "./FiveDaysForecast/FiveDaysForecats";
 import { useMedia } from "../../hooks/useMedia";
-import { IconMapDark, IconFavoritesOutline } from "../../Common/Icon/Icon";
+import { IconMapDark } from "../../Common/Icon/Icon";
 import { useQuery } from "@tanstack/react-query";
 import { getDailyForecast } from "../../api/AccuweatherAPI/AccuweatherAPI";
 import FavImg from "../../Images/fav-outline.svg";
-
 import { useAddAndRemoveFavorites } from "../../api/AbraApi/getFavorites";
+import PopUp from "../../Common/PopUp/PopUp";
 
 interface HomeProps {
   params: {
@@ -24,6 +24,10 @@ interface HomeProps {
 }
 
 const Home = ({ params, locationKey }: HomeProps) => {
+  const [isForecastOpen, setIsForecastOpen] = React.useState<boolean>(false);
+  const handleOpenPopUp = () => {
+    setIsForecastOpen(true);
+  };
   const isMobile = useMedia();
 
   const { data } = useQuery([params, locationKey], () => {
@@ -75,18 +79,30 @@ const Home = ({ params, locationKey }: HomeProps) => {
           }
         />
         <DailyForecasts data={data} />
-        {isMobile && (
-          <S.FiveDaysForecastButton variant="ghost" onClick={() => {}}>
-            5 Days Forecast
-          </S.FiveDaysForecastButton>
-        )}
+
+        <S.FiveDaysForecastButton variant="ghost" onClick={handleOpenPopUp}>
+          5 Days Forecast
+        </S.FiveDaysForecastButton>
 
         <HourlyForecasts
           locationKey={
             params.locationKey ? +params?.locationKey : locationKey?.Key
           }
         />
-        {!isMobile && <FiveDaysForecast data={data} />}
+
+        {!isMobile ? (
+          <FiveDaysForecast data={data} />
+        ) : (
+          isForecastOpen && (
+            <PopUp
+              onClose={() => setIsForecastOpen(false)}
+              isOpen={isForecastOpen}
+              setIsOpen={setIsForecastOpen}
+            >
+              <FiveDaysForecast data={data} />
+            </PopUp>
+          )
+        )}
         {isMobile && (
           <S.MapButton variant="white" onClick={() => {}}>
             <S.BtnContentWrapper>
