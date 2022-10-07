@@ -9,7 +9,6 @@ import {
   IconLogout,
   IconDarkSun,
   IconDarkMoon,
-  IconSearchDark,
 } from "../../Common/Icon/Icon";
 import Switch from "../../Common/Switch";
 import LogoImg from "../../Images/logo.png";
@@ -17,7 +16,7 @@ import { NavBarItem } from "../../Common/NavBar/types";
 import PopUp from "../../Common/PopUp/PopUp";
 import { HeaderProps } from "./types";
 import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
-
+import CitySearch from "../CitySearch/CitySearch";
 import { useAuthentication } from "../../api/AbraApi/Authentication";
 import { useNavigate } from "react-router-dom";
 import { useToggleTheme } from "../../App";
@@ -72,11 +71,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       </S.LeftSideContainer>
 
       <S.SearchInputContainer>
-        <S.StyledSearchInput
-          variant={"full"}
-          placeholder={"Try “Tel Aviv - Jaffa”..."}
-          icon={<IconSearchDark />}
-        />
+        <CitySearch />
       </S.SearchInputContainer>
 
       <S.RightSideContainer>

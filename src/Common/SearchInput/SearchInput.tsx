@@ -1,24 +1,14 @@
-import React, { useCallback, useRef, useState } from "react";
+import * as React from "react";
 import * as S from "./styles";
 import { SearchProps } from "./types";
-import SearchModal from "./SearchModal/SearchModal";
-import WithOverlay from "../../hooks/WithOverlay";
 
-const OverlaySearchModal = WithOverlay(SearchModal);
-
-const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
-  const [searchValue, setSearchValue] = useState<string>("");
-  // Portal
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-
-  const inputValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearchValue(e.target.value);
-  };
-
-  const isOpen = !!searchValue && isFocused;
-  const handleOpen = (state: boolean) => () => {
-    setIsFocused(state);
-  };
+const SearchInput: React.FC<SearchProps> = ({
+  placeholder,
+  variant,
+  icon,
+  inputValue,
+  handleOpen,
+}) => {
   return (
     <>
       <S.InputWrapper variant={variant}>
@@ -26,18 +16,10 @@ const SearchInput: React.FC<SearchProps> = ({ placeholder, variant, icon }) => {
           placeholder={placeholder}
           variant={variant}
           onChange={inputValue}
-          onFocus={handleOpen(true)}
+          onFocus={handleOpen}
         />
         <div>{icon}</div>
       </S.InputWrapper>
-
-      <OverlaySearchModal
-        isVisible={isOpen}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        onClickOverlay={handleOpen(false)}
-        onClose={handleOpen(false)}
-      />
     </>
   );
 };

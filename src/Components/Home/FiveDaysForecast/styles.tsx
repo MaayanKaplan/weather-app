@@ -10,6 +10,10 @@ export const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   color: #fff;
 
+  @media ${deviceSize.tablet} {
+    margin: 24px auto 85px auto;
+  }
+
   @media ${deviceSize.mobile} {
     background-color: transparent;
     padding: 35px 30px 16px 30px;

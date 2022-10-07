@@ -7,7 +7,7 @@ interface OverlayProps {
   isVisible?: boolean;
 }
 
-const WithOverlay =
+const useWithOverlay =
   <P extends object>(Component: ComponentType<P>) =>
   ({ onClickOverlay, isVisible = false, ...props }: P & OverlayProps) =>
     ReactDOM.createPortal(
@@ -17,7 +17,8 @@ const WithOverlay =
       </div>,
       document.getElementById("portal") as HTMLElement
     );
-export default WithOverlay;
+export default useWithOverlay;
+
 const Overlay = styled.div<{ isVisible?: boolean }>`
   top: 0;
   left: 0;

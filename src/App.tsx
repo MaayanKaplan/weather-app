@@ -97,10 +97,7 @@ const App: React.FC = () => {
                   element={<HomePage locationKey={locationKey} />}
                 />
                 <Route path="/map" element={<Map />} />
-                <Route
-                  path="/favorites"
-                  element={<Favorites locationKey={+locationKey?.Key} />}
-                />
+                <Route path="/favorites" element={<Favorites />} />
               </Route>
             </Routes>
           </AuthenticationProvider>

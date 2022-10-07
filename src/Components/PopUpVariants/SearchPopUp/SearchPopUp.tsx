@@ -1,8 +1,8 @@
 import * as S from "./styles";
 import { Props } from "./types";
-import SearchInput from "../../../Common/SearchInput/SearchInput";
+import CitySearch from "../../CitySearch/CitySearch";
 import EmptyStateContainer from "../../EmptyStateContainer/EmptyStateContainer";
-import { IconArrow, IconSearchDark } from "../../../Common/Icon/Icon";
+import { IconArrow } from "../../../Common/Icon/Icon";
 
 import { useMedia } from "../../../hooks/useMedia";
 import CityImg from "../../../Images/city.svg";
@@ -15,11 +15,7 @@ const SearchPopUp: React.FC<Props> = ({ onClose }) => {
         <IconArrow />
       </S.BackIcon>
       <S.SearchWrapper>
-        <SearchInput
-          variant={"full"}
-          placeholder={"Try “Tel Aviv - Jaffa”..."}
-          icon={<IconSearchDark />}
-        />
+        <CitySearch />
       </S.SearchWrapper>
       <S.EntryState>
         <EmptyStateContainer

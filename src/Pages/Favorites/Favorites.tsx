@@ -14,19 +14,23 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 
-const Favorites = (locationKey: any) => {
+const Favorites = () => {
   const [isRemoveFromFavoritesOpen, setIsRemoveFromFavoritesOpen] =
     useState<boolean>(false);
   const [removeSuccess, setRemoveSuccess] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
 
   const { data, isLoading, isError, error } = useQuery(["favorites"], () =>
     getFavorites()
   );
 
+  console.log(data?.results);
+
   const { mutate } = useAddAndRemoveFavorites();
-  const handleRemoveFavorite = () => {
+
+  const handleRemoveFavorite = (key: number) => {
     mutate({
-      key: locationKey.locationKey,
+      key: key,
     });
     setIsRemoveFromFavoritesOpen(false);
     setRemoveSuccess(true);
@@ -34,8 +38,6 @@ const Favorites = (locationKey: any) => {
       setRemoveSuccess(false);
     }, 1500);
   };
-
-  console.log(data);
 
   if (isLoading) {
     <TailSpin width="70" height="70" color="fff"></TailSpin>;
@@ -59,14 +61,17 @@ const Favorites = (locationKey: any) => {
         variant="transparent"
         placeholder="Search from favorite..."
         icon={<IconSearchWhite />}
+        inputValue={searchValue}
+        handleOpen={() => {}}
       />
       <S.FavoritesWrapper>
         {data?.results && (
           <>
             {data.results.map((item: any) => {
+              console.log(item);
               return (
                 <>
-                  <S.Favorite>
+                  <S.Favorite key={item.key}>
                     <S.FavoriteContainer>
                       <S.EachCityWrapper>
                         <S.CityName>{item.city}</S.CityName>
@@ -76,6 +81,9 @@ const Favorites = (locationKey: any) => {
                         onClick={() => setIsRemoveFromFavoritesOpen(true)}
                         src={IconFavoritesFull}
                       />
+                      {/*  */}
+
+                      {/*  */}
                     </S.FavoriteContainer>
                   </S.Favorite>
                   <S.Separator />
@@ -100,12 +108,12 @@ const Favorites = (locationKey: any) => {
           setIsOpen={setIsRemoveFromFavoritesOpen}
         >
           <QuestionPopUp
-            description={`Are you sure you want to remove ${data?.results[0].city}  from favorites list?`}
+            description={`Are you sure you want to remove ${item.city} from favorites list?`}
             linkText="Keep it"
             btnText="Yes, remove"
             onClose={() => setIsRemoveFromFavoritesOpen(false)}
             yesClick={() => {
-              handleRemoveFavorite();
+              handleRemoveFavorite(item.key);
             }}
           />
         </PopUp>

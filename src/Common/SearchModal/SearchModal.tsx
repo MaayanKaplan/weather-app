@@ -2,12 +2,11 @@ import * as React from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import * as S from "./styles";
 import { ModalProps } from "./types";
-import { getSearchAutoComplete } from "../../../api/AccuweatherAPI/AccuweatherAPI";
-import EmptyStateContainer from "../../../Components/EmptyStateContainer/EmptyStateContainer";
-import CityImg from "../../../Images/city.svg";
+import { getSearchAutoComplete } from "../../api/AccuweatherAPI/AccuweatherAPI";
+import EmptyStateContainer from "../../Components/EmptyStateContainer/EmptyStateContainer";
+import CityImg from "../../Images/city.svg";
 import { TailSpin } from "react-loader-spinner";
-
-import { useDebounce } from "../../../hooks/useDebounce";
+import { useDebounce } from "../../hooks/useDebounce";
 import { useNavigate } from "react-router-dom";
 
 export interface City {
@@ -42,14 +41,11 @@ const SearchModal: React.FC<ModalProps> = ({
     () => getSearchAutoComplete(result ? searchValue : debouncedSearch),
     {
       enabled: !!searchValue,
-      cacheTime: 6000,
-      staleTime: 6000,
     }
   );
 
   // navigates to home page
   const handleSelect = (key: string, cityName: string) => {
-    // console.log("click");
     setSearchValue("");
     navigate(`/${key}/${cityName}`);
     onClose();
