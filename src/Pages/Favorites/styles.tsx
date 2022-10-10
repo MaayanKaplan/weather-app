@@ -59,7 +59,7 @@ export const FavoriteContainer = styled.div`
   }
 
   @media ${deviceSize.mobile} {
-    margin: 56px 35px 0 35px;
+    margin: 16px 35px;
   }
 `;
 
@@ -69,6 +69,11 @@ export const CityName = styled.h2`
   line-height: 1.25;
   color: #fff;
   margin-bottom: 4px;
+
+  @media ${deviceSize.mobile} {
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
 `;
 
 export const CountryName = styled.h3`
@@ -76,12 +81,23 @@ export const CountryName = styled.h3`
   font-weight: 500;
   line-height: 1.25;
   color: #fff;
+
+  @media ${deviceSize.mobile} {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
 `;
 
 export const Icon = styled.img`
   width: 40px;
   height: 40px;
   cursor: pointer;
+
+  @media ${deviceSize.mobile} {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const Separator = styled.div`

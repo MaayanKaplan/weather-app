@@ -4,9 +4,7 @@ import deviceSize from "../Utils/deviceSize";
 const ErrorMessage = () => {
   return (
     <ErrorContainer>
-      <ErrorDescription>
-        We are sorry, but something went wrong.{" "}
-      </ErrorDescription>
+      <ErrorDescription>We are sorry, something went wrong. </ErrorDescription>
     </ErrorContainer>
   );
 };

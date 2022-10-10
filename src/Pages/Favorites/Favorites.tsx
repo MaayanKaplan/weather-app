@@ -25,14 +25,15 @@ const Favorites = () => {
     getFavorites()
   );
 
-  console.log(data?.results);
+  console.log(error);
+  // console.log(data?.results);
 
   const { mutate } = useAddAndRemoveFavorites();
 
-  const handleRemoveFavorite = () => {
-    // mutate({
-    //   key: +localStorage.getItem(key)!,
-    // });
+  const handleRemoveFavorite = (key: number) => {
+    mutate({
+      key: key,
+    });
     setIsRemoveFromFavoritesOpen(false);
     setRemoveSuccess(true);
     setTimeout(() => {
@@ -82,7 +83,6 @@ const Favorites = () => {
         {data?.results && (
           <>
             {data.results.map((item: any) => {
-              console.log(item);
               return (
                 <>
                   <S.Favorite key={item.key}>
@@ -92,7 +92,7 @@ const Favorites = () => {
                         <S.CountryName>{item.country}</S.CountryName>
                       </S.EachCityWrapper>
                       <S.Icon
-                        onClick={() => setIsRemoveFromFavoritesOpen(true)}
+                        onClick={() => handleClickOnFav(item.key)}
                         src={IconFavoritesFull}
                       />
                     </S.FavoriteContainer>
@@ -145,7 +145,7 @@ const Favorites = () => {
             btnText="Yes, remove"
             onClose={() => setIsRemoveFromFavoritesOpen(false)}
             yesClick={() => {
-              // handleRemoveFavorite(item.key);
+              handleRemoveFavorite(+localStorage.getItem("favKey")!);
             }}
           />
         </PopUp>
