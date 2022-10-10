@@ -38,21 +38,24 @@ const LoginBox = () => {
 
   const navigate = useNavigate();
 
-  const { login, logout, loginInProgress, authenticationError } =
-    useAuthentication((lastLocation: string) => {
+  const { login, loginInProgress, authenticationError } = useAuthentication(
+    (lastLocation: string) => {
       if (!lastLocation) navigate("/");
       else navigate(lastLocation);
-    });
+    }
+  );
 
   const onSubmit = async (data: any) => {
     login(data.email, data.password);
   };
 
+  console.log(authenticationError);
+
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.Title>Log in</S.Title>
 
-      {authenticationError && (
+      {authenticationError! && (
         <Toast severity="error">{authenticationError}</Toast>
       )}
 
@@ -120,13 +123,13 @@ const LoginBox = () => {
       <S.ButtonsWrapper>
         <S.ButtonWrapper>
           <IconFacebookLogo />
-          <Button onClick={() => console.log("Facebook")} variant="link">
+          <Button onClick={() => {}} variant="link">
             Log in with Facebook
           </Button>
         </S.ButtonWrapper>
         <S.ButtonWrapper>
           <IconGoogleLogo />
-          <Button onClick={() => console.log("Google")} variant="link">
+          <Button onClick={() => {}} variant="link">
             Log in with Google
           </Button>
         </S.ButtonWrapper>
@@ -134,31 +137,5 @@ const LoginBox = () => {
     </S.FormContainer>
   );
 };
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <div>
-//         <label htmlFor="email">First Name</label>
-//         <input placeholder="email" {...register("email", { required: true })} />
-//         {errors.email?.message && touchedFields.email && (
-//           <p>{errors.email.message}</p>
-//         )}
-//       </div>
-
-//       <div>
-//         <label htmlFor="password">Last Name</label>
-//         <input
-//           placeholder="luo"
-//           {...register("password", { required: true })}
-//         />
-//         {errors.password?.message && touchedFields.password && (
-//           <p>{errors.password.message}</p>
-//         )}
-//       </div>
-
-//       <input disabled={!isValid} type="submit" />
-//     </form>
-//   );
-// };
 
 export default LoginBox;

@@ -1,6 +1,5 @@
 import styled from "styled-components/macro";
 import { NotificationProps } from "./types";
-import deviceSize from "../../Utils/deviceSize";
 
 const successStyle = () => {
   return `
@@ -17,6 +16,7 @@ const errorStyle = () => {
   background-color: #ffe7e7;
   color: #4d4d4d;
   font-size: 1.4rem;
+  margin-bottom: 32px;
   `;
 };
 
@@ -26,11 +26,10 @@ export const ToastWrapper = styled.div<NotificationProps>`
   justify-content: center;
   align-items: center;
   gap: 16px;
-  padding: 24px;
+  /* padding: 24px; */
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
-  /* margin-bottom: 32px; */
 
   /* position: absolute; */
 

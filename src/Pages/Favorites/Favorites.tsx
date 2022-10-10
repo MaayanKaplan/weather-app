@@ -13,6 +13,7 @@ import {
 } from "../../api/AbraApi/getFavorites";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const Favorites = () => {
   const [isRemoveFromFavoritesOpen, setIsRemoveFromFavoritesOpen] =
@@ -28,16 +29,29 @@ const Favorites = () => {
 
   const { mutate } = useAddAndRemoveFavorites();
 
-  const handleRemoveFavorite = (key: number) => {
-    mutate({
-      key: key,
-    });
+  const handleRemoveFavorite = () => {
+    // mutate({
+    //   key: +localStorage.getItem(key)!,
+    // });
     setIsRemoveFromFavoritesOpen(false);
     setRemoveSuccess(true);
     setTimeout(() => {
       setRemoveSuccess(false);
     }, 1500);
   };
+
+  const handleClickOnFav = (key: string) => {
+    setIsRemoveFromFavoritesOpen(true);
+    return localStorage.setItem("favKey", key);
+  };
+
+  // SEARCH filteredArray
+  const inputValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const arrayOfFav = data?.results!;
+  // const filteredArray = arrayOfFav.filter(inputValue)!;
 
   if (isLoading) {
     <TailSpin width="70" height="70" color="fff"></TailSpin>;
@@ -81,9 +95,6 @@ const Favorites = () => {
                         onClick={() => setIsRemoveFromFavoritesOpen(true)}
                         src={IconFavoritesFull}
                       />
-                      {/*  */}
-
-                      {/*  */}
                     </S.FavoriteContainer>
                   </S.Favorite>
                   <S.Separator />
@@ -92,6 +103,27 @@ const Favorites = () => {
             })}
           </>
         )}
+
+        {/* {searchValue &&
+          filteredArray.map((item) => {
+            return (
+              <>
+                <S.Favorite key={item.key}>
+                  <S.FavoriteContainer>
+                    <S.EachCityWrapper>
+                      <S.CityName>{item.city}</S.CityName>
+                      <S.CountryName>{item.country}</S.CountryName>
+                    </S.EachCityWrapper>
+                    <S.Icon
+                      onClick={() => setIsRemoveFromFavoritesOpen(true)}
+                      src={IconFavoritesFull}
+                    />
+                  </S.FavoriteContainer>
+                </S.Favorite>
+                <S.Separator />
+              </>
+            );
+          })} */}
       </S.FavoritesWrapper>
 
       {removeSuccess && (
@@ -108,12 +140,12 @@ const Favorites = () => {
           setIsOpen={setIsRemoveFromFavoritesOpen}
         >
           <QuestionPopUp
-            description={`Are you sure you want to remove ${item.city} from favorites list?`}
+            description={`Are you sure you want to remove #### from favorites list?`}
             linkText="Keep it"
             btnText="Yes, remove"
             onClose={() => setIsRemoveFromFavoritesOpen(false)}
             yesClick={() => {
-              handleRemoveFavorite(item.key);
+              // handleRemoveFavorite(item.key);
             }}
           />
         </PopUp>

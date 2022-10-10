@@ -6,6 +6,10 @@ export const MainContainer = styled.div`
   margin: 120px 0;
   height: 100%;
   overflow-x: scroll;
+
+  @media ${deviceSize.mobile} {
+    margin: 32px 0 0 0;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -38,7 +42,6 @@ export const StyledTitle = styled.h1`
 
 export const FavoritesWrapper = styled.div`
   margin-top: 65px;
-  /* height: 500px; */
 `;
 
 export const Favorite = styled.div``;
@@ -49,7 +52,6 @@ export const FavoriteContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin: 65px 291px 0 372px;
 
   @media ${deviceSize.tablet} {
@@ -86,7 +88,6 @@ export const Separator = styled.div`
   height: 1px;
   opacity: 0.6;
   background-color: #fff;
-
   margin: 14px 295px 24px 372px;
   margin-top: 14px;
 
@@ -109,4 +110,10 @@ export const RemoveFavNotification = styled(Toast)`
   font-size: 2rem;
   font-weight: 300;
   width: 493px;
+
+  @media ${deviceSize.mobile} {
+    width: 327px;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
 `;
