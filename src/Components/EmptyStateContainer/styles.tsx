@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import deviceSize from "../../Utils/deviceSize";
 
 export const MainEmptyContainer = styled.div`
   height: 100vh;
@@ -32,4 +33,8 @@ export const EmptyStateDescription = styled.p<{ color: string }>`
   text-align: center;
   padding: 0 30px;
   color: ${({ color }) => (color === "dark" ? "#444e72" : "#fff")};
+
+  @media ${deviceSize.mobile} {
+    font-size: 1.4rem;
+  }
 `;
