@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import Map from "./Pages/Map/Map";
 import { useGeoLocation } from "use-geo-location";
 import { getGeoPosition } from "./api/AccuweatherAPI/AccuweatherAPI";
+import ErrorBoundary from "./Utils/ErrorBoundary";
 
 export interface DefaultTheme {
   primary: string;
@@ -77,31 +78,33 @@ const App: React.FC = () => {
             }),
         }}
       >
-        <BackgroundStyle>
-          <GlobalStyles />
-          <Clouds numClouds={15}></Clouds>
-          <AuthenticationProvider>
-            <Routes>
-              {!token && (
-                <Route>
-                  <Route path="/login" element={<LoginPage />} />
+        <ErrorBoundary>
+          <BackgroundStyle>
+            <GlobalStyles />
+            <Clouds numClouds={15}></Clouds>
+            <AuthenticationProvider>
+              <Routes>
+                {!token && (
+                  <Route>
+                    <Route path="/login" element={<LoginPage />} />
+                  </Route>
+                )}
+                <Route element={<Layout />}>
+                  <Route
+                    path="/"
+                    element={<HomePage locationKey={locationKey} />}
+                  />
+                  <Route
+                    path="/:locationKey/:cityName"
+                    element={<HomePage locationKey={locationKey} />}
+                  />
+                  <Route path="/map" element={<Map />} />
+                  <Route path="/favorites" element={<Favorites />} />
                 </Route>
-              )}
-              <Route element={<Layout />}>
-                <Route
-                  path="/"
-                  element={<HomePage locationKey={locationKey} />}
-                />
-                <Route
-                  path="/:locationKey/:cityName"
-                  element={<HomePage locationKey={locationKey} />}
-                />
-                <Route path="/map" element={<Map />} />
-                <Route path="/favorites" element={<Favorites />} />
-              </Route>
-            </Routes>
-          </AuthenticationProvider>
-        </BackgroundStyle>
+              </Routes>
+            </AuthenticationProvider>
+          </BackgroundStyle>
+        </ErrorBoundary>
       </ThemeToggleContext.Provider>
     </ThemeProvider>
   );
