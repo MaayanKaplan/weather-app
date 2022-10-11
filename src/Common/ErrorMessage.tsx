@@ -13,10 +13,12 @@ export default ErrorMessage;
 
 const ErrorContainer = styled.div`
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
+  margin: 150px auto 0 auto;
 `;
 
 const ErrorDescription = styled.p`
+  color: #fff;
   font-size: 3.2rem;
 
   @media ${deviceSize.mobile} {

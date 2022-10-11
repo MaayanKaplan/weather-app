@@ -143,15 +143,20 @@ export const BtnIconWrapper = styled.div`
 `;
 
 export const AddFavNotification = styled(Toast)`
-  position: absolute;
-  top: 600px;
-  display: flex;
-  align-self: center;
-  margin: 0 auto;
   width: 434px;
   height: 86px;
   font-size: 2rem;
   font-weight: 300;
+
+  /* position: absolute; */
+  /* top: 652px; */
+  display: flex;
+  margin: 0 auto;
+  z-index: 100;
+  /* align-self: center; */
+  /* align-items: center;
+  justify-content: center; */
+  /* margin: 0 auto; */
 
   @media ${deviceSize.mobile} {
     width: 327px;

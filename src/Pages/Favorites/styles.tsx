@@ -40,6 +40,10 @@ export const StyledTitle = styled.h1`
   }
 `;
 
+export const EmptyStateWrapper = styled.div`
+  margin-top: 75px;
+`;
+
 export const FavoritesWrapper = styled.div`
   margin-top: 65px;
 `;
@@ -131,5 +135,8 @@ export const RemoveFavNotification = styled(Toast)`
     width: 327px;
     font-size: 1.4rem;
     font-weight: 400;
+    padding: 24px 32px;
+
+    bottom: 128px;
   }
 `;
