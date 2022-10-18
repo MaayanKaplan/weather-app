@@ -11,6 +11,7 @@ import { getDailyForecast } from "../../api/AccuweatherAPI/AccuweatherAPI";
 import FavImg from "../../Images/fav-outline.svg";
 import { useAddAndRemoveFavorites } from "../../api/AbraApi/getFavorites";
 import PopUp from "../../Common/PopUp/PopUp";
+import ErrorMessage from "../../Common/ErrorMessage";
 
 interface HomeProps {
   params: {
@@ -30,7 +31,7 @@ const Home = ({ params, locationKey }: HomeProps) => {
   };
   const isMobile = useMedia();
 
-  const { data } = useQuery([params, locationKey], () => {
+  const { data, isError, error } = useQuery([params, locationKey], () => {
     if (params?.locationKey) {
       return getDailyForecast(+params?.locationKey);
     } else {
@@ -62,6 +63,8 @@ const Home = ({ params, locationKey }: HomeProps) => {
       setIsAddToFavorites(false);
     }, 1500);
   };
+
+  if (isError) return <ErrorMessage />;
 
   return (
     <>

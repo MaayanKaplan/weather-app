@@ -148,21 +148,17 @@ export const AddFavNotification = styled(Toast)`
   font-size: 2rem;
   font-weight: 300;
 
-  /* position: absolute; */
-  /* top: 652px; */
-  display: flex;
-  margin: 0 auto;
-  z-index: 100;
-  /* align-self: center; */
-  /* align-items: center;
-  justify-content: center; */
-  /* margin: 0 auto; */
+  position: absolute;
+  top: 652px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 
   @media ${deviceSize.mobile} {
     width: 327px;
     font-size: 1.4rem;
     font-weight: 400;
-    /* padding: 22px 32px; */
-    padding: 0;
+    top: 740px;
   }
 `;

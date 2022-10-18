@@ -124,12 +124,14 @@ export const RemoveFavNotification = styled(Toast)`
   color: #fff;
   position: absolute;
   bottom: 54px;
-  display: flex;
-  align-self: center;
-  margin: 0 auto;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 2rem;
   font-weight: 300;
   width: 493px;
+  padding: 22px 32px;
 
   @media ${deviceSize.mobile} {
     width: 327px;

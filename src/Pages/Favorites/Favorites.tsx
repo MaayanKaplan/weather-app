@@ -13,7 +13,7 @@ import {
 } from "../../api/AbraApi/getFavorites";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import ErrorMessage from "../../Common/ErrorMessage";
 
 const Favorites = () => {
   const [isRemoveFromFavoritesOpen, setIsRemoveFromFavoritesOpen] =
@@ -24,9 +24,6 @@ const Favorites = () => {
   const { data, isLoading, isError, error } = useQuery(["favorites"], () =>
     getFavorites()
   );
-
-  console.log(error);
-  // console.log(data?.results);
 
   const { mutate } = useAddAndRemoveFavorites();
 
@@ -49,23 +46,15 @@ const Favorites = () => {
   // SEARCH filteredArray
   const inputValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchValue(e.target.value);
+    return searchValue;
   };
 
-  const arrayOfFav = data?.results!;
-  // const filteredArray = arrayOfFav.filter(inputValue)!;
+  console.log(searchValue);
 
-  if (isLoading) {
-    <TailSpin width="70" height="70" color="fff"></TailSpin>;
-  }
+  const filteredArray = data?.results.filter((searchValue) => searchValue);
+  console.log(filteredArray);
 
-  if (data?.results.length === 0)
-    return (
-      <EmptyStateContainer
-        title="My Favorites"
-        description="Favorites list is empty."
-        img={EmptyStateImg}
-      />
-    );
+  // console.log(inputValue);
 
   return (
     <S.MainContainer>
@@ -73,16 +62,26 @@ const Favorites = () => {
         <S.StyledTitle>Favorites</S.StyledTitle>
       </S.TitleWrapper>
       <SearchInput
-        variant="transparent"
-        placeholder="Search from favorite..."
+        variant={"transparent"}
+        placeholder={"Search from favorite..."}
         icon={<IconSearchWhite />}
-        inputValue={searchValue}
+        inputValue={inputValue}
         handleOpen={() => {}}
       />
+
+      {isError && <ErrorMessage />}
+      {isLoading && <TailSpin width="70" height="70" color="fff"></TailSpin>}
+
       <S.FavoritesWrapper>
-        {data?.results && (
+        {data?.results.length === 0 ? (
+          <EmptyStateContainer
+            title="My Favorites"
+            description="Favorites list is empty."
+            img={EmptyStateImg}
+          />
+        ) : (
           <>
-            {data.results.map((item: any) => {
+            {data?.results.map((item: any) => {
               return (
                 <>
                   <S.Favorite key={item.key}>
@@ -140,7 +139,7 @@ const Favorites = () => {
           setIsOpen={setIsRemoveFromFavoritesOpen}
         >
           <QuestionPopUp
-            description={`Are you sure you want to remove #### from favorites list?`}
+            description={`Are you sure you want to remove it from favorites list?`}
             linkText="Keep it"
             btnText="Yes, remove"
             onClose={() => setIsRemoveFromFavoritesOpen(false)}

@@ -13,24 +13,6 @@ const CurrentDay: React.FC<CurrentDayProps> = ({
   isAddToFavorites,
   AddToFavoritesSuccess,
 }) => {
-  // const [isAddToFavorites, setIsAddToFavorites] =
-  //   React.useState<boolean>(false);
-
-  // const { mutate, isSuccess } = useAddAndRemoveFavorites();
-
-  // const AddToFavoritesSuccess = () => {
-  //   mutate({
-  //     key: data.locationKey,
-  //     title: cityTitle,
-  //     city: cityTitle,
-  //     country: cityTitle,
-  //   });
-  //   setIsAddToFavorites(true);
-  //   setTimeout(() => {
-  //     setIsAddToFavorites(false);
-  //   }, 1500);
-  // };
-
   const today = new Date();
   const hour = Number(format(today, "h"));
 

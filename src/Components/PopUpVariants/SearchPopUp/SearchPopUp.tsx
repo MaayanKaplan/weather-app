@@ -3,7 +3,6 @@ import { Props } from "./types";
 import CitySearch from "../../CitySearch/CitySearch";
 import EmptyStateContainer from "../../EmptyStateContainer/EmptyStateContainer";
 import { IconArrow } from "../../../Common/Icon/Icon";
-
 import { useMedia } from "../../../hooks/useMedia";
 import CityImg from "../../../Images/city.svg";
 

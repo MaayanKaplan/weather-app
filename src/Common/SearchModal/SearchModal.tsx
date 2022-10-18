@@ -46,6 +46,7 @@ const SearchModal: React.FC<ModalProps> = ({
 
   // navigates to home page
   const handleSelect = (key: string, cityName: string) => {
+    console.log("test");
     setSearchValue("");
     navigate(`/${key}/${cityName}`);
     onClose();
