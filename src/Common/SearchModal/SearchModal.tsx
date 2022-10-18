@@ -8,6 +8,7 @@ import CityImg from "../../Images/city.svg";
 import { TailSpin } from "react-loader-spinner";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../ErrorMessage";
 
 export interface City {
   Key: string;
@@ -36,7 +37,7 @@ const SearchModal: React.FC<ModalProps> = ({
   });
 
   // return from autoComplete func.
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ["autocomplete", result ? searchValue : debouncedSearch],
     () => getSearchAutoComplete(result ? searchValue : debouncedSearch),
     {
@@ -54,6 +55,7 @@ const SearchModal: React.FC<ModalProps> = ({
 
   return (
     <S.Container>
+      {isError && <S.StyledErrorMessage />}
       {isLoading && (
         <S.LoadingContainer>
           <TailSpin width="80" height="80" color="#47bfdf" />
@@ -67,7 +69,6 @@ const SearchModal: React.FC<ModalProps> = ({
               <S.ListItem
                 key={city.Key}
                 onClick={() => handleSelect(city.Key, city.LocalizedName)}
-                // to={`/${key}/${cityName}`}
               >
                 <S.City>{city.LocalizedName}, </S.City>
                 <S.Country>{city.Country.LocalizedName}</S.Country>

@@ -1,9 +1,13 @@
 import styled from "styled-components/macro";
 import deviceSize from "../Utils/deviceSize";
 
-const ErrorMessage = () => {
+interface Props {
+  className?: string;
+}
+
+const ErrorMessage: React.FC<Props> = ({ className }) => {
   return (
-    <ErrorContainer>
+    <ErrorContainer className={className}>
       <ErrorDescription>We are sorry, something went wrong. </ErrorDescription>
     </ErrorContainer>
   );

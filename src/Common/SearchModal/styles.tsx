@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
-import { Link } from "react-router-dom";
+import ErrorMessage from "../ErrorMessage";
 
 export const Container = styled.div`
   width: 476px;
@@ -79,4 +79,11 @@ export const LoadingContainer = styled.div`
 export const LoadingText = styled.p`
   font-size: 2rem;
   color: #444e72;
+`;
+
+export const StyledErrorMessage = styled(ErrorMessage)`
+  p {
+    color: #444e72;
+    font-size: 1.8rem;
+  }
 `;
