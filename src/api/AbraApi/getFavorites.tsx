@@ -13,17 +13,6 @@ interface Results {
   results: any[];
 }
 
-// export const getFavorites = async (): Promise<Results> => {
-//   const token = localStorage.getItem("token");
-
-//   const response = await abraInstance.get("api/favorites/", {
-//     headers: {
-//       Authorization: `Bearer ${JSON.parse(token as string)}`,
-//     },
-//   });
-//   return response.data;
-// };
-
 export const getFavorites = async (url: string): Promise<Results> => {
   const token = localStorage.getItem("token");
 

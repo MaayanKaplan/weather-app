@@ -10,7 +10,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuthentication } from "../../api/AbraApi/Authentication";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
-import { InputProps } from "./types";
 
 const validationSchema = yup
   .object({
@@ -49,13 +48,11 @@ const LoginBox = () => {
     login(data.email, data.password);
   };
 
-  console.log(authenticationError);
-
   return (
     <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
       <S.Title>Log in</S.Title>
 
-      {authenticationError! && (
+      {authenticationError && (
         <Toast severity="error">{authenticationError}</Toast>
       )}
 

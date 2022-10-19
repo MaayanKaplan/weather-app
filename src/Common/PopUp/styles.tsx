@@ -2,8 +2,8 @@ import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
 
 export const BlurWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
   backdrop-filter: blur(5px);
   background-color: rgba(140, 140, 140, 0.2);

@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./styles";
 import { NavBarProps } from "./types";
 
@@ -13,7 +12,7 @@ const NavBar: React.FC<NavBarProps> = ({
       {items.map((item) => {
         return (
           <S.NavBarItemWrapper key={item.id}>
-            <S.NavBarButton variant="ghost" onClick={() => onClick(item.id)}>
+            <S.NavBarButton variant="ghost" onClick={() => onClick(item.path)}>
               <S.ContentWrapper>
                 <S.IconWrapper to={item.path}>
                   {selectedItem === item.id ? item.active : item.inactive}
@@ -21,7 +20,7 @@ const NavBar: React.FC<NavBarProps> = ({
                 <S.Text to={item.path}>{item.text}</S.Text>
               </S.ContentWrapper>
             </S.NavBarButton>
-            {selectedItem === item.id && <S.ActiveItem />}
+            {selectedItem === item.path && <S.ActiveItem />}
           </S.NavBarItemWrapper>
         );
       })}

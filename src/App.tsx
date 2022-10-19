@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import GlobalStyles from "./GlobalStyle";
 import styled, { ThemeProvider } from "styled-components/macro";
 import { lightTheme, darkTheme, ThemesMode } from "./themes";
@@ -53,15 +53,18 @@ const App: React.FC = () => {
     staleTime: 1000 * 60 * 15,
   });
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isSuccess) {
       setToken(true);
+      // navigate("/");
     } else {
       setTimeout(() => {
         setToken(false);
       }, 1500);
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate]);
 
   const { latitude, longitude } = useGeoLocation();
   const { data: locationKey } = useQuery([latitude, longitude], () =>

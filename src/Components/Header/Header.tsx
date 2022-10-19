@@ -18,7 +18,7 @@ import { HeaderProps } from "./types";
 import QuestionPopUp from "../PopUpVariants/QuestionPopUp/QuestionPopUp";
 import CitySearch from "../CitySearch/CitySearch";
 import { useAuthentication } from "../../api/AbraApi/Authentication";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToggleTheme } from "../../App";
 import { useTheme } from "styled-components/macro";
 
@@ -53,9 +53,11 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     },
   ];
 
-  const [currentSelectedItem, setCurrentSelectedItem] = useState<string>(
-    navBarItems[0].id
-  );
+  const location = useLocation();
+  const currentLocation = location.pathname;
+
+  const [currentSelectedItem, setCurrentSelectedItem] =
+    useState<string>(currentLocation);
 
   return (
     <S.HeaderWrapper>
@@ -65,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         </S.LogoWrapper>
         <S.StyledNavBar
           items={navBarItems}
-          onClick={(id) => setCurrentSelectedItem(id)}
+          onClick={(currentLocation) => setCurrentSelectedItem(currentLocation)}
           selectedItem={currentSelectedItem}
         />
       </S.LeftSideContainer>

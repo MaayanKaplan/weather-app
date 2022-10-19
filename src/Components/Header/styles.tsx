@@ -67,15 +67,11 @@ export const RightSideContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   justify-content: right;
   align-items: right center;
-  /* display: flex;
-  justify-content: space-between; */
-
   width: 35%;
   padding-right: 70px;
 
   @media ${deviceSize.tablet} {
     display: flex;
-    /* width: 25%; */
     padding-right: 50px;
     justify-content: space-between;
   }
@@ -132,9 +128,10 @@ export const SwitchesWrapper = styled.div`
 export const LogoutPopUp = styled(PopUp)`
   display: flex;
   flex-direction: column;
-  align-self: center;
-  margin: 0 auto;
-  /* margin: 125px auto 0 auto; */
   position: absolute;
   top: 125px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 `;
