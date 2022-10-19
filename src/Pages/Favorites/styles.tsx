@@ -56,10 +56,10 @@ export const FavoriteContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 65px 291px 0 372px;
+  margin: 30px 291px 0 372px;
 
   @media ${deviceSize.tablet} {
-    margin: 65px 50px 0 52px;
+    margin: 30px 50px 0 52px;
   }
 
   @media ${deviceSize.mobile} {

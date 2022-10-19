@@ -1,11 +1,10 @@
-// import axios from "axios";
-// import { abraGetFavorite } from "../api/AbraAPI";
 import { abraInstance } from "./AbraAPI";
 import {
   UseMutateFunction,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
+import axios from "axios";
 
 interface Results {
   count: number;
@@ -14,10 +13,21 @@ interface Results {
   results: any[];
 }
 
-export const getFavorites = async (): Promise<Results> => {
+// export const getFavorites = async (): Promise<Results> => {
+//   const token = localStorage.getItem("token");
+
+//   const response = await abraInstance.get("api/favorites/", {
+//     headers: {
+//       Authorization: `Bearer ${JSON.parse(token as string)}`,
+//     },
+//   });
+//   return response.data;
+// };
+
+export const getFavorites = async (url: string): Promise<Results> => {
   const token = localStorage.getItem("token");
 
-  const response = await abraInstance.get("api/favorites/", {
+  const response = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${JSON.parse(token as string)}`,
     },

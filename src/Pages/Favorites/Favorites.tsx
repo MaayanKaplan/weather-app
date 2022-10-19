@@ -11,7 +11,8 @@ import {
   getFavorites,
   useAddAndRemoveFavorites,
 } from "../../api/AbraApi/getFavorites";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import InfiniteScroll from "react-infinite-scroller";
 import { TailSpin } from "react-loader-spinner";
 import ErrorMessage from "../../Common/ErrorMessage";
 
@@ -21,9 +22,28 @@ const Favorites = () => {
   const [removeSuccess, setRemoveSuccess] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const { data, isLoading, isError, error } = useQuery(["favorites"], () =>
-    getFavorites()
+  // Fetching fav.
+  const FAV_URL = "https://weather-abra.herokuapp.com/api/favorites/";
+
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isFetching,
+    isError,
+    error,
+  } = useInfiniteQuery(
+    ["favorites"],
+    ({ pageParam = FAV_URL }) => getFavorites(pageParam),
+    {
+      getNextPageParam: (lastPage) => lastPage.next || undefined,
+    }
   );
+
+  // console.log(data?.pages[0].results);
+  // console.log(data?.pages[0].results.length);
+  // console.log(data?.pages);
 
   const { mutate } = useAddAndRemoveFavorites();
 
@@ -49,10 +69,10 @@ const Favorites = () => {
     return searchValue;
   };
 
-  console.log(searchValue);
+  // console.log(searchValue);
 
-  const filteredArray = data?.results.filter((searchValue) => searchValue);
-  console.log(filteredArray);
+  // const filteredArray = data?.results.filter((searchValue) => searchValue);
+  // console.log(filteredArray);
 
   // console.log(inputValue);
 
@@ -73,25 +93,29 @@ const Favorites = () => {
       {isLoading && <TailSpin width="70" height="70" color="fff"></TailSpin>}
 
       <S.FavoritesWrapper>
-        {data?.results.length === 0 ? (
+        {data?.pages[0].results.length === 0 ? (
           <EmptyStateContainer
             title="My Favorites"
             description="Favorites list is empty."
             img={EmptyStateImg}
           />
         ) : (
-          <>
-            {data?.results.map((item: any) => {
+          <InfiniteScroll
+            loadMore={() => fetchNextPage()}
+            hasMore={hasNextPage}
+          >
+            {data?.pages.map((item: any) => {
+              console.log(item.results);
               return (
                 <>
-                  <S.Favorite key={item.key}>
+                  <S.Favorite key={item.results.key!}>
                     <S.FavoriteContainer>
                       <S.EachCityWrapper>
-                        <S.CityName>{item.city}</S.CityName>
-                        <S.CountryName>{item.country}</S.CountryName>
+                        <S.CityName>{item.results.city}</S.CityName>
+                        <S.CountryName>{item.results.country}</S.CountryName>
                       </S.EachCityWrapper>
                       <S.Icon
-                        onClick={() => handleClickOnFav(item.key)}
+                        onClick={() => handleClickOnFav(item.results.key)}
                         src={IconFavoritesFull}
                       />
                     </S.FavoriteContainer>
@@ -100,7 +124,7 @@ const Favorites = () => {
                 </>
               );
             })}
-          </>
+          </InfiniteScroll>
         )}
 
         {/* {searchValue &&
