@@ -12,6 +12,7 @@ import FavImg from "../../Images/fav-outline.svg";
 import { useAddAndRemoveFavorites } from "../../api/AbraApi/getFavorites";
 import PopUp from "../../Common/PopUp/PopUp";
 import ErrorMessage from "../../Common/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 interface HomeProps {
   params: {
@@ -64,6 +65,8 @@ const Home = ({ params, locationKey }: HomeProps) => {
     }, 1500);
   };
 
+  const navigate = useNavigate();
+
   if (isError) return <ErrorMessage />;
 
   return (
@@ -107,7 +110,12 @@ const Home = ({ params, locationKey }: HomeProps) => {
           )
         )}
         {isMobile && (
-          <S.MapButton variant="white" onClick={() => {}}>
+          <S.MapButton
+            variant="white"
+            onClick={() => {
+              navigate("/map");
+            }}
+          >
             <S.BtnContentWrapper>
               <S.BtnIconWrapper>
                 <IconMapDark />

@@ -73,7 +73,6 @@ const Favorites = () => {
   const filtered = favorites?.filter((fav) =>
     fav.city.toLowerCase().includes(searchValue.toLowerCase())
   );
-  console.log(filtered);
 
   return (
     <S.MainContainer>
@@ -115,7 +114,7 @@ const Favorites = () => {
                   <>
                     <S.Favorite key={item.key!}>
                       <S.FavoriteContainer>
-                        <S.EachCityWrapper>
+                        <S.EachCityWrapper to={`/${item.key}/${item.city}`}>
                           <S.CityName>{item.city}</S.CityName>
                           <S.CountryName>{item.country}</S.CountryName>
                         </S.EachCityWrapper>
@@ -132,27 +131,6 @@ const Favorites = () => {
             </>
           </InfiniteScroll>
         )}
-
-        {/* {searchValue &&
-          filteredArray.map((item) => {
-            return (
-              <>
-                <S.Favorite key={item.key}>
-                  <S.FavoriteContainer>
-                    <S.EachCityWrapper>
-                      <S.CityName>{item.city}</S.CityName>
-                      <S.CountryName>{item.country}</S.CountryName>
-                    </S.EachCityWrapper>
-                    <S.Icon
-                      onClick={() => setIsRemoveFromFavoritesOpen(true)}
-                      src={IconFavoritesFull}
-                    />
-                  </S.FavoriteContainer>
-                </S.Favorite>
-                <S.Separator />
-              </>
-            );
-          })} */}
       </S.FavoritesWrapper>
 
       {removeSuccess && (

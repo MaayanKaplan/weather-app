@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
 import Toast from "../../Common/Toast/Toast";
+import { NavLink } from "react-router-dom";
 
 export const MainContainer = styled.div`
   margin: 120px 0;
@@ -51,7 +52,9 @@ export const FavoritesWrapper = styled.div`
 
 export const Favorite = styled.div``;
 
-export const EachCityWrapper = styled.div``;
+export const EachCityWrapper = styled(NavLink)`
+  text-decoration: none;
+`;
 
 export const FavoriteContainer = styled.div`
   display: flex;
