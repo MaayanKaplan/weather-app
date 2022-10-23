@@ -46,6 +46,7 @@ export const EmptyStateWrapper = styled.div`
 
 export const FavoritesWrapper = styled.div`
   margin-top: 65px;
+  margin: 65px 0 200px 0;
 `;
 
 export const Favorite = styled.div``;
@@ -141,4 +142,18 @@ export const RemoveFavNotification = styled(Toast)`
 
     bottom: 128px;
   }
+`;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+`;
+
+export const LoadingText = styled.span`
+  color: #fff;
+  font-size: 2rem;
 `;

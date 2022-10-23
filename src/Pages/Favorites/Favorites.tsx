@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import * as S from "./styles";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import PopUp from "../../Common/PopUp/PopUp";
@@ -41,9 +41,10 @@ const Favorites = () => {
     }
   );
 
-  // console.log(data?.pages[0].results);
-  // console.log(data?.pages[0].results.length);
-  // console.log(data?.pages);
+  const favorites = useMemo(
+    () => (data ? data.pages.flatMap((page) => page.results) : []),
+    [data]
+  );
 
   const { mutate } = useAddAndRemoveFavorites();
 
@@ -69,12 +70,10 @@ const Favorites = () => {
     return searchValue;
   };
 
-  // console.log(searchValue);
-
-  // const filteredArray = data?.results.filter((searchValue) => searchValue);
-  // console.log(filteredArray);
-
-  // console.log(inputValue);
+  const filtered = favorites?.filter((fav) =>
+    fav.city.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  console.log(filtered);
 
   return (
     <S.MainContainer>
@@ -90,7 +89,13 @@ const Favorites = () => {
       />
 
       {isError && <ErrorMessage />}
-      {isLoading && <TailSpin width="70" height="70" color="fff"></TailSpin>}
+
+      {isLoading && (
+        <S.LoadingContainer>
+          <TailSpin width="80" height="80" color="#fff" />
+          <S.LoadingText>Loading...</S.LoadingText>
+        </S.LoadingContainer>
+      )}
 
       <S.FavoritesWrapper>
         {data?.pages[0].results.length === 0 ? (
@@ -104,26 +109,27 @@ const Favorites = () => {
             loadMore={() => fetchNextPage()}
             hasMore={hasNextPage}
           >
-            {data?.pages.map((item: any) => {
-              console.log(item.results);
-              return (
-                <>
-                  <S.Favorite key={item.results.key!}>
-                    <S.FavoriteContainer>
-                      <S.EachCityWrapper>
-                        <S.CityName>{item.results.city}</S.CityName>
-                        <S.CountryName>{item.results.country}</S.CountryName>
-                      </S.EachCityWrapper>
-                      <S.Icon
-                        onClick={() => handleClickOnFav(item.results.key)}
-                        src={IconFavoritesFull}
-                      />
-                    </S.FavoriteContainer>
-                  </S.Favorite>
-                  <S.Separator />
-                </>
-              );
-            })}
+            <>
+              {filtered.map((item: any) => {
+                return (
+                  <>
+                    <S.Favorite key={item.key!}>
+                      <S.FavoriteContainer>
+                        <S.EachCityWrapper>
+                          <S.CityName>{item.city}</S.CityName>
+                          <S.CountryName>{item.country}</S.CountryName>
+                        </S.EachCityWrapper>
+                        <S.Icon
+                          onClick={() => handleClickOnFav(item.key)}
+                          src={IconFavoritesFull}
+                        />
+                      </S.FavoriteContainer>
+                    </S.Favorite>
+                    <S.Separator />
+                  </>
+                );
+              })}
+            </>
           </InfiniteScroll>
         )}
 
