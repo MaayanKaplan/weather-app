@@ -45,26 +45,12 @@ export const useToggleTheme = () => {
 };
 
 const App: React.FC = () => {
-  const [token, setToken] = useState<boolean>(false);
   const [theme, setTheme] = useState(lightTheme);
 
   const { isSuccess } = useQuery(["verifyToken"], () => verifyToken(), {
     cacheTime: 1000 * 60 * 15,
     staleTime: 1000 * 60 * 15,
   });
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isSuccess) {
-      setToken(true);
-      // navigate("/");
-    } else {
-      setTimeout(() => {
-        setToken(false);
-      }, 1500);
-    }
-  }, [isSuccess, navigate]);
 
   const { latitude, longitude } = useGeoLocation();
   const { data: locationKey } = useQuery([latitude, longitude], () =>
@@ -87,23 +73,24 @@ const App: React.FC = () => {
             <Clouds numClouds={15}></Clouds>
             <AuthenticationProvider>
               <Routes>
-                {!token && (
+                {!isSuccess ? (
                   <Route>
                     <Route path="/login" element={<LoginPage />} />
                   </Route>
+                ) : (
+                  <Route element={<Layout />}>
+                    <Route
+                      path="/"
+                      element={<HomePage locationKey={locationKey} />}
+                    />
+                    <Route
+                      path="/:locationKey/:cityName"
+                      element={<HomePage locationKey={locationKey} />}
+                    />
+                    <Route path="/map" element={<Map />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                  </Route>
                 )}
-                <Route element={<Layout />}>
-                  <Route
-                    path="/"
-                    element={<HomePage locationKey={locationKey} />}
-                  />
-                  <Route
-                    path="/:locationKey/:cityName"
-                    element={<HomePage locationKey={locationKey} />}
-                  />
-                  <Route path="/map" element={<Map />} />
-                  <Route path="/favorites" element={<Favorites />} />
-                </Route>
               </Routes>
             </AuthenticationProvider>
           </BackgroundStyle>

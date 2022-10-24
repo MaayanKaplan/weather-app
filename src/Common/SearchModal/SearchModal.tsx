@@ -7,8 +7,6 @@ import EmptyStateContainer from "../../Components/EmptyStateContainer/EmptyState
 import CityImg from "../../Images/city.svg";
 import { TailSpin } from "react-loader-spinner";
 import { useDebounce } from "../../hooks/useDebounce";
-import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../ErrorMessage";
 
 export interface City {
   Key: string;
@@ -28,7 +26,6 @@ const SearchModal: React.FC<ModalProps> = ({
   setSearchValue,
   onClose,
 }) => {
-  const navigate = useNavigate();
   const debouncedSearch = useDebounce(searchValue, 300);
   const client = useQueryClient();
 
@@ -36,6 +33,7 @@ const SearchModal: React.FC<ModalProps> = ({
     exact: true,
   });
 
+  console.log(searchValue);
   // return from autoComplete func.
   const { data, isLoading, isError } = useQuery(
     ["autocomplete", result ? searchValue : debouncedSearch],
@@ -44,14 +42,6 @@ const SearchModal: React.FC<ModalProps> = ({
       enabled: !!searchValue,
     }
   );
-
-  // navigates to home page
-  const handleSelect = (key: string, cityName: string) => {
-    console.log("test");
-    setSearchValue("");
-    navigate(`/${key}/${cityName}`);
-    onClose();
-  };
 
   return (
     <S.Container>
@@ -65,11 +55,8 @@ const SearchModal: React.FC<ModalProps> = ({
       {data && data.length > 0 && (
         <S.List>
           {data.map((city: City) => (
-            <S.ItemWrapper>
-              <S.ListItem
-                key={city.Key}
-                onClick={() => handleSelect(city.Key, city.LocalizedName)}
-              >
+            <S.ItemWrapper to={`/${city.Key}/${city.LocalizedName}`}>
+              <S.ListItem key={city.Key} onClick={() => onClose()}>
                 <S.City>{city.LocalizedName}, </S.City>
                 <S.Country>{city.Country.LocalizedName}</S.Country>
               </S.ListItem>

@@ -12,11 +12,14 @@ const DailyForecasts: React.FC<DailyProps> = ({ data }) => {
         return (
           <>
             <S.EachDayWrapper key={index}>
-              <S.Title>
-                {nextDaysOfWeek[fourDaysView.indexOf(item) + 1]}
-                {" - "}
-                {item.Day.IconPhrase}
-              </S.Title>
+              <S.TitleWrapper>
+                {/* <S.MobileIcon> {WeatherIcons(item.Day.Icon)}</S.MobileIcon> */}
+                <S.Title>
+                  {nextDaysOfWeek[fourDaysView.indexOf(item) + 1]}
+                  {" - "}
+                  {item.Day.IconPhrase}
+                </S.Title>
+              </S.TitleWrapper>
               <S.TempWrapper>
                 <S.TempIcon> {WeatherIcons(item.Day.Icon)}</S.TempIcon>
                 <S.TempMin>{item.Temperature.Minimum.Value}</S.TempMin>

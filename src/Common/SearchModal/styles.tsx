@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import deviceSize from "../../Utils/deviceSize";
 import ErrorMessage from "../ErrorMessage";
+import { NavLink } from "react-router-dom";
 
 export const Container = styled.div`
   width: 476px;
@@ -40,8 +41,9 @@ export const List = styled.ul`
   gap: 24px;
 `;
 
-export const ItemWrapper = styled.div`
+export const ItemWrapper = styled(NavLink)`
   cursor: pointer;
+  text-decoration: none;
 
   :hover {
     background-color: #f2f2f2;

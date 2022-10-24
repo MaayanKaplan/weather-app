@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import * as S from "./styles";
 import SearchInput from "../../Common/SearchInput/SearchInput";
 import PopUp from "../../Common/PopUp/PopUp";
@@ -25,21 +25,14 @@ const Favorites = () => {
   // Fetching fav.
   const FAV_URL = "https://weather-abra.herokuapp.com/api/favorites/";
 
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isLoading,
-    isFetching,
-    isError,
-    error,
-  } = useInfiniteQuery(
-    ["favorites"],
-    ({ pageParam = FAV_URL }) => getFavorites(pageParam),
-    {
-      getNextPageParam: (lastPage) => lastPage.next || undefined,
-    }
-  );
+  const { data, fetchNextPage, hasNextPage, isLoading, isError } =
+    useInfiniteQuery(
+      ["favorites"],
+      ({ pageParam = FAV_URL }) => getFavorites(pageParam),
+      {
+        getNextPageParam: (lastPage) => lastPage.next || undefined,
+      }
+    );
 
   const favorites = useMemo(
     () => (data ? data.pages.flatMap((page) => page.results) : []),

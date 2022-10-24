@@ -10,6 +10,9 @@ export const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   color: #fff;
 
+  z-index: 1;
+  position: relative;
+
   @media ${deviceSize.tablet} {
     margin: 24px auto 85px auto;
   }
@@ -33,9 +36,13 @@ export const Title = styled.h2`
 `;
 
 export const ContentWrapper = styled.div`
-  min-width: 1180px;
-  display: flex;
-  gap: 193px;
+  max-width: 1180px;
+  /* display: flex; */
+  /* gap: 193px; */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  column-gap: 189px;
 
   @media ${deviceSize.mobile} {
     gap: 60px;
@@ -85,14 +92,27 @@ export const Date = styled.span`
   }
 `;
 
-export const Icon = styled.img`
+export const IconSun = styled.img`
+  margin-bottom: 370px;
   @media ${deviceSize.mobile} {
     width: 14px;
     height: 14px;
   }
 `;
 
-export const ChartWrapper = styled.div``;
+export const IconMoon = styled.img`
+  @media ${deviceSize.mobile} {
+    width: 14px;
+    height: 14px;
+  }
+`;
+
+export const ChartWrapper = styled.div`
+  min-width: 970px;
+  z-index: 1000;
+  position: absolute;
+  top: 200px;
+`;
 
 export const IconsWrapper = styled.div`
   display: flex;

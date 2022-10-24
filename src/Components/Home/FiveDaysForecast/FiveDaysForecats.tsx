@@ -182,7 +182,8 @@ const FiveDaysForecast = ({ data }: DailyProps) => {
                   {nextDaysOfWeek[data.DailyForecasts.indexOf(item)]}
                 </S.Day>
                 <S.Date>{ConvertDate(new Date(item.Date))}</S.Date>
-                <S.Icon src={IconSun} />
+                <S.IconSun src={IconSun} />
+                <S.IconMoon key={index} src={IconMoon} />
               </S.EachDayWrapper>
             );
           })}
@@ -196,11 +197,11 @@ const FiveDaysForecast = ({ data }: DailyProps) => {
           />
         </S.ChartWrapper>
 
-        <S.IconsWrapper>
+        {/* <S.IconsWrapper>
           {data?.DailyForecasts.map((item: any, index: number) => {
             return <S.Icon key={index} src={IconMoon} />;
           })}
-        </S.IconsWrapper>
+        </S.IconsWrapper> */}
       </S.Container>
     </>
   );

@@ -41,6 +41,27 @@ export const Title = styled.h3`
   }
 `;
 
+export const TempIcon = styled.div`
+  width: 30px;
+  height: 30px;
+  margin-right: 4px;
+  display: block;
+
+  @media ${deviceSize.mobile} {
+    order: -1;
+  }
+`;
+
+// export const MobileIcon = styled.div`
+//   display: none;
+
+//   @media ${deviceSize.mobile} {
+//     display: block;
+//     width: 22px;
+//     height: 22px;
+//   }
+// `;
+
 export const TempWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -49,32 +70,15 @@ export const TempWrapper = styled.div`
   }
 `;
 
-export const TempIcon = styled.div`
-  /* align-self: center; */
-  margin-right: 4px;
-
-  @media ${deviceSize.mobile} {
-  }
-`;
-
-export const MobileTempIcon = styled.div`
-  display: none;
-
-  @media ${deviceSize.mobile} {
-    display: block;
-    align-self: center;
-  }
-`;
-
 export const TempMin = styled.span`
   font-size: 3.2rem;
   font-weight: bold;
   line-height: 1.25;
+  align-self: center;
 
   @media ${deviceSize.mobile} {
     font-size: 1.8rem;
     line-height: 1.2;
-    align-self: center;
   }
 `;
 export const TempMax = styled.span`
@@ -82,12 +86,13 @@ export const TempMax = styled.span`
   font-weight: 500;
   line-height: 1.25;
   align-self: flex-end;
+  margin-bottom: 3px;
 
   @media ${deviceSize.mobile} {
     font-size: 1.6rem;
     align-self: center;
-
     text-align: right;
+    margin-bottom: unset;
   }
 `;
 
@@ -100,4 +105,9 @@ export const DegreesSign = styled.span`
     line-height: 1.25;
     align-self: center;
   }
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  gap: 8px;
 `;
