@@ -36,13 +36,16 @@ export const Title = styled.h2`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 1180px;
+  max-width: 100%;
   /* display: flex; */
   /* gap: 193px; */
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-  column-gap: 189px;
+  /* grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+  column-gap: 20%; */
+  column-gap: 90px;
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-rows: min-content 250px 250px 66px; */
 
   @media ${deviceSize.mobile} {
     gap: 60px;
@@ -55,13 +58,10 @@ export const EachDayWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  /* :hover {
-    width: 146px;
-    height: 570px;
-    padding: 19px 50px 34px 49px;
+  :hover {
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.3);
-  } */
+  }
 `;
 
 export const Day = styled.span`
@@ -108,10 +108,10 @@ export const IconMoon = styled.img`
 `;
 
 export const ChartWrapper = styled.div`
-  min-width: 970px;
+  /* max-width: 970px; */
   z-index: 1000;
   position: absolute;
-  top: 200px;
+  top: 150px;
 `;
 
 export const IconsWrapper = styled.div`

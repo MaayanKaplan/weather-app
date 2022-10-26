@@ -11,10 +11,10 @@ import { AuthenticationProvider } from "./api/AbraApi/Authentication";
 import { verifyToken } from "./api/AbraApi/verifyToken";
 import Clouds from "./Components/Clouds/Clouds";
 import { useQuery } from "@tanstack/react-query";
-import Map from "./Pages/Map/Map";
 import { useGeoLocation } from "use-geo-location";
 import { getGeoPosition } from "./api/AccuweatherAPI/AccuweatherAPI";
 import ErrorBoundary from "./Utils/ErrorBoundary";
+import GoogleMap from "./Pages/GoogleMap/GoogleMap";
 
 export interface DefaultTheme {
   primary: string;
@@ -87,7 +87,7 @@ const App: React.FC = () => {
                       path="/:locationKey/:cityName"
                       element={<HomePage locationKey={locationKey} />}
                     />
-                    <Route path="/map" element={<Map />} />
+                    <Route path="/map" element={<GoogleMap />} />
                     <Route path="/favorites" element={<Favorites />} />
                   </Route>
                 )}

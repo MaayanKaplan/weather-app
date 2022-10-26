@@ -8,7 +8,7 @@ export const ConvertTime = (date: Date) => {
 };
 
 export const ConvertDate = (date: Date) =>
-  `${date.getDate()}.${date.getMonth()}`;
+  `${date.getDate()}.${date.getMonth() + 1}`;
 
 const today = new Date();
 const tomorrow = addDays(today, 1);
