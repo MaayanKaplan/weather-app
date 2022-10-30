@@ -7,7 +7,7 @@ import FiveDaysForecast from "./FiveDaysForecast/FiveDaysForecats";
 import { useMedia } from "../../hooks/useMedia";
 import { IconMapDark } from "../../Common/Icon/Icon";
 import { useQuery } from "@tanstack/react-query";
-import { getDailyForecast } from "../../api/AccuweatherAPI/AccuweatherAPI";
+import { getFiveDaysForecast } from "../../api/AccuweatherAPI/AccuweatherAPI";
 import FavImg from "../../Images/fav-outline.svg";
 import { useAddAndRemoveFavorites } from "../../api/AbraApi/getFavorites";
 import PopUp from "../../Common/PopUp/PopUp";
@@ -32,11 +32,11 @@ const Home = ({ params, locationKey }: HomeProps) => {
   };
   const isMobile = useMedia();
 
-  const { data, isError, error } = useQuery([params, locationKey], () => {
+  const { data, isError } = useQuery([params, locationKey], () => {
     if (params?.locationKey) {
-      return getDailyForecast(+params?.locationKey);
+      return getFiveDaysForecast(+params?.locationKey);
     } else {
-      return getDailyForecast(locationKey?.Key);
+      return getFiveDaysForecast(locationKey?.Key);
     }
   });
 

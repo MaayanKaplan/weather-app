@@ -15,7 +15,7 @@ const NavBar: React.FC<NavBarProps> = ({
             <S.NavBarButton variant="ghost" onClick={() => onClick(item.path)}>
               <S.ContentWrapper>
                 <S.IconWrapper to={item.path}>
-                  {selectedItem === item.id ? item.active : item.inactive}
+                  {selectedItem === item.path ? item.active : item.inactive}
                 </S.IconWrapper>
                 <S.Text to={item.path}>{item.text}</S.Text>
               </S.ContentWrapper>

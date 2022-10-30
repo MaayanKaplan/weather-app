@@ -23,8 +23,15 @@ export const Container = styled.div`
 export const EachDayWrapper = styled.div`
   @media ${deviceSize.mobile} {
     display: flex;
+    justify-content: center;
+    align-items: center;
     justify-content: space-between;
   }
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  gap: 8px;
 `;
 
 export const Title = styled.h3`
@@ -45,29 +52,11 @@ export const TempIcon = styled.div`
   width: 30px;
   height: 30px;
   margin-right: 4px;
-  display: block;
-
-  @media ${deviceSize.mobile} {
-    order: -1;
-  }
 `;
-
-// export const MobileIcon = styled.div`
-//   display: none;
-
-//   @media ${deviceSize.mobile} {
-//     display: block;
-//     width: 22px;
-//     height: 22px;
-//   }
-// `;
 
 export const TempWrapper = styled.div`
   display: flex;
   justify-content: center;
-
-  @media ${deviceSize.mobile} {
-  }
 `;
 
 export const TempMin = styled.span`
@@ -105,9 +94,4 @@ export const DegreesSign = styled.span`
     line-height: 1.25;
     align-self: center;
   }
-`;
-
-export const TitleWrapper = styled.div`
-  display: flex;
-  gap: 8px;
 `;

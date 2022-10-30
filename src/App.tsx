@@ -14,7 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useGeoLocation } from "use-geo-location";
 import { getGeoPosition } from "./api/AccuweatherAPI/AccuweatherAPI";
 import ErrorBoundary from "./Utils/ErrorBoundary";
-import GoogleMap from "./Pages/GoogleMap/GoogleMap";
+import GoogleMap from "./Pages/Map/Map";
 
 export interface DefaultTheme {
   primary: string;

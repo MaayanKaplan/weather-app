@@ -33,7 +33,6 @@ const SearchModal: React.FC<ModalProps> = ({
     exact: true,
   });
 
-  console.log(searchValue);
   // return from autoComplete func.
   const { data, isLoading, isError } = useQuery(
     ["autocomplete", result ? searchValue : debouncedSearch],

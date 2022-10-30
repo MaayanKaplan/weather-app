@@ -35,7 +35,19 @@ export const getGeoPosition = async (latitude: number, longitude: number) => {
   }
 };
 
-export const getDailyForecast = async (locationKey: number) => {
+export const getTodaysForecast = async (locationKey: number) => {
+  if (!locationKey) return;
+  try {
+    const response = await accuweatherInstance.get(
+      `/forecasts/v1/daily/1day/${locationKey}?apikey=${apiKey}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getFiveDaysForecast = async (locationKey: number) => {
   if (!locationKey) return;
   try {
     const response = await accuweatherInstance.get(
@@ -60,6 +72,20 @@ export const get12HoursForecast = async (locationKey: number) => {
       }
     );
     return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getLocation = async (favKey: number) => {
+  if (!favKey) return;
+  try {
+    const response = await accuweatherInstance.get(`/locations/v1/${favKey}`, {
+      params: {
+        apikey: apiKey,
+      },
+    });
+    return response;
   } catch (error) {
     console.log(error);
   }
